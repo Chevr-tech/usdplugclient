@@ -1,3 +1,63 @@
 .hero-text {
   color: #5f30e3;
 }
+
+.hero-top {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+}
+
+.hero-icon__cover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 6px 0 0;
+}
+
+.hero-middle {
+  padding: 8px 0 0 0;
+  font-size: 30px;
+  font-weight: bolder;
+  color: #3f3f3f;
+  line-height: 35px;
+}
+
+.hero-caption {
+  font-weight: 500;
+  color: #9b9b9b;
+  font-size: 18px;
+  padding: 10px 0;
+  margin: 0 0 0 0;
+}
+
+.cta-tex.hero {
+  font-weight: 600;
+}
+
+.hero-cta__btn-cover {
+  width: fit-content;
+  display: flex;
+  margin: 8px 0;
+}
+
+.hero-cta__btn {
+  border: 1px solid #6030e32a;
+  border-radius: 3px;
+  background: #fff;
+  color: #5f30e3;
+  padding: 6px 20px;
+  box-shadow: 0 2px 5px #ebebeb9c;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-cta__btn:nth-child(2) {
+  background: #5f30e3;
+  color: #fff;
+  margin: 0 20px;
+  font-size: 14px;
+}
