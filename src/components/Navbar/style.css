@@ -81,7 +81,7 @@
 }
 
 .nav-auth__btn {
-  border: 1px solid #75b968c0;
+  border: 1px solid #2bff88;
   padding: 7px 19px;
   color: #75b968;
   margin: 0 10px;
@@ -94,13 +94,19 @@
 }
 
 .nav-auth__btn:hover {
-  outline: 2px solid #75b96860;
+  outline: 2px solid #e3ffdd60;
 }
 
 .nav-auth__btn:nth-child(2) {
   color: #fff;
   border: none !important;
-  background-color: #75b968;
+  /* background-color: #75b968; */
+  /* background-color: #2bff88; */
+  background-image: linear-gradient(
+    45deg,
+    /* #2bffcf 0%, */ #2bd2ff 52%,
+    #2bff88 100%
+  );
 }
 
 .menu-btn__cover {

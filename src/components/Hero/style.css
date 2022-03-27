@@ -48,7 +48,6 @@
 }
 
 .hero-cta__btn {
-  border: 1px solid #75b968c0;
   border-radius: 3px;
   background: #fff;
   color: #75b968;
@@ -63,6 +62,11 @@
 
 .hero-cta__btn:nth-child(2) {
   background: #75b968;
+  background-image: linear-gradient(
+    45deg,
+    /* #2bffcf 0%, */ #2bd2ff 52%,
+    #2bff88 100%
+  );
   color: #fff;
   margin: 0 20px;
   font-size: 14px;

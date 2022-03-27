@@ -6,6 +6,8 @@ import About from "./screens/About";
 import Newsroom from "./screens/NewsRoom";
 import NewsDetails from "./screens/NewsRoom/NewsDetails";
 import AuthScreen from "./screens/AuthScreen";
+import ForgotPassword from "./screens/AuthScreen/ForgotPassword";
+import SignIn from "./screens/AuthScreen/SignIn";
 
 function App() {
   return (
@@ -16,7 +18,9 @@ function App() {
         <Route exact path="/newsroom" component={Newsroom} />
         <Route exact path="/newsroom" component={Newsroom} />
         <Route exact path="/newsroom/:id" component={NewsDetails} />
-        <Route exact path="/auth" component={AuthScreen} />
+        <Route exact path="/signup" component={AuthScreen} />
+        <Route exact path="/signin" component={SignIn} />
+        <Route exact path="/forgotpassword" component={ForgotPassword} />
       </Switch>
     </>
   );

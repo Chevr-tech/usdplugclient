@@ -41,8 +41,12 @@ const Navbar = () => {
           </div>
           <div className="nav-left__cover">
             <div className="nav-auth__btn-cover">
-              <div className="nav-auth__btn ">Sign in</div>
-              <div className="nav-auth__btn ">Sign up</div>
+              <Link to="/signin" className="nav-auth__btn ">
+                Sign in
+              </Link>
+              <Link to="/signup" className="nav-auth__btn ">
+                Sign up
+              </Link>
             </div>
             <div className="menu-btn__cover" onClick={() => setCloseMenu(true)}>
               <HiOutlineMenuAlt3 size={25} color={color.darkColor} />

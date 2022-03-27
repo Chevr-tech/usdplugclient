@@ -1,56 +1,29 @@
 import { Link } from "react-router-dom";
 import "./style.css";
 
-const AuthScreen = () => {
+const SignIn = () => {
   return (
     <div className="cover">
-      <div className="form p-3">
-        <div className="auth-brand text-center">USDPLUG</div>
-        <div className="auth-caption text-center">
-          Hello !!, Good to have you join us. Sign up to get started.
-        </div>
-        <div className="row">
-          <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-            <div className="form-group">
-              <label for="text" class="form-label">
-                First name
-              </label>
-              <input
-                type="text"
-                class="form-input"
-                placeholder="first name"
-                id="text"
-              />
-            </div>
-          </div>
-          <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-            <div className="form-group">
-              <label for="text" class="form-label">
-                Phone Number:
-              </label>
-              <input
-                type="number"
-                class="form-input"
-                placeholder="number"
-                id="text"
-              />
-            </div>
-          </div>
-        </div>
+      <div className="bar"></div>
 
+      <div className="form p-3">
+        <div className="auth-brand text-center">Welcome back !!!</div>
+        <div className="auth-caption text-center">
+          Please fill in the form the continue
+        </div>
         <div className="form-group">
           <label for="email" class="form-label">
-            Email address
+            Email address or username
           </label>
           <input
             type="email"
             class="form-input"
-            placeholder="email address"
+            placeholder="email address or username"
             id="email"
           />
         </div>
         <div className="form-group">
-          <label for="password" class="form-label">
+          <label for="email" class="form-label">
             Password
           </label>
           <input
@@ -60,14 +33,15 @@ const AuthScreen = () => {
             id="email"
           />
         </div>
+
         <div className="form-btn__cover">
-          <div>Sign up</div>
+          <div>Sign in</div>
         </div>
         <div className="form-hint">
-          Already have an account ?{" "}
-          <Link to="/signin" className="auth-link">
+          Don't have an account ?{" "}
+          <Link to="/signup" className="auth-link">
             {" "}
-            Sign in
+            Sign up here
           </Link>
         </div>
       </div>
@@ -75,7 +49,7 @@ const AuthScreen = () => {
   );
 };
 
-export default AuthScreen;
+export default SignIn;
 
 // {
 /* <div className="auth-cover">

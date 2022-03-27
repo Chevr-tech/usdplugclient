@@ -18,10 +18,10 @@ const Testimonial = () => {
               </div>
               <div className="rate-btn">View rate</div>
             </div>
-            <div className="col-sm-12 col-md-8 col-lg-7 d-none col-xl-7 border border-primary ">
-              <div className="row d-flex align-items-center justify-content-center">
-                <div className="col-sm-12 col-md-5 col-lg-5 col-xl-5">
-                  <div className="testimonial-card">
+            <div className="col-sm-12 col-md-10 mt-md-3 col-lg-8 col-xl-8  ">
+              <div className="row d-flex align-items-center justify-content-evenly">
+                <div className="col-sm-12 col-md-5 col-lg-5.5 col-xl-5.5">
+                  <div className="testimonial-card my-2">
                     <div className="testimonial-card__title">
                       Completed 500+ orders.
                     </div>
@@ -32,7 +32,7 @@ const Testimonial = () => {
                     </div>
                   </div>
                 </div>
-                <div className="col-sm-12 col-md-5 col-lg-5 col-xl-5">
+                <div className="col-sm-12 col-md-5 col-lg-5.5 col-xl-5.5">
                   <div className="testimonial-card">
                     <div className="testimonial-card__title">
                       Completed 500+ orders

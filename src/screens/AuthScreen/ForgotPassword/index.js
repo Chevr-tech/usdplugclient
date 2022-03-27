@@ -1,41 +1,13 @@
 import { Link } from "react-router-dom";
 import "./style.css";
 
-const AuthScreen = () => {
+const ForgotPassword = () => {
   return (
     <div className="cover">
       <div className="form p-3">
-        <div className="auth-brand text-center">USDPLUG</div>
+        <div className="auth-brand text-center"> Password Recovery</div>
         <div className="auth-caption text-center">
-          Hello !!, Good to have you join us. Sign up to get started.
-        </div>
-        <div className="row">
-          <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-            <div className="form-group">
-              <label for="text" class="form-label">
-                First name
-              </label>
-              <input
-                type="text"
-                class="form-input"
-                placeholder="first name"
-                id="text"
-              />
-            </div>
-          </div>
-          <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-            <div className="form-group">
-              <label for="text" class="form-label">
-                Phone Number:
-              </label>
-              <input
-                type="number"
-                class="form-input"
-                placeholder="number"
-                id="text"
-              />
-            </div>
-          </div>
+          Please entrer the email address associated with your account.
         </div>
 
         <div className="form-group">
@@ -49,23 +21,13 @@ const AuthScreen = () => {
             id="email"
           />
         </div>
-        <div className="form-group">
-          <label for="password" class="form-label">
-            Password
-          </label>
-          <input
-            type="password"
-            class="form-input"
-            placeholder="password"
-            id="email"
-          />
-        </div>
+
         <div className="form-btn__cover">
-          <div>Sign up</div>
+          <div>Continue</div>
         </div>
         <div className="form-hint">
           Already have an account ?{" "}
-          <Link to="/signin" className="auth-link">
+          <Link to="/" className="auth-link">
             {" "}
             Sign in
           </Link>
@@ -75,7 +37,7 @@ const AuthScreen = () => {
   );
 };
 
-export default AuthScreen;
+export default ForgotPassword;
 
 // {
 /* <div className="auth-cover">
