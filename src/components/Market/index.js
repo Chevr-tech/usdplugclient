@@ -45,7 +45,7 @@ const Market = () => {
   }, []);
   return (
     <div className="market-cover container ">
-      <div className="bg-fade"></div>
+      {/* <div className="bg-fade"></div> */}
       <div className="market-caption text-center">
         Cryptocurrency Price{" "}
         <span
