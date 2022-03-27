@@ -1,10 +1,12 @@
+import Footer from "../Footer";
 import Navbar from "../Navbar";
 
 const Layout = ({ children }) => {
   return (
     <>
       <Navbar />
-      <div className="container border border-primary">{children}</div>
+      <div className="container-fluid">{children}</div>
+      <Footer />
     </>
   );
 };

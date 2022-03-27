@@ -1,5 +1,6 @@
 .hero-text {
-  color: #5f30e3;
+  color: #75b968;
+  font-size: 17px;
 }
 
 .hero-top {
@@ -15,9 +16,14 @@
   padding: 3px 6px 0 0;
 }
 
+.hero-left_cover {
+  width: 100%;
+  height: auto;
+}
+
 .hero-middle {
   padding: 8px 0 0 0;
-  font-size: 30px;
+  font-size: 33px;
   font-weight: bolder;
   color: #3f3f3f;
   line-height: 35px;
@@ -42,13 +48,13 @@
 }
 
 .hero-cta__btn {
-  border: 1px solid #6030e32a;
+  border: 1px solid #75b968c0;
   border-radius: 3px;
   background: #fff;
-  color: #5f30e3;
-  padding: 6px 20px;
+  color: #75b968;
+  padding: 10px 25px;
   box-shadow: 0 2px 5px #ebebeb9c;
-  font-size: 14px;
+  font-size: 16px;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -56,8 +62,13 @@
 }
 
 .hero-cta__btn:nth-child(2) {
-  background: #5f30e3;
+  background: #75b968;
   color: #fff;
   margin: 0 20px;
   font-size: 14px;
+}
+
+.hero-right__cover {
+  width: 100%;
+  height: 300px;
 }

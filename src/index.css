@@ -3,18 +3,29 @@
 * {
   padding: 0;
   margin: 0;
-  box-sizing: border-box;
+  box-sizing: border-box !important;
   text-decoration: none !important;
 }
 
 html,
 body {
-  width: 100%;
-  height: 100%;
+  width: 100% !important;
+  height: 100% !important;
   font-size: 16px;
+  background-attachment: fixed;
   font-family: "PT Sans", sans-serif !important;
 }
 
 .cta-text {
   color: #5f30e3;
+}
+
+.backdrop {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: #0a0a0a0e;
+  z-index: 20;
+  top: 0;
+  left: 0;
 }

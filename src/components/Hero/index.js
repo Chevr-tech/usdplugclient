@@ -4,7 +4,7 @@ import { color } from "../../constants/color";
 
 const Hero = () => {
   return (
-    <div className="container-fluid mt-4">
+    <div className="container mt-4" style={{}}>
       <div className="row justify-content-between">
         <div className="col-sm-12 col-md-6 col-lg-5 col-xl-5 border border-primary">
           <div className="hero-left_cover">
@@ -32,8 +32,8 @@ const Hero = () => {
             </div>
           </div>
         </div>
-        <div className="col-sm-12 col-md-6 col-lg-5 col-xl-5 border border-primary">
-          <div className="hero-left_cover"></div>
+        <div className="col-sm-12 col-md-6 col-lg-5 col-xl-5  border border-primary">
+          <div className="hero-right__cover"></div>
         </div>
       </div>
     </div>
