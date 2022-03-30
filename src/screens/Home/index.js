@@ -10,6 +10,7 @@ const Home = () => {
   return (
     <Layout>
       <div className="home-container">
+        <div className="gradient"></div>
         <Hero />
         <Services />
         <Market />

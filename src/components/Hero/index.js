@@ -5,8 +5,8 @@ import { color } from "../../constants/color";
 const Hero = () => {
   return (
     <div className="container mt-4" style={{}}>
-      <div className="row justify-content-between">
-        <div className="col-sm-12 col-md-6 col-lg-5 col-xl-5 border border-primary">
+      <div className="row justify-content-around">
+        <div className="col-sm-12 col-md-6 col-lg-5 col-xl-5">
           <div className="hero-left_cover">
             <div className="hero-top">
               <div className="hero-icon__cover">

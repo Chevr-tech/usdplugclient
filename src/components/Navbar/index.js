@@ -41,10 +41,10 @@ const Navbar = () => {
           </div>
           <div className="nav-left__cover">
             <div className="nav-auth__btn-cover">
-              <Link to="/signin" className="nav-auth__btn ">
+              <Link to="/signin" className="nav-auth__btn">
                 Sign in
               </Link>
-              <Link to="/signup" className="nav-auth__btn ">
+              <Link to="/signup" className="nav-auth__btn">
                 Sign up
               </Link>
             </div>

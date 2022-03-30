@@ -45,12 +45,10 @@
   font-size: 18px;
   font-weight: bold;
   color: #5f30e3;
-  /* color: #27d165; */
 }
 
 .nav-brand__caption {
   font-size: 17px;
-  /* color: #6e6e6e; */
 }
 
 .nav-items_Links {
@@ -92,21 +90,22 @@
   cursor: pointer;
   transition: outline 50ms ease;
 }
-
 .nav-auth__btn:hover {
-  outline: 2px solid #e3ffdd60;
+  color: #75b968 !important;
 }
 
 .nav-auth__btn:nth-child(2) {
   color: #fff;
   border: none !important;
-  /* background-color: #75b968; */
-  /* background-color: #2bff88; */
   background-image: linear-gradient(
     45deg,
     /* #2bffcf 0%, */ #2bd2ff 52%,
     #2bff88 100%
   );
+}
+
+.nav-auth__btn:nth-child(2):hover {
+  color: #fff !important;
 }
 
 .menu-btn__cover {
