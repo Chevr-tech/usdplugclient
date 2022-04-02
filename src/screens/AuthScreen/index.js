@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import "./style.css";
+import Navbar from "../../components/Navbar"
 
 const AuthScreen = () => {
   return (
+    
     <div className="cover">
+      <Navbar/>
       <div className="form p-3">
         <div className="auth-brand text-center">USDPLUG</div>
         <div className="auth-caption text-center">

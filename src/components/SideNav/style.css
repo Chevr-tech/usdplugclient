@@ -1,0 +1,49 @@
+.sidenav {
+  width: 250px;
+  height: 100vh;
+  background: #fff;
+  box-shadow: 5px 0px 3px #83838325;
+}
+
+.sidenav-title {
+  font-size: 10px;
+  color: #868686;
+  text-transform: uppercase;
+}
+
+.sidnav-link {
+  text-decoration: none;
+  color: #3f3f3f;
+  font-size: 15px;
+  margin: 10px 0;
+  transition: all 50ms ease;
+  /* margin: 0 0 0 10px; */
+}
+
+.sidnav-link:hover {
+  background: #ececec27;
+  color: #2d8f59 !important;
+}
+
+.sidnav-link:active {
+  color: #2d8f59;
+}
+
+.sidenav-link__icon-cover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* margin: -3px 0 0 0; */
+  width: 20px;
+  height: 20px;
+}
+
+.ion-icon {
+  font-size: 64px;
+}
+
+@media (max-width: 500px) {
+  .sidenav {
+    display: none;
+  }
+}
