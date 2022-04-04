@@ -1,0 +1,54 @@
+.cbd-c {
+  width: 350px;
+  min-width: 320px;
+  max-width: 400px;
+  height: auto;
+  border-radius: 5px;
+  position: relative;
+}
+
+.cbd-image__cover {
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+}
+
+.cbd-img {
+  width: 100%;
+  height: 100%;
+}
+
+.cbd-top {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cbn {
+  width: 60%;
+  display: flex;
+  margin: 3px 0;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cbn-t {
+  font-size: 13px;
+  color: #636363;
+}
+
+.cbd-helper {
+  font-size: 14px;
+  border-top: 1px solid #eee;
+}
+
+.cbd-cta__btn-cover {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.cbd-btn {
+  width: 120px;
+}

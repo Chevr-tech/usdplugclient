@@ -16,6 +16,9 @@ import { BiRightArrowAlt } from "react-icons/bi";
 import { color } from "../../../constants/color";
 import { Link } from "react-router-dom";
 import moment from "moment";
+import "./style.css";
+import { RiArrowUpDownLine, RiArrowUpLine } from "react-icons/ri";
+import { CgArrowDown } from "react-icons/cg";
 
 const OrderTable = () => {
   let num = 1;
@@ -41,6 +44,46 @@ const OrderTable = () => {
       </div>
     );
   };
+
+  const status = (item) => {
+    return (
+      <div className="row aligns-items-center justify-content-center">
+        <div
+          className="status-cover"
+          style={{
+            color:
+              item.status === "pending"
+                ? "orange"
+                : item.status === "approved"
+                ? "green"
+                : item.status === "rejected"
+                ? "tomato"
+                : null,
+            fontSize: "12px",
+            backgroundColor:
+              item.status === "pending"
+                ? "#ffe5b4"
+                : item.status === "approved"
+                ? "#acffac"
+                : item.status === "rejected"
+                ? "#ffb4a7"
+                : null,
+          }}
+        >
+          {item.status[0].toUpperCase() + item.status.substring(1)}
+        </div>
+      </div>
+    );
+  };
+
+  const id = (item) => {
+    return (
+      <div className="order-id text-center">
+        #{`${item.id.substring(0, 20)}...`}
+      </div>
+    );
+  };
+
   return (
     <div className="container-fluid">
       <GridComponent
@@ -60,11 +103,35 @@ const OrderTable = () => {
             headerText="#"
           />
           <ColumnDirective
+            field="id"
+            width="50"
+            textAlign="Center"
+            headerText="ID"
+            headerTextAlign="Center"
+            template={id}
+          />
+          <ColumnDirective
             field="type"
             width="100"
             textAlign="Center"
             headerTextAlign="Center"
             headerText="Order Type"
+            template={(item) => {
+              return (
+                <div className="order-type">
+                  <div className="order-icon__cover">
+                    {item.type == "sell" ? (
+                      <RiArrowUpLine size={16} color={"#f37f6a"} />
+                    ) : (
+                      <CgArrowDown size={16} color={"#3ec03e"} />
+                    )}
+                  </div>
+                  <div className="order-value text-left">
+                    {item.type === "buy" ? "Buy" : "Sell"}
+                  </div>
+                </div>
+              );
+            }}
           />
           <ColumnDirective
             field="token"
@@ -73,7 +140,14 @@ const OrderTable = () => {
             headerText="Token"
             headerTextAlign="Center"
           />
-          <ColumnDirective field="status" width="100" textAlign="Center" />
+          <ColumnDirective
+            field="status"
+            width="100"
+            textAlign="Center"
+            headerText="Status"
+            headerTextAlign="Center"
+            template={status}
+          />
           <ColumnDirective
             field="quantity"
             width="100"
@@ -95,7 +169,7 @@ const OrderTable = () => {
                     fontSize: "13px",
                   }}
                 >
-                  {moment(item.date).format("LLL")}
+                  {moment(item.date).format("LL")}
                 </div>
               );
             }}

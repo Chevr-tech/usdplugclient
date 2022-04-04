@@ -1,0 +1,30 @@
+.kycr {
+  width: 330px;
+  height: auto;
+  position: relative;
+  border-radius: 4px;
+  margin-top: -30px;
+}
+
+.kyc-title {
+  font-size: 16px;
+}
+
+.kyc-input {
+  width: 100%;
+}
+.kyc-input__cover {
+  border-radius: 3px;
+  transition: outline 50ms ease;
+  height: 33px;
+  width: 100%;
+  padding: 5px;
+}
+
+.kyc-input__cover:hover {
+  outline: 2px solid #3f3f3f3b;
+}
+
+.kyc-group {
+  width: 100%;
+}

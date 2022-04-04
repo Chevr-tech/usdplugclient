@@ -24,11 +24,27 @@ body {
 .backdrop {
   width: 100%;
   height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: fixed;
   background: #0a0a0a0e;
-  z-index: 20;
+  z-index: 30 !important;
   top: 0;
   left: 0;
+}
+
+.close-btn {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  right: 10px;
+  cursor: pointer;
 }
 
 /* details btn */
@@ -53,6 +69,7 @@ body {
   font-size: 13px;
   height: auto;
   position: relative;
+  color: #3f3f3f !important;
 }
 .e-grid .e-gridfooter {
   border: none !important;
@@ -106,4 +123,20 @@ body {
 
 .e-grid .e-toolbar-items .e-toolbar-item.e-search-wrapper {
   padding-bottom: none !important;
+}
+
+.e-pager .e-currentitem,
+.e-pager .e-currentitem:hover {
+  background: transparent !important;
+  color: #3f3f3f !important;
+}
+
+.e-pager .e-icons {
+  color: #3f3f3f !important;
+}
+
+@media (max-width: 500px) {
+  body {
+    font-size: 17px !important;
+  }
 }

@@ -1,0 +1,17 @@
+.status-cover {
+  border-radius: 3px;
+  width: fit-content !important;
+  /* color: #ffe5b4;
+  color: #ffb4a7;
+  color: #acffac;  */
+  padding: 2px 10px;
+  /* color: #f37f6a;
+  color: #3ec03e; */
+}
+
+.order-type,
+.order-icon__cover {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}

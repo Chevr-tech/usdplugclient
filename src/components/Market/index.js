@@ -6,6 +6,7 @@ import { css } from "@emotion/react";
 import { HashLoader } from "react-spinners";
 import axios from "axios";
 import { color } from "../../constants/color";
+import LineCharts from "../LineChart";
 
 const Market = () => {
   const [loading, setLoading] = useState(true);
@@ -109,51 +110,9 @@ const Market = () => {
                   </div>
                 </div>
                 <div className="market-chart pb-4">
-                  <Line
-                    data={{
-                      labels: item.sparkLine,
-                      datasets: [
-                        {
-                          label: "Energy",
-                          fill: true,
-                          backgroundColor:
-                            item.percentagePriceChange >= 0
-                              ? "#76e7763d"
-                              : "#ff634723",
-                          data: item.sparkLine,
-                          borderColor:
-                            item.percentagePriceChange >= 0
-                              ? "green"
-                              : "tomato",
-                          radius: 0,
-                          borderWidth: 1,
-                        },
-                      ],
-                    }}
-                    options={{
-                      maintainAspectRatio: false,
-                      responsive: true,
-                      plugins: {
-                        legend: false,
-                        title: {
-                          display: false,
-                        },
-                      },
-                      scales: {
-                        x: {
-                          display: false,
-                          grid: {
-                            display: false,
-                          },
-                        },
-                        y: {
-                          display: false,
-                          grid: {
-                            display: false,
-                          },
-                        },
-                      },
-                    }}
+                  <LineCharts
+                    sparkLine={item.sparkLine}
+                    percentagePriceChange={item.percentagePriceChange}
                   />
                 </div>
               </div>

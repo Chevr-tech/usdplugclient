@@ -1,8 +1,9 @@
 .sidenav {
-  width: 250px;
+  width: 230px;
   height: 100vh;
   background: #fff;
-  box-shadow: 5px 0px 3px #83838325;
+  z-index: 20;
+  box-shadow: 2px 0px 3px #83838325;
 }
 
 .sidenav-title {
@@ -11,22 +12,39 @@
   text-transform: uppercase;
 }
 
+.sidenav-link__title {
+  font-size: 15px;
+  padding-left: 7px;
+}
+
+.menu-items {
+  margin-top: 70px;
+}
+
 .sidnav-link {
   text-decoration: none;
   color: #3f3f3f;
-  font-size: 15px;
-  margin: 10px 0;
+  font-size: 16px;
+  margin: 18px 0 0 0;
   transition: all 50ms ease;
-  /* margin: 0 0 0 10px; */
+  background: #f3f3f327;
+  display: flex;
+  align-items: center;
+  border-radius: 3px;
+  cursor: pointer;
 }
 
-.sidnav-link:hover {
-  background: #ececec27;
-  color: #2d8f59 !important;
+.sidnav-link.active {
+  /* background: #11a763; */
+  background-color: #08aeea;
+  background-image: linear-gradient(40deg, #08aeea 0%, #2af598 130%);
+  color: #fff;
+  /* box-shadow: inset 0 0 2px #646464de; */
 }
 
 .sidnav-link:active {
   color: #2d8f59;
+  color: #6d6d6d;
 }
 
 .sidenav-link__icon-cover {
