@@ -151,22 +151,25 @@ const KYCRegistration = ({ closeBtn }) => {
                       title: item,
                     };
                   })}
+                  style={{
+                    padding: "0",
+                  }}
                   setValue={setGender}
                   placeholder={"docuemnt type"}
                 />
               </div>
             </div>
           </div>
-          <div className="kyc-btn mt-2">
+          <div className="kyc-btn mt-3">
             <Button
               text={"Submit"}
               bg={color.baseColor}
               textColor={color.white}
-              fontSize={"12px"}
-              height={"33px"}
+              fontSize={"14px"}
+              height={"40px"}
               loaderColor={color.white}
               loaderSize={10}
-              status={true}
+              status={false}
             />
           </div>
         </div>

@@ -13,6 +13,7 @@ import MarketCard from "../../../components/MarketCard";
 import { HiArrowNarrowRight } from "react-icons/hi";
 import VolumeImg from "../../../assets/svg/volume.svg";
 import MoneyImg from "../../../assets/svg/money.svg";
+import MarketTable from "../../../components/Tables/MarketTable/";
 
 const Home = () => {
   const [hide, setHide] = useState(false);
@@ -25,30 +26,30 @@ const Home = () => {
           marginBottom: "200px",
         }}
       >
-        <div className="container-fluid p-0 mt-2 mb-3">
+        <div className="container-fluid p-0 mt-3 mb-3">
           <div className="row align-items-center justify-content-between">
-            <div className="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+            <div className="col-sm-12 col-md-12 col-lg-6 col-xl-6 d-card">
               <div className="container-fluid p-0">
                 <div className="row">
-                  <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6 ">
+                  <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6 d-card ">
                     <div className="dashboard-card bg-white ">
                       <img src={VolumeImg} className="dashboard-bg" alt="" />
                       <div className="dashboard-card__image-cover">
                         <img src={VolumeImg} className="dashboard-img" alt="" />
                       </div>
                       <div className="transaction-value">₦2,249.00</div>
-                      <div className="dashboard-card__title p-1">
+                      <div className="dashboard-card__title ">
                         Total trading volume
                       </div>
                     </div>
                   </div>
-                  <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6 ">
+                  <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6 d-card ">
                     <div className="dashboard-card bg-white  "></div>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="col-sm-12 col-md-6 col-lg-6 col-lg-6">
+            <div className="col-sm-12 col-md-12 col-lg-6 col-lg-6 my-md-3">
               <div className="info-admin ">
                 <div className="money-img__cover">
                   <img src={MoneyImg} alt="" className="money-img" />
@@ -110,9 +111,9 @@ const Home = () => {
         >
           <div className="trade-top py-3">
             <div className="trade-content">
-              <div className="trade-icon mr-2">
+              {/* <div className="trade-icon mr-2">
                 <AiOutlineFieldTime size={16} color={color.iconColor} />
-              </div>
+              </div> */}
               <div className="trade-history py-1 pr-3">Trade History.</div>
             </div>
             <div className="right-btn__cover">
@@ -147,6 +148,54 @@ const Home = () => {
             }}
           >
             <OrderTable />
+          </div>
+        </div>
+        {/* Market */}
+        <div
+          className="container-fluid px-0 mx-0 bg-white mt-4"
+          style={{
+            marginTop: "7px",
+          }}
+        >
+          <div className="trade-top py-3">
+            <div className="trade-content">
+              {/* <div className="trade-icon mr-2">
+                <AiOutlineFieldTime size={16} color={color.iconColor} />
+              </div> */}
+              <div className="trade-history py-1 pr-3">Market Data.</div>
+            </div>
+            <div className="right-btn__cover">
+              <div className="refresh-btn">
+                <Button
+                  text={"Refresh"}
+                  color={color.baseColor}
+                  bg={color.white}
+                  border={`1px solid ${color.baseColor}`}
+                  height={"33px"}
+                  status={false}
+                  loaderColor={color.baseColor}
+                />
+              </div>
+              <div
+                className="collapse-btn"
+                onClick={() => setHide((prev) => !prev)}
+              >
+                <Button
+                  text={hide ? "Show market" : "Hide market"}
+                  color={color.baseColor}
+                  bg={color.white}
+                  border={`1px solid ${color.baseColor}`}
+                  height={"33px"}
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            style={{
+              display: hide ? "none" : "block",
+            }}
+          >
+            <MarketTable />
           </div>
         </div>
       </div>

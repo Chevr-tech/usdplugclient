@@ -23,7 +23,7 @@ export const Button = ({
     <div
       style={{
         width: width || "100%",
-        height: height || "35px",
+        height: height || "45px",
         borderRadius: "3px",
         background: bg,
         boxShadow: "0 2px 3px #eeeeeede",

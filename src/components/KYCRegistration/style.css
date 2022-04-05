@@ -16,9 +16,12 @@
 .kyc-input__cover {
   border-radius: 3px;
   transition: outline 50ms ease;
-  height: 33px;
+  height: 40px;
   width: 100%;
   padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .kyc-input__cover:hover {
@@ -27,4 +30,5 @@
 
 .kyc-group {
   width: 100%;
+  margin:10px 0;
 }

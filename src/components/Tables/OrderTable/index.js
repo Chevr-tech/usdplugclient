@@ -20,7 +20,7 @@ import "./style.css";
 import { RiArrowUpDownLine, RiArrowUpLine } from "react-icons/ri";
 import { CgArrowDown } from "react-icons/cg";
 
-const OrderTable = () => {
+const OrderTable = ({}) => {
   let num = 1;
   const result = data.map((item) => {
     return {

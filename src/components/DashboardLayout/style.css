@@ -23,7 +23,7 @@
   top: 0;
   left: 0;
   display: flex;
-  background: #f7f7f77c;
+  background: #eeeeee7c;
 }
 
 .right-container {
@@ -38,5 +38,6 @@
   height: 100%;
   position: relative;
   overflow-x: hidden;
+  padding-bottom: 50px;
   scroll-behavior: smooth;
 }

@@ -22,7 +22,7 @@ const Settings = () => {
       {kYCR && <KYCRegistration closeBtn={setKYCR} />}
       {updatedModal && <UpdateBank closeBtn={setUpdatedModal} />}
       <DashboardLayout>
-        <div className="container-fluid bg-white settings-container">
+        <div className="container-fluid bg-white settings-container p-0">
           <div className="settings-top px-1 py-1">
             <div className="setting-icon__cover">
               <AiFillSetting size={18} color={color.baseColor} />
@@ -31,29 +31,29 @@ const Settings = () => {
           </div>
           <div className="row">
             <div className="col-sm-12 col-md-12 col-lg-8 col-xl-8">
-              <div className="container-fluid">
+              <div className="container-fluid p">
                 {/* Bank details */}
                 <div className="row align-items-center justify-content-between py-3 settings-card">
-                  <div className="col-sm-12 col-md-8 col-lg-4 col-lg-4">
+                  <div className="col-sm-12 col-md-5 col-lg-4 col-lg-4">
                     <div className="setting-title">Bank Details</div>
                     <div className="settings-caption pt-1">
                       Upload a default bank account to receive funds when you
                       wan to sell you crypto assets.
                     </div>
                   </div>
-                  <div className="col-sm-12 col-md-3 col-lg-6 col-lg-6 ">
+                  <div className="col-sm-12 col-md-5 col-lg-6 col-lg-6 ">
                     <div className="setting-input__cover mt-sm-2">
                       {hasBank ? (
-                        <div className="has bank">
-                          <div className="bank-details d-flex align-items-center justify-content-around">
+                        <div className="has-bank">
+                          <div className="bank-details d-flex align-items-center justify-content-between">
                             <div className="bank-title">Account name:</div>
                             <div className="bank-name">Zannu Julius</div>
                           </div>
-                          <div className="bank-details d-flex align-items-center justify-content-around">
+                          <div className="bank-details d-flex align-items-center justify-content-between">
                             <div className="bank-title">Account number:</div>
                             <div className="bank-name">0059381944</div>
                           </div>
-                          <div className="bank-details d-flex align-items-center justify-content-around">
+                          <div className="bank-details d-flex align-items-center justify-content-between">
                             <div className="bank-title">Bank name</div>
                             <div className="bank-name">Access Bank</div>
                           </div>
@@ -62,9 +62,10 @@ const Settings = () => {
                               <Button
                                 text={"Delete"}
                                 bg={color.white}
+                                fontSize={"14px"}
                                 border={`1px solid tomato`}
                                 textColor={"tomato"}
-                                height={"33px"}
+                                height={"40px"}
                               />
                             </div>
                             <div
@@ -75,7 +76,8 @@ const Settings = () => {
                                 text={"Update"}
                                 bg={color.baseColor}
                                 textColor={color.white}
-                                height={"34px"}
+                                height={"40px"}
+                                fontSize={"14px"}
                               />
                             </div>
                           </div>
@@ -99,7 +101,7 @@ const Settings = () => {
                               bg={color.baseColor}
                               fontSize={"14px"}
                               textColor={color.white}
-                              height={"33px"}
+                              height={"40px"}
                             />
                           </div>
                         </>
@@ -109,13 +111,13 @@ const Settings = () => {
                 </div>
                 {/*  Password */}
                 <div className="row align-items-start justify-content-between py-3 settings-card">
-                  <div className="col-sm-12 col-md-8 col-lg-4 col-lg-4">
+                  <div className="col-sm-12 col-md-5 col-lg-4 col-lg-4">
                     <div className="setting-title">Password</div>
-                    <div className="settings-caption pt-1">
+                    <div className="settings-caption py-2 ">
                       Change update your password.
                     </div>
                   </div>
-                  <div className="col-sm-12 col-md-3 col-lg-6 col-lg-6">
+                  <div className="col-sm-12 col-md-5 col-lg-6 col-lg-6">
                     <div className="setting-input__cover">
                       <input
                         type="text"
@@ -139,7 +141,7 @@ const Settings = () => {
                           bg={color.baseColor}
                           fontSize={"14px"}
                           textColor={color.white}
-                          height={"33px"}
+                          height={"40px"}
                         />
                       </div>
                     </div>
@@ -147,16 +149,16 @@ const Settings = () => {
                 </div>
                 {/* BanK details */}
                 <div className="row align-items-center justify-content-between py-3 settings-card">
-                  <div className="col-sm-12 col-md-8 col-lg-4 col-lg-4">
+                  <div className="col-sm-12 col-md-5 col-lg-4 col-lg-4">
                     <div className="setting-title">KYC upload</div>
                     <div className="settings-caption pt-1">
                       To perform billing operations, you need to complete your
                       KYC details.
                     </div>
                   </div>
-                  <div className="col-sm-12 col-md-3 col-lg-6 col-lg-6">
+                  <div className="col-sm-12 col-md-5 col-lg-6 col-lg-6">
                     <div className="setting-input__cover">
-                      <div className="settings-helper">
+                      <div className="settings-helper my-2">
                         Click on the button below to get started.
                       </div>
                       <div
@@ -168,7 +170,7 @@ const Settings = () => {
                           bg={color.white}
                           fontSize={"14px"}
                           textColor={color.baseColor}
-                          height={"33px"}
+                          height={"40px"}
                           border={`1px solid ${color.baseColor}`}
                         />
                       </div>

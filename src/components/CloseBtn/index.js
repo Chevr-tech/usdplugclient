@@ -4,7 +4,7 @@ import { color } from "../../constants/color";
 const CloseBtn = ({ setCloseBtn }) => {
   return (
     <div className={"close-btn"} onClick={() => setCloseBtn(false)}>
-      <CgClose size={15} color={color.dark} />
+      <CgClose size={18} color={color.dark} />
     </div>
   );
 };
