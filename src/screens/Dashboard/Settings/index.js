@@ -24,9 +24,9 @@ const Settings = () => {
       <DashboardLayout>
         <div className="container-fluid bg-white settings-container p-0">
           <div className="settings-top px-1 py-1">
-            <div className="setting-icon__cover">
+            {/* <div className="setting-icon__cover">
               <AiFillSetting size={18} color={color.baseColor} />
-            </div>
+            </div> */}
             <div className="settings-value">Settings</div>
           </div>
           <div className="row">

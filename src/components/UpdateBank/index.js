@@ -13,12 +13,13 @@ const UpdateBank = ({ closeBtn }) => {
         initial={{
           opacity: 0,
         }}
-        animate={{ x: 10, opacity: 1 }}
+        animate={{ y: 10, opacity: 1 }}
         transition={{
           duration: 0.5,
         }}
+        className="ub"
       >
-        <div className="ub bg-white p-3">
+        <div className="bg-white p-3">
           <CloseBtn setCloseBtn={closeBtn} />
           <div className="ub-title">Update details</div>
           {res ? (

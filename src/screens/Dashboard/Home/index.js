@@ -150,9 +150,10 @@ const Home = () => {
             <OrderTable />
           </div>
         </div>
+
         {/* Market */}
         <div
-          className="container-fluid px-0 mx-0 bg-white mt-4"
+          className="container-fluid px-0 mx-0 mt-4 bg-white"
           style={{
             marginTop: "7px",
           }}
@@ -162,7 +163,7 @@ const Home = () => {
               {/* <div className="trade-icon mr-2">
                 <AiOutlineFieldTime size={16} color={color.iconColor} />
               </div> */}
-              <div className="trade-history py-1 pr-3">Market Data.</div>
+              <div className="trade-history py-1 pr-3">Explore market.</div>
             </div>
             <div className="right-btn__cover">
               <div className="refresh-btn">

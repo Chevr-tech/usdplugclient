@@ -18,7 +18,7 @@ const KYCRegistration = ({ closeBtn }) => {
         initial={{
           opacity: 0,
         }}
-        animate={{ x: 10, opacity: 1 }}
+        animate={{ y: 10, opacity: 1 }}
         transition={{
           duration: 0.5,
         }}
@@ -31,11 +31,11 @@ const KYCRegistration = ({ closeBtn }) => {
           </div>
           {/* first name */}
           <div className="kyc-group">
-            <div className="kyc-title">First name:</div>
+            <div className="kyc-title">Full name:</div>
             <div className="kyc-input">
               <input
                 type="text"
-                placeholder="enter your first name "
+                placeholder="enter your full name "
                 className="kyc-input__cover"
                 style={{
                   border: `1px solid ${color.baseColor}`,
@@ -44,7 +44,7 @@ const KYCRegistration = ({ closeBtn }) => {
             </div>
           </div>
           {/* Second name */}
-          <div className="kyc-group mt-2">
+          <div className="kyc-group mt-2 d-none">
             <div className="kyc-title">Second name:</div>
             <div className="kyc-input">
               <input

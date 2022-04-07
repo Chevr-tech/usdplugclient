@@ -27,3 +27,20 @@
     width: 100%;
     height: 40px !important;    
 }
+
+.e-toolbar{
+    background:  transparent !important;
+}
+
+.e-grid .e-headercell, .e-grid .e-detailheadercell, .e-grid .e-headercell{
+    background: transparent !important;
+border: none !important;
+}
+
+.e-grid .e-headercell, .e-grid .e-detailheadercell{
+    background-color: transparent !important;
+}
+
+.e-grid .e-rowcell:not(.e-editedbatchcell):not(.e-updatedtd), .e-grid .e-detailrowcollapse:not(.e-editedbatchcell):not(.e-updatedtd), .e-grid .e-detailrowexpand:not(.e-editedbatchcell):not(.e-updatedtd), .e-grid .e-gridcontent .e-rowdragdrop:not(.e-editedbatchcell):not(.e-updatedtd), .e-grid .e-gridheader .e-rowdragdrop:not(.e-editedbatchcell):not(.e-updatedtd), .e-grid .e-emptyrow:not(.e-editedbatchcell):not(.e-updatedtd){
+    background: transparent !important;
+}
