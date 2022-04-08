@@ -14,6 +14,8 @@ import { HiArrowNarrowRight } from "react-icons/hi";
 import VolumeImg from "../../../assets/svg/volume.svg";
 import MoneyImg from "../../../assets/svg/money.svg";
 import MarketTable from "../../../components/Tables/MarketTable/";
+import OrderCard from "../../../components/OrderCard";
+import MarketDsktCard from "../../../components/MarketDsktCard";
 
 const Home = () => {
   const [hide, setHide] = useState(false);
@@ -104,17 +106,14 @@ const Home = () => {
         </div>
         {/* Orders */}
         <div
-          className="container-fluid px-0 m-0 bg-white"
+          className="container-fluid px-0 m-0 "
           style={{
             marginTop: "7px",
           }}
         >
-          <div className="trade-top py-3">
+          <div className="trade-top bg-white py-2">
             <div className="trade-content">
-              {/* <div className="trade-icon mr-2">
-                <AiOutlineFieldTime size={16} color={color.iconColor} />
-              </div> */}
-              <div className="trade-history py-1 pr-3">Trade History.</div>
+              <div className="trade-history py-1 pr-3">Order History.</div>
             </div>
             <div className="right-btn__cover">
               <div className="refresh-btn">
@@ -142,12 +141,11 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div
-            style={{
-              display: hide ? "none" : "block",
-            }}
-          >
+          <div className="d-none">
             <OrderTable />
+          </div>
+          <div className="order-card">
+            <OrderCard />
           </div>
         </div>
 
@@ -158,11 +156,8 @@ const Home = () => {
             marginTop: "7px",
           }}
         >
-          <div className="trade-top py-3">
+          <div className="trade-top py-2">
             <div className="trade-content">
-              {/* <div className="trade-icon mr-2">
-                <AiOutlineFieldTime size={16} color={color.iconColor} />
-              </div> */}
               <div className="trade-history py-1 pr-3">Explore market.</div>
             </div>
             <div className="right-btn__cover">
@@ -191,12 +186,21 @@ const Home = () => {
               </div>
             </div>
           </div>
+          <div className="d-none">
+            <MarketTable />
+          </div>
           <div
+            className="market-card__dskt  d-flex align-items-center p-2"
             style={{
-              display: hide ? "none" : "block",
+              width: "100%",
+              height: "400px",
+              overflowX: "scroll",
+              overflowY: "hidden",
             }}
           >
-            <MarketTable />
+            <div className="d-flex">
+              <MarketDsktCard />
+            </div>
           </div>
         </div>
       </div>

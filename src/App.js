@@ -15,6 +15,7 @@ import Orders from "./screens/Dashboard/Order";
 import Trade from "./screens/Dashboard/Trade";
 import Profile from "./screens/Dashboard/Profile";
 import OrderDetails from "./screens/Dashboard/Order/OrderDetails";
+import Support from "./screens/Dashboard/Support";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route exact path="/order/:id" component={OrderDetails} />
         {/* <Route exact path="/trade" component={Trade} /> */}
         <Route exact path="/profile" component={Profile} />
+        <Route exact path="/support" component={Support} />
       </Switch>
     </>
   );

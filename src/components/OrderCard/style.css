@@ -1,0 +1,42 @@
+.od-img__cover{
+    width: 45px;
+    height: 40px;
+    border-radius: 50%;
+    background: #ededed;
+}
+
+.od-card{
+    width: 100%;
+    height: auto;
+    color: #3f3f3f;
+}
+
+.od-content{
+    width: 100%;
+}
+
+
+.od-type{
+    font-size: 16px;
+    font-weight: 510;
+}
+
+.od-e__t{ 
+    color: #757575;
+    font-size: 14px;
+}
+
+.od-amount{
+    font-weight: 510;
+    font-size: 16px;
+}
+
+.od-token{
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.od-date{
+    font-size: 13px;
+    color: #757575;
+}

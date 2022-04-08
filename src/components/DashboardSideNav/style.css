@@ -1,6 +1,7 @@
 .dmobile-nav {
   width: 250px;
   height: 100vh;
+  z-index: 100 !important;
   background-color: #fff;
   position: relative;
   padding: 50px 9px 0 17px;

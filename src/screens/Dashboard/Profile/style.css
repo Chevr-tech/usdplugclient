@@ -1,0 +1,57 @@
+.pc{
+    margin: 10px 0 150px 0;
+
+}
+
+
+.p-icon{
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(35deg, #5252521b, #c3d7ff68);
+    border-radius: 50%;
+    box-shadow: 0 0 10px #d8d8d889;
+    
+}
+
+.pc-e{
+    width: 100%;
+}
+
+.address{
+    outline: none !important;
+    height: auto;
+    background: inherit;
+    width: 100%;
+    color: #3f3f3f !important;
+    resize: none;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    margin: 0 0 0 10px;
+    scroll-behavior: smooth;
+    scrollbar-width: 0 !important;
+}
+
+.p-name{
+    font-size: 20px;
+    font-weight: 600;
+    color: #3f3f3f;
+}
+
+.p-fname{
+    font-weight: 600;
+}
+.p-cover{
+    width: 100%;
+    height: auto;
+    background: #f9f9f9d6;
+}
+
+.p-value{
+    padding: 0 0 0 20px;
+}
+
+.p-title{
+    color: grey;
+    font-size: 12px;
+    text-transform: uppercase;
+}
