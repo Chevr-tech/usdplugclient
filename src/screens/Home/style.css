@@ -1,0 +1,25 @@
+.home-container {
+  margin-top: 100px;
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+
+.gradient {
+  position: absolute;
+  width: 200px;
+  z-index: -10;
+  top: 15%;
+  right: 5%;
+  height: 200px;
+  filter: blur(40px);
+  opacity: 0.3;
+  background-color: #fa8bff;
+  background-image: linear-gradient(
+    45deg,
+    #fa8bff 0%,
+    #2bd2ff 34%,
+    #2bff88 60%,
+    #ff6a88 100%
+  );
+}

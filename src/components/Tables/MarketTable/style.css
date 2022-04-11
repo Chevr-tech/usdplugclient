@@ -1,0 +1,46 @@
+.coin-img{
+    width: 30px;
+    height: 30px;
+    border-radius:40%;
+    overflow: hidden;
+}
+
+.coin-image{
+    width: 100%;
+    height: 100%;
+}
+
+.coin-name__cover, .price-cover,.m-chart{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.coin-name:nth-child(2){
+    font-size: 14px;
+    color: #bebebe;
+    font-weight: 500;
+    padding: 0  0  0 5px;
+}
+
+.m-chart__value{
+    width: 100%;
+    height: 40px !important;    
+}
+
+.e-toolbar{
+    background:  transparent !important;
+}
+
+.e-grid .e-headercell, .e-grid .e-detailheadercell, .e-grid .e-headercell{
+    background: transparent !important;
+border: none !important;
+}
+
+.e-grid .e-headercell, .e-grid .e-detailheadercell{
+    background-color: transparent !important;
+}
+
+.e-grid .e-rowcell:not(.e-editedbatchcell):not(.e-updatedtd), .e-grid .e-detailrowcollapse:not(.e-editedbatchcell):not(.e-updatedtd), .e-grid .e-detailrowexpand:not(.e-editedbatchcell):not(.e-updatedtd), .e-grid .e-gridcontent .e-rowdragdrop:not(.e-editedbatchcell):not(.e-updatedtd), .e-grid .e-gridheader .e-rowdragdrop:not(.e-editedbatchcell):not(.e-updatedtd), .e-grid .e-emptyrow:not(.e-editedbatchcell):not(.e-updatedtd){
+    background: transparent !important;
+}

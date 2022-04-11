@@ -1,0 +1,50 @@
+.dmobile-nav {
+  width: 250px;
+  height: 100vh;
+  z-index: 100 !important;
+  background-color: #fff;
+  position: relative;
+  padding: 50px 9px 0 17px;
+  animation-name: drawal;
+  animation-duration: 400ms;
+  animation-timing-function: ease-in;
+}
+
+.backdrop{
+  display: block !important;
+}
+
+.close-btn__cover {
+  position: absolute;
+  right: 10px;
+  top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 5px;
+
+
+}
+
+.mobile-links__item {
+  width: 100%;
+  border-bottom: 1px solid #eee;
+}
+
+.mobile-link {
+  display: block;
+  padding: 7px 0 3px 10px;
+  font-size: 16px;
+  margin: 5px 0;
+  border: none !important;
+  color: #3f3f3f;
+  text-decoration: none !important;
+  transition: color 150ms ease;
+}
+
+.mobile-link:hover,
+.mobile-link:active {
+  /* color: #70d470 !important; */
+}

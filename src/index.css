@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;700&display=swap');
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box !important;
+  text-decoration: none !important;
+}
+
+html,
+body {
+  width: 100% !important;
+  height: 100% !important;
+  font-size: 16px;
+  color: #3f3f3f !important;
+  background-attachment: fixed;
+  font-family: 'Poppins', sans-serif;
+}
+
+.cta-text {
+  color: #5f30e3;
+}
+
+.backdrop {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  background: #0a0a0a0e;
+  z-index: 30 !important;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.close-btn {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  right: 10px;
+  cursor: pointer;
+}
+
+/* details btn */
+.details-text {
+  font-size: 11px;
+}
+
+.details-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* EJS GRID */
+
+.e-grid {
+  border-radius: 0 !important;
+  border-style: none !important;
+  border-width: 0 !important;
+  display: block;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px !important;
+  height: auto;
+  position: relative;
+  color: #3f3f3f !important;
+}
+.e-grid .e-gridfooter {
+  border: none !important;
+}
+
+.e-grid .e-headercelldiv {
+  font-size: 13px !important;
+  color: #3f3f3f !important;
+  font-weight: 510 !important;
+}
+
+.e-grid.e-gridhover
+  tr[role="row"]:not(.e-editedrow):hover
+  .e-rowcell:not(.e-cellselectionbackground):not(.e-active):not(.e-updatedtd):not(.e-indentcell),
+.e-grid.e-gridhover
+  tr[role="row"]:hover
+  .e-detailrowcollapse:not(.e-cellselectionbackground):not(.e-active):not(.e-updatedtd):not(.e-indentcell),
+.e-grid.e-gridhover
+  tr[role="row"]:hover
+  .e-rowdragdrop:not(.e-cellselectionbackground):not(.e-active):not(.e-updatedtd):not(.e-indentcell),
+.e-grid.e-rtl
+  .e-gridhover
+  tr[role="row"]:hover
+  .e-rowdragdrop:not(.e-cellselectionbackground):not(.e-active):not(.e-updatedtd):not(.e-indentcell),
+.e-grid.e-gridhover
+  tr[role="row"]:hover
+  .e-detailrowexpand:not(.e-cellselectionbackground):not(.e-active):not(.e-updatedtd):not(.e-indentcell) {
+  background: transparent !important;
+}
+
+.e-grid .e-row {
+  height: 40px !important;
+}
+
+.e-rowcell {
+  padding: 15px !important;
+}
+
+.e-toolbar .e-toolbar-items {
+  background: transparent !important;
+  height: 40px !important;
+}
+
+.e-toolbar {
+  background: white !important;
+}
+
+.e-grid .e-toolbar {
+  border-top: none !important;
+}
+
+.e-grid .e-toolbar-items .e-toolbar-item.e-search-wrapper {
+  padding-bottom: none !important;
+}
+
+.e-pager .e-currentitem,
+.e-pager .e-currentitem:hover {
+  background: transparent !important;
+  color: #3f3f3f !important;
+}
+
+.e-pager .e-icons {
+  color: #3f3f3f !important;
+}
+
+@media (max-width: 500px) {
+  body {
+    font-size: 17px !important;
+  }
+}
