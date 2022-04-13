@@ -216,15 +216,35 @@
   padding-top: 1px;
 }
 
-
-@media (max-width: 400px) {
- .info-admin{
-    height: auto;
-  }
+.dsk-order__card {
+  display: flex;
 }
 
-@media (max-width: 500px) {
-  .d-card:nth-child(2){
-    margin: 20px 0;
+.dsk-order__table {
+  display: none;
+}
+
+.dskt-market__table {
+  display: none;
+}
+
+.dskt-market__card {
+  display: flex;
+}
+
+/* large screen */
+@media (min-width: 500px) {
+  .dskt-market__table {
+    display: block;
+  }
+  .dsk-order__table {
+    display: block;
+  }
+  .dskt-market__card {
+    display: none;
+  }
+
+  .dsk-order__card {
+    display: none;
   }
 }

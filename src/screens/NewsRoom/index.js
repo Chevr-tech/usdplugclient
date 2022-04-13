@@ -16,7 +16,7 @@ const Newsroom = () => {
       >
         <div className="news-cover">
           <div className="newsroom-top">
-            <div className="newsroom-title text-center">News Room</div>
+            <div className="newsroom-title text-center mt-2">News Room</div>
             <div className="newsrooms text-center">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab,
               perferendis.
@@ -42,9 +42,9 @@ const Newsroom = () => {
                       <img src="" alt="" className="news-author__image" />
                     </div>
                   </div>
-                  <div className="news-body p-2 mt-3">
-                    <div className="news-time ">
-                      {moment(Date.now()).format("lll")}
+                  <div className="news-body p-2">
+                    <div className="news-time">
+                      {moment(Date.now()).format("MMM Do YY")}
                     </div>
                     <div className="news-top">
                       <div className="news-caption">

@@ -12,9 +12,9 @@ const Footer = () => {
         <div className="row align-items-start justify-content-center">
           <div className="col-sm-12 col-md-4 col-lg-3 col-xl-3">
             <div className="footer-brand d-flex align-items-center">
-              <div className="footer-image ">
+              {/* <div className="footer-image ">
                 <img src="" alt="" className="footer-image" />
-              </div>
+              </div> */}
               <div className="footer-title">USDPLUG</div>
             </div>
             <div className="footer-caption">
@@ -32,7 +32,7 @@ const Footer = () => {
                 target={"_blank"}
                 className="footer-social__item"
               >
-                <AiFillInstagram size={17} color={color.darkColor} />
+                <AiFillInstagram size={25} color={color.darkColor} />
               </Link>
               <Link
                 to={{
@@ -41,7 +41,7 @@ const Footer = () => {
                 target={"_blank"}
                 className="footer-social__item"
               >
-                <GrTwitter size={17} color={color.darkColor} />
+                <GrTwitter size={25} color={color.darkColor} />
               </Link>
               <Link
                 to={{
@@ -50,7 +50,7 @@ const Footer = () => {
                 target={"_blank"}
                 className="footer-social__item"
               >
-                <FaFacebook size={17} color={color.darkColor} />
+                <FaFacebook size={25} color={color.darkColor} />
               </Link>
             </div>
           </div>
@@ -59,7 +59,7 @@ const Footer = () => {
             <div className="footer-address">
               Address: St. Anthony Lodge, Ifite-Awka, Awka, Anambra.
             </div>
-            <div className="footer-phone">0810281218</div>
+            <div className="footer-phone" >0810281218</div>
           </div>
         </div>
       </div>

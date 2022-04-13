@@ -1,5 +1,5 @@
 .news-title {
-  font-size: 20px;
+  font-size: 23px !;
   font-weight: 600;
 }
 
@@ -38,8 +38,8 @@
 }
 .news-desc {
   font-size: 16px;
-  font-weight: 300;
-  color: #333333;
+  font-weight: 500 !important;
+  color: #3f3f3f !important;
 }
 
 /* .news-desc::first-letter {
@@ -59,7 +59,7 @@
 }
 
 .raleted-image__cover {
-  width: 150px;
+  width: 180px;
   height: 70px;
 }
 
@@ -69,7 +69,7 @@
 }
 
 .related-card__title {
-  font-size: 15px;
+  font-size: 16px !;
   font-weight: 510;
   margin: 0 0 -5px 0;
   width: fit-content;
@@ -77,8 +77,8 @@
 }
 
 .related-card__desc {
-  font-size: 14px;
-  font-weight: 300;
+  font-size: 14px !important;
+  font-weight: 500 !important;
   color: #696969;
 }
 

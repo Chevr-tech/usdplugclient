@@ -9,8 +9,19 @@ import { FaMoneyCheckAlt, FaUserShield } from "react-icons/fa";
 import { IoSettings } from "react-icons/io5";
 import { MdLogout } from "react-icons/md";
 import { RiHandCoinFill } from "react-icons/ri";
+import { deleteToken } from "../../utlis/token";
 
 const DashboardSideNav = ({ closeBtn }) => {
+  const handleLogout = async () => {
+    try {
+      console.log("clicked");
+      await deleteToken("usdp_password");
+      window.location.pathname = "/";
+      return;
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <>
       <div className="backdrop" onClick={() => closeBtn(false)}>
@@ -46,7 +57,7 @@ const DashboardSideNav = ({ closeBtn }) => {
               Orders
             </div>
           </Link>
-          <Link
+          {/* <Link
             to="/trade"
             className="mobile-links__item mt-3 d-flex align-items-center"
           >
@@ -59,7 +70,7 @@ const DashboardSideNav = ({ closeBtn }) => {
             >
               Trade
             </div>
-          </Link>
+          </Link> */}
           <Link
             to="/settings"
             className="mobile-links__item mt-3 d-flex align-items-center"
@@ -102,7 +113,10 @@ const DashboardSideNav = ({ closeBtn }) => {
               Support
             </div>
           </Link>
-          <div className="mobile-links__item mt-3 d-flex align-items-center">
+          <div
+            className="mobile-links__item mt-3 d-flex align-items-center"
+            onClick={() => handleLogout()}
+          >
             <FaUserShield size={16} color={"#3f3f3f"} />
             <div
               className="mobile-link"

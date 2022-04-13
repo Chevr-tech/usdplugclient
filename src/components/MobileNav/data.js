@@ -26,3 +26,31 @@ export const data = [
     link: "/contactus",
   },
 ];
+
+export const authNav = [
+  {
+    id: 11,
+    title: "Dashboard",
+    link: "/dashboard",
+  },
+  {
+    id: 11,
+    title: "Orders",
+    link: "/orders",
+  },
+  {
+    id: 11,
+    title: "Support",
+    link: "/support",
+  },
+  {
+    id: 11,
+    title: "Profile",
+    link: "/profile",
+  },
+  {
+    id: 11,
+    title: "Dashboard",
+    link: "/dashboard",
+  },
+];

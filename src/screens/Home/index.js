@@ -1,4 +1,4 @@
-import AboutUs from "../../components/AboutUs";
+// import AboutUs from "../../components/AboutUs";
 import Hero from "../../components/Hero";
 import Layout from "../../components/Layout";
 import Market from "../../components/Market";
@@ -17,7 +17,7 @@ const Home = () => {
         <Market />
         <Testimonial />
         <Reviews />
-        <AboutUs />
+        {/* <AboutUs /> */}
       </div>
     </Layout>
   );

@@ -13,8 +13,8 @@
 }
 
 .footer-caption {
-  font-weight: 300;
-  font-size: 14px;
+  font-weight: 500;
+  font-size: 16px;
 }
 
 .footer-item__cover {
@@ -25,9 +25,9 @@
 }
 
 .footer-item__title {
-  font-weight: 510;
+  font-weight: 600;
   margin: 20px 0 0 0;
-  font-size: 15px;
+  font-size: 17px;
 }
 .footer-social__item {
   padding: 8px;
@@ -35,19 +35,20 @@
 }
 
 .footer-address {
-  font-size: 14px;
-  font-weight: 400;
+  font-size: 15px;
+  font-weight: 500;
   color: #3f3f3f;
 }
 
 .footer-phone {
-  font-size: 14px;
-  font-weight: 300;
+  font-size: 16px;
+  font-weight: 500;
   color: #3f3f3f;
 }
 
 .footer-phone {
   color: #3f3f3f;
+  font-size: 16px;
 }
 
 @media (min-width: 768px) {

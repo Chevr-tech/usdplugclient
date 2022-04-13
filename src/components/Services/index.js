@@ -19,7 +19,7 @@ const Services = () => {
                 <img
                   src={item.image}
                   style={{
-                    transform: item.id == 3 ? "scale(1.2)" : null,
+                    transform: item.id === 3 ? "scale(1.2)" : null,
                     padding: item.id === 3 ? "10px 0 0 0" : null,
                   }}
                   alt=""

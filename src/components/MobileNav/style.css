@@ -38,9 +38,7 @@
 .mobile-link {
   display: block;
   padding: 7px 0;
-  margin: 5px 0;
   color: #3f3f3f;
-  border-bottom: 1px solid #eee;
   text-decoration: none !important;
   transition: color 150ms ease;
 }

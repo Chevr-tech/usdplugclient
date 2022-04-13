@@ -1,5 +1,5 @@
 .nav-container {
-  height: 70px;
+  height: 75px;
   background: #fff;
   box-shadow: 0 0 10px #ddddddde;
   position: fixed;
@@ -80,10 +80,10 @@
 
 .nav-auth__btn {
   border: 1px solid #2bff88;
-  padding: 7px 19px;
+  padding: 8px 19px;
   color: #75b968;
   margin: 0 10px;
-  font-size: 15px;
+  font-size: 16px;
   border-radius: 5px;
   background: #fff;
   box-shadow: 0 2px 5px #ebebeb9c;
@@ -97,11 +97,12 @@
 .nav-auth__btn:nth-child(2) {
   color: #fff;
   border: none !important;
-  background-image: linear-gradient(
-    45deg,
-    /* #2bffcf 0%, */ #2bd2ff 52%,
-    #2bff88 100%
-  );
+  background: #4da94d;
+  /* background-image: linear-gradient(
+    45deg, */
+    /* #2bffcf 0%, # 52%, */
+    /* #2bff88 100%
+  ); */
 }
 
 .nav-auth__btn:nth-child(2):hover {

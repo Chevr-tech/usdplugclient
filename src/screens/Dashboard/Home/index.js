@@ -21,13 +21,20 @@ const Home = () => {
   const [hide, setHide] = useState(false);
   return (
     <DashboardLayout>
-      <div style={{ width: "auto", height: "auto", marginBottom: "200px", fontSize: "15px"}}>
-        <div className="container-fluid p-0 mt-3 mb-3">
-          <div className="row align-items-center justify-content-between">
-            <div className="col-sm-12 col-md-12 col-lg-6 col-xl-6 d-card">
+      <div
+        style={{
+          width: "auto",
+          height: "auto",
+          fontSize: "15px",
+        }}
+        className={"mb-2"}
+      >
+        <div className="container-fluid p-0 mt-3 ">
+          <div className="row ">
+            <div className="col-sm-12 col-md-12 col-lg-6 col-xl-6 ">
               <div className="container-fluid p-0">
                 <div className="row">
-                  <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6 d-card">
+                  <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6 ">
                     <div className="dashboard-card bg-white">
                       <img src={VolumeImg} className="dashboard-bg" alt="" />
                       <div className="dashboard-card__image-cover">
@@ -39,69 +46,51 @@ const Home = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6 d-card ">
+                  <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6 ">
                     <div className="dashboard-card bg-white"></div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="col-sm-12 col-md-12 col-lg-6 col-lg-6 my-md-3">
-            <div className="info-admin">
-              <div className="money-img__cover">
-                <img src={MoneyImg} alt="" className="money-img" />
-              </div>
-              <div className="info-container">
-                <div className="info-title text-center text-white"> Trade </div>
-                <div className="info-cover">
-                  <Link to="/order/?type=buy" className="trade-btn__cover px-2">
-                    <div className="trade-btn ">
-                      <BsArrowBarDown size={20} color={color.white} />
-                    </div>
-                    <div className="trade-cta__btn mt-1"> Buy </div>
-                  </Link>
-                  <Link
-                    to="/order/?type=sell"
-                    className="trade-btn__cover px-2"
-                  >
-                    <div className="trade-btn px-2 ">
-                      <BsArrowBarUp size={20} color={color.white} />
-                    </div>
-                    <div className="trade-cta__btn mt-1"> Sell </div>
-                  </Link>
+            <div className="col-sm-12 col-md-12 col-lg-6 col-xl-6 ">
+              <div className="info-admin">
+                <div className="money-img__cover">
+                  <img src={MoneyImg} alt="" className="money-img" />
+                </div>
+                <div className="info-container">
+                  <div className="info-title text-center text-white">
+                    {" "}
+                    Trade{" "}
+                  </div>
+                  <div className="info-cover">
+                    <Link
+                      to="/order/?type=buy"
+                      className="trade-btn__cover px-2"
+                    >
+                      <div className="trade-btn ">
+                        <BsArrowBarDown size={20} color={color.white} />
+                      </div>
+                      <div className="trade-cta__btn mt-1"> Buy </div>
+                    </Link>
+                    <Link
+                      to="/order/?type=sell"
+                      className="trade-btn__cover px-2"
+                    >
+                      <div className="trade-btn px-2 ">
+                        <BsArrowBarUp size={20} color={color.white} />
+                      </div>
+                      <div className="trade-cta__btn mt-1"> Sell </div>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="container-fluid mt-3 d-none mb-3">
-        <div className="row d-flex align-items-center justify-content-between">
-          <div className="col-sm-12 col-md-7 col-lg-7 col-xl-7 bg-white py-2">
-            <CardTop link={"rates"} title={"Rate"} />
-            <div className="rate-dskt__container"> </div>
-          </div>
-          <div className="col-sm-12 col-md-4 col-lg-4 col-xl-4 py-2 bg-white">
-            <CardTop title={"Market data"} link={"markets"} />
-            <div className="market-container">
-              <MarketCard />
-            </div>
-            <Link to="/market" className="more-btn__cover py-2">
-              <div className="more-btn"> view more </div>
-              <div className="more-icon__cover">
-                <HiArrowNarrowRight size={14} color={"grey"} />
-              </div>
-            </Link>
-          </div>
-        </div>
-      </div>
+
       {/* Orders */}
-      <div
-        className="container-fluid px-0 m-0 "
-        style={{
-          marginTop: "7px",
-        }}
-      >
+      <div className="container-fluid p-0 m-0 " style={{}}>
         <div className="trade-top bg-white py-2">
           <div className="trade-content">
             <div className="trade-history py-1 pr-3"> Order History. </div>
@@ -134,10 +123,10 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="d-none">
+        <div className="dsk-order__table">
           <OrderTable />
         </div>
-        <div className="order-card">
+        <div className="order-card dsk-order__card">
           <OrderCard />
         </div>
       </div>
@@ -179,26 +168,27 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="d-none">
+        <div className="dskt-market__table">
           <MarketTable />
         </div>
         <div
-          className="market-card__dskt  d-flex align-items-center p-2"
+          className="market-card__dskt align-items-center p-2 dskt-market__card "
           style={{
             width: "100%",
-            height: "400px",
+            height: "auto",
             overflowX: "scroll",
+            scrollbarWidth: "0 !important",
             overflowY: "hidden",
           }}
         >
-        <div className="d-flex">
-          <MarketDsktCard />
-        </div>
+          <div className="d-flex ">
+            <MarketDsktCard />
+          </div>
         </div>
       </div>
       <div>
         {/* News */}
-        <div className=" d-none container-fluid p-0 dsk-ns mt-2 border border-primary">
+        <div className=" d-none container-fluid p-0 dsk-ns mt-2 ">
           <div className="row">
             <div className="col-sm-12 col-md-12 col-lg-8 col-xl-8">
               <div className="ns-card">
@@ -226,3 +216,26 @@ const Home = () => {
 };
 
 export default Home;
+
+{
+  /* <div className="container-fluid mt-3 d-none mb-3">
+<div className="row d-flex align-items-center justify-content-between">
+  <div className="col-sm-12 col-md-7 col-lg-7 col-xl-7 bg-white py-2">
+    <CardTop link={"rates"} title={"Rate"} />
+    <div className="rate-dskt__container"> </div>
+  </div>
+  <div className="col-sm-12 col-md-4 col-lg-4 col-xl-4 py-2 bg-white">
+    <CardTop title={"Market data"} link={"markets"} />
+    <div className="market-container">
+      <MarketCard />
+    </div>
+    <Link to="/market" className="more-btn__cover py-2">
+      <div className="more-btn"> view more </div>
+      <div className="more-icon__cover">
+        <HiArrowNarrowRight size={14} color={"grey"} />
+      </div>
+    </Link>
+  </div>
+</div>
+</div> */
+}

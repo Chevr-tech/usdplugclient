@@ -51,7 +51,9 @@ const Market = () => {
         Cryptocurrency Price{" "}
         <span
           style={{
-            fontSize: "30px",
+            fontSize: "50px",
+            position: "absolute",
+            top: "-20px"
           }}
         >
           🚀

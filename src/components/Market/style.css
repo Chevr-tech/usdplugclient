@@ -105,6 +105,6 @@
 
 @media (max-width: 480px) {
   .market-card {
-    width: 290px;
+    width: 100%;
   }
 }

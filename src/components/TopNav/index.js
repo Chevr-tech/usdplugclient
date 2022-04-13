@@ -44,7 +44,7 @@ const TopNav = () => {
             </div>
           </div>
           <div className="m-icon mr-5" onClick={() => setNav((prev) => !prev)}>
-            <RiMenu3Line size={27} color={color.darkColor} />
+            <RiMenu3Line size={26} color={color.darkColor} />
           </div>
         </div>
       </div>

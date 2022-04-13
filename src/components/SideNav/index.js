@@ -9,8 +9,19 @@ import { IoSettings } from "react-icons/io5";
 import { MdLogout } from "react-icons/md";
 import { RiHandCoinFill } from "react-icons/ri";
 import { useState } from "react";
+import { deleteToken } from "../../utlis/token";
 const SideNav = () => {
   const [activeTab, setActiveTab] = useState(0);
+  const handleLogout = async () => {
+    try {
+      console.log("clicked");
+      await deleteToken("usdp_password");
+      window.location.pathname = "/";
+      return;
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <div className="sidenav p-3">
       {/* <div className="sidenav-title">USD</div> */}
@@ -53,7 +64,7 @@ const SideNav = () => {
             <div className="sidenav-link__title">Order</div>
           </Link>{" "}
           {/* Trade */}
-          <Link
+          {/* <Link
             to={`/trade`}
             className={
               activeTab === 2
@@ -69,7 +80,7 @@ const SideNav = () => {
               />
             </div>
             <div className="sidenav-link__title">Trade</div>
-          </Link>
+          </Link> */}
           {/* Settings */}
           <Link
             to={`/settings`}
@@ -130,6 +141,7 @@ const SideNav = () => {
             className={
               "sidnav-link d-block d-flex align-items-center py-2 px-1 "
             }
+            onClick={() => handleLogout()}
           >
             <div className={"sidenav-link__icon-cover"}>
               <MdLogout size={16} color={"#6d6d6d"} />

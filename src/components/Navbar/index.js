@@ -41,7 +41,7 @@ const Navbar = () => {
           </div>
           <div className="nav-left__cover">
             <div className="nav-auth__btn-cover">
-              <Link to="/signin" className="nav-auth__btn">
+            <Link to="/signin" className="nav-auth__btn d-none">
                 Sign in
               </Link>
               <Link to="/signup" className="nav-auth__btn">
@@ -49,7 +49,7 @@ const Navbar = () => {
               </Link>
             </div>
             <div className="menu-btn__cover" onClick={() => setCloseMenu(true)}>
-              <HiOutlineMenuAlt3 size={25} color={color.darkColor} />
+              <HiOutlineMenuAlt3 size={30} color={color.darkColor} />
             </div>
           </div>
         </div>

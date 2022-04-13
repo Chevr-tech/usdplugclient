@@ -1,4 +1,4 @@
-import Layout from "../../../components/Layout";
+ import Layout from "../../../components/Layout";
 import { FaFacebook } from "react-icons/fa";
 import { GrTwitter } from "react-icons/gr";
 import { AiFillInstagram } from "react-icons/ai";
@@ -24,7 +24,7 @@ const NewsDetails = () => {
                   className="news-link"
                 >
                   <FaFacebook
-                    size={18}
+                    size={25}
                     // color={color.baseColor}
                     style={{
                       color: "#3f3f3f",
@@ -41,9 +41,9 @@ const NewsDetails = () => {
               />
             </div>
             <div className="news-time mt-4">
-              {moment(Date.now()).format("lll")}
+              {moment(Date.now()).format("MM yy DD")}
             </div>
-            <div className="news-desc ">
+            <div className="news-desc mt-1">
               Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio
               aliquid architecto perferendis deleniti provident ea? Dolor
               tempore tempora praesentium obcaecati itaque? Est maxime dolorum,
@@ -58,7 +58,7 @@ const NewsDetails = () => {
               dolor aperiam perferendis fuga hic architecto. Iusto est quas
               impedit, debitis quae ipsam.
             </div>
-            <div className="news-author">~ Admin</div>
+            <div className="news-author pt-2">~ Admin</div>
           </div>
           <div className="col-sm-10 col-md-7 col-lg-6 col-xl-4 ">
             <div className="related-content">

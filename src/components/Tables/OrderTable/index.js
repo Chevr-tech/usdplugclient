@@ -85,7 +85,7 @@ const OrderTable = ({}) => {
   };
 
   return (
-    <div className="container-fluid">
+    <div className="container-fluid p-0">
       <GridComponent
         dataSource={result}
         allowPaging={true}

@@ -90,24 +90,13 @@
   color: #3f3f3f;
 }
 
-.m-icon{
+.m-icon {
   margin-left: 20px;
+  display: block;
 }
 
 @media (min-width: 600px) {
-  .m-icon{
-    display: none ;
-  }
-}
-
-@media (max-width: 500px) {
-  .nav-brand_image{
-   font-size: 17px;
-  }
-  .nav-name{
-    font-size: 17px;
-  }
-  .nav-dd__item{
-    font-size: 16px;
+  .m-icon {
+    display: none;
   }
 }

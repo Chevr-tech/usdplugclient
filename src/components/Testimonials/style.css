@@ -86,7 +86,7 @@
 }
 
 .testimonial-card__title {
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 600;
   color: #3f3f3f;
   padding: 4px 0 4px 0;
@@ -94,7 +94,7 @@
 }
 
 .testimonial-desc {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
   color: #777777;
 }
