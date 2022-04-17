@@ -9,10 +9,11 @@ import AuthScreen from "./screens/AuthScreen";
 import ForgotPassword from "./screens/AuthScreen/ForgotPassword";
 import SignIn from "./screens/AuthScreen/SignIn";
 import GuardedRoute from "./components/GuardedRoute";
-// import AOS from "aos";
-// import "aos/dist/aos.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function App() {
+  AOS.init();
   return (
     <>
       <Switch>

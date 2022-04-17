@@ -1,9 +1,10 @@
- import Layout from "../../../components/Layout";
+import Layout from "../../../components/Layout";
 import { FaFacebook } from "react-icons/fa";
 import { GrTwitter } from "react-icons/gr";
 import { AiFillInstagram } from "react-icons/ai";
 import { color } from "../../../constants/color";
 import { Link } from "react-router-dom";
+import { RiWhatsappFill } from "react-icons/ri";
 import moment from "moment";
 import "./style.css";
 const NewsDetails = () => {
@@ -14,24 +15,38 @@ const NewsDetails = () => {
           <div className="col-sm-12 col-md-8 col-lg-6 col-xl-5 ">
             <div className="news-title text-center">Lorem ipsum dolor sit.</div>
             <div className="news-social__cover">
-              {Array.from(Array(3)).map((item, i) => (
-                <Link
-                  to={{
-                    pathname: "/https://www.facebook.com",
+              <Link
+                to={{
+                  // pathname: `https://www.facebook.com/sharer/sharer.php?u=https://evolution-research.com/blog-details/${data.permalink}`,
+                  pathname: `https://www.facebook.com/sharer/sharer.php?u=https://evolution-research.com/blog-details/usdpllug`,
+                }}
+                target={"_blank"}
+                className="news-link "
+              >
+                <FaFacebook
+                  size={27}
+                  // color={color.baseColor}
+                  style={{
+                    color: "dodgerblue",
                   }}
-                  target={"_blank"}
-                  key={i}
-                  className="news-link"
-                >
-                  <FaFacebook
-                    size={25}
-                    // color={color.baseColor}
-                    style={{
-                      color: "#3f3f3f",
-                    }}
-                  />
-                </Link>
-              ))}
+                />
+              </Link>
+              <Link
+                to={{
+                  // pathname: `whatsapp://send?text=https://evolution-research.com/blog-details/${data.permalink}`,
+                  pathname: `whatsapp://send?text=https://evolution-research.com/blog-details/usdplugnews`,
+                }}
+                target={"_blank"}
+                className="news-link"
+              >
+                <RiWhatsappFill
+                  size={30}
+                  // color={color.baseColor}
+                  style={{
+                    color: color.baseColor,
+                  }}
+                />
+              </Link>
             </div>
             <div className="news-image__cover">
               <img
@@ -41,7 +56,7 @@ const NewsDetails = () => {
               />
             </div>
             <div className="news-time mt-4">
-              {moment(Date.now()).format("MM yy DD")}
+              {moment(Date.now()).format("ll")}
             </div>
             <div className="news-desc mt-1">
               Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odio

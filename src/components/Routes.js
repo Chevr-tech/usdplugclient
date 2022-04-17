@@ -4,11 +4,17 @@ import OrderDetails from "../screens/Dashboard/Order/OrderDetails";
 import Profile from "../screens/Dashboard/Profile";
 import Settings from "../screens/Dashboard/Settings";
 import Support from "../screens/Dashboard/Support";
+import Trade from "../screens/Dashboard/Trade";
 
 export const routes = [
   {
     path: "/dashboard",
     component: Home,
+    exact: true,
+  },
+  {
+    path: "/trade",
+    component: Trade,
     exact: true,
   },
   {

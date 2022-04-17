@@ -72,7 +72,7 @@
   color: #676767;
 }
 
-@media (max-width: 550px) {
+@media (min-width: 550px) {
   .review-card {
     width: 300px;
   }

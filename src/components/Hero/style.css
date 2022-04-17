@@ -91,3 +91,20 @@
   height: 100%;
   transform: scale(1.3);
 }
+
+@media (min-width: 768px) {
+  .hero-text {
+    text-align: left;
+  }
+  .hero-middle {
+    text-align: left !important;
+  }
+  .hero-caption {
+    text-align: left !important;
+  }
+  .hero-cta__btn-cover {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+}

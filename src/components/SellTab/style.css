@@ -1,0 +1,61 @@
+.stepper-icon {
+  width: 15%;
+  height: 5px;
+  background: #dcdcdc;
+}
+
+.stepper-icon.active {
+  width: 15%;
+  height: 5px;
+  background: #75b968;
+}
+
+.step-btn {
+  width: 100px;
+  display: none;
+}
+
+.step-btn.active {
+  width: 100px;
+  display: block;
+}
+
+.step-header {
+  font-size: 17px;
+  color: #3f3f3f;
+  font-weight: 600;
+}
+
+.step-option {
+  width: 100%;
+  height: 40px;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.step-helper:first-child {
+  font-weight: 510;
+}
+
+.step-rate,
+.re-c {
+  width: 100%;
+  height: auto;
+}
+
+.re-c {
+  box-shadow: 2px 2px 10px #eeeeeede;
+  background: #fff;
+}
+
+.ods {
+  border: 1px solid #eee;
+  background: #fff;
+  box-shadow: 1px 2px 4px #eeeeeede;
+}
+
+.ods-t {
+  font-size: 14px;
+  font-weight: 400;
+  color: #707070;
+}

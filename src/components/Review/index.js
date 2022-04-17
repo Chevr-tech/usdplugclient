@@ -3,7 +3,7 @@ import "./style.css";
 
 const Reviews = () => {
   return (
-    <div className="container mt-5 review-cover ">
+    <div className="container mt-5 review-cover">
       <div className="reviews-title text-center">
         Trust is a reputation we have built over time
       </div>
@@ -13,7 +13,12 @@ const Reviews = () => {
       </div>
       <div className="review-content  mt-5">
         {data.map((item, _) => (
-          <div className="review-card " key={item.id}>
+          <div
+            className="review-card m-2"
+            data-aos="fade-up-left"
+            data-aos-duration="500"
+            key={item.id}
+          >
             <div
               className="review-image_bg"
               style={{

@@ -1,123 +1,22 @@
-.trc-tab__container {
-  background: #e7e7e7;
-  border-radius: 4px;
+.tr-tab {
+  background: rgb(216, 216, 216);
 }
 
-.trc-tab {
-  width: 50%;
-  border-radius: 4px;
+.tr-c.active {
+  width: 48%;
+  text-align: center;
+  background-color: #fff;
 }
 
-.trc-tab.active {
-  background: #fff;
+.tr-c {
+  width: 48%;
+  text-align: center;
 }
 
-.trc-c {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+.tab-content {
+  display: none;
 }
 
-.trc {
-  width: 400px;
-  height: 300px;
-}
-
-.tr-select {
-  height: auto;
-  width: 100%;
-  display: flex;
-  border-radius: 3px;
-}
-
-.tr-mg__cover {
-  width: 27px;
-  height: 27px;
-  overflow: hidden;
-  border-radius: 50%;
-}
-.tr-helper {
-  font-size: 13px;
-  color: #a1a1a1;
-}
-.tr-helper-q {
-  text-align: right;
-  width: 100%;
-  font-size: 13px;
-  color: #a1a1a1;
-}
-
-.tr-img {
-  width: 100%;
-  height: 100%;
-}
-
-.tr-token__input {
-  width: 50%;
-  box-shadow: inset 1px -1px 1px #a3a3a33a;
-}
-
-.tr-input {
-  width: 100%;
-  height: 40px;
-  background: transparent;
-  font-size: 14px;
-  padding: 0 7px;
-}
-
-.tr-left {
-  position: relative;
-}
-
-.tr-icon {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-}
-
-.tr-token-value {
-  width: 50%;
-  cursor: pointer;
-  background: #fff;
-}
-
-.tr-id {
-  color: #a1a1a1;
-  font-size: 13px;
-}
-
-.tr-symbol__cover {
-  padding: 0 0 0 5px;
-}
-
-.tr-bank__cover {
-  position: relative;
-}
-
-.tr-price {
-  font-size: 14px;
-  position: absolute;
-  padding: 0 0 0 10px;
-}
-
-.tr-bank__name,
-.tr-bank__account,
-.tr-bank__bank {
-  font-size: 14px;
-}
-
-.tr-bank__name {
-  font-weight: 510;
-}
-
-.tr-bank__cover {
-  width: 50%;
-}
-.tr-amount {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.tab-content.active {
+  display: block;
 }

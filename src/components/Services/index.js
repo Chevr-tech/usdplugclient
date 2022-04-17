@@ -3,7 +3,7 @@ import { data } from "./data";
 
 const Services = () => {
   return (
-    <div className="services">
+    <div className="services" id="whoweare">
       <div className="services-title">
         Lorem ipsum dolor sit amet consectetur.
       </div>
@@ -14,7 +14,12 @@ const Services = () => {
       <div className="container-fluid">
         <div className="services-content__cover">
           {data.map((item, i) => (
-            <div className="services-card " key={item.id}>
+            <div
+              className="services-card"
+              data-aos="fade-up-right"
+              data-aos-duration="500"
+              key={item.id}
+            >
               <div className="services-image__cover ">
                 <img
                   src={item.image}

@@ -7,7 +7,7 @@ export const data = [
   {
     id: 1,
     title: "News room",
-    link: "#newsroom",
+    link: "/newsroom",
   },
   {
     id: 1,

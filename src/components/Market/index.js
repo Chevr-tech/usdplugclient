@@ -53,7 +53,7 @@ const Market = () => {
           style={{
             fontSize: "50px",
             position: "absolute",
-            top: "-20px"
+            top: "-20px",
           }}
         >
           🚀
@@ -85,7 +85,12 @@ const Market = () => {
           </div>
         ) : (
           data.map((item, i) => (
-            <div className="market-card" key={item.id}>
+            <div
+              className="market-card"
+              data-aos="zoom-in"
+              data-aos-duration="500"
+              key={item.id}
+            >
               <div className="market-content">
                 <div className="market-top d-flex align-items-center justify-content-between">
                   <div className="d-flex align-item-center">

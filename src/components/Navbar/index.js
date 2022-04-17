@@ -29,10 +29,10 @@ const Navbar = () => {
             <Link to="#whoweare" className="nav-item">
               Who we are
             </Link>
-            <Link to={"#newsroom"} className="nav-item">
+            <Link to={"/newsroom"} className="nav-item">
               News Room
             </Link>
-            <Link to={"#footer"} className="nav-item">
+            <Link to={"/#footer"} className="nav-item">
               Contact Us
             </Link>
             <Link to={"/rate"} className="nav-item">

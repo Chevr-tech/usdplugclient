@@ -18,8 +18,8 @@ const Newsroom = () => {
           <div className="newsroom-top">
             <div className="newsroom-title text-center mt-2">News Room</div>
             <div className="newsrooms text-center">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab,
-              perferendis.
+              Stay updated with the lastest news on price, crypto related and
+              more.
             </div>
           </div>
         </div>

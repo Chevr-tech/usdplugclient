@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="container-fluid footer-container p-4">
+    <div className="container-fluid footer-container p-4" id="footer">
       <div className="container">
         <div className="row align-items-start justify-content-center">
           <div className="col-sm-12 col-md-4 col-lg-3 col-xl-3">
@@ -59,7 +59,7 @@ const Footer = () => {
             <div className="footer-address">
               Address: St. Anthony Lodge, Ifite-Awka, Awka, Anambra.
             </div>
-            <div className="footer-phone" >0810281218</div>
+            <div className="footer-phone">0810281218</div>
           </div>
         </div>
       </div>

@@ -24,13 +24,13 @@ const Layout = ({ children }) => {
          `,
           }}
           target={"_blank"}
-          className="whatsimg d-flex align-items-center justify-content-center"
+          className="whatsimg d-flex align-items-center justify-content-center "
           style={{
             position: "fixed",
-            width: "65px",
-            height: "65px",
+            width: "55px",
+            height: "55px",
             borderRadius: "50%",
-            bottom: "8px",
+            bottom: "20px",
             zIndex: "90",
             overflow: "hidden",
             boxShadow: "0 0px 10px #d8d8d8de",
@@ -39,8 +39,8 @@ const Layout = ({ children }) => {
           <img
             src={WhatsappImg}
             alt={"whats app logo"}
-            width={"110%"}
-            height={"110%"}
+            width={"150%"}
+            height={"150%"}
           />
         </Link>
         {children}
