@@ -87,9 +87,10 @@
 .form-signup {
   width: 380px;
   height: auto;
+  margin-top: -30px;
   background: #fff;
   border-radius: 5px;
-  box-shadow: 0 2px 10px #f3f3f3f3;
+  box-shadow: 0 0px 10px #d2d2d2f3;
 }
 
 input:hover,
@@ -98,6 +99,7 @@ input:focus {
   border: none;
   outline: none;
 }
+
 .form-group {
   display: flex;
   width: 100%;
@@ -106,8 +108,8 @@ input:focus {
 }
 
 .form-label {
-  font-size: 16px;
-  font-weight: 510px;
+  font-size: 14px !important;
+  font-weight: 500 !important;
   color: #3f3f3f;
 }
 
@@ -159,7 +161,7 @@ input:focus {
 }
 
 .auth-caption {
-  font-size: 18px;
+  font-size: 17px;
   color: #3f3f3f;
   font-weight: 600;
 }
@@ -172,15 +174,14 @@ input:focus {
 .auth-link {
   color: #75b968;
   font-weight: 500;
-  font-size: 17px;
+  font-size: 16px;
   text-decoration: underline !important;
 }
 
-/* @media (max-width: 450px) {
-  .form {
-    width: 300px;
-    height: auto;
-    border-radius: 4px;
-    background: #fff;
-  }
-} */
+.form-support {
+  font-size: 14px;
+}
+
+.form-we {
+  font-size: 15px;
+}

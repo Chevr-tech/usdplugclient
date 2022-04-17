@@ -27,7 +27,6 @@
   justify-content: center;
   margin: 10px 0 0 0;
   flex-wrap: wrap;
-
 }
 
 .services-card {
@@ -35,7 +34,7 @@
   padding: 15px 10px 10px 10px;
   height: 230px;
   border-radius: 3px;
-  box-shadow: 0 0 5px #f0f0f0de;
+  box-shadow: 0 0 10px #e4e4e4f0;
   margin: 10px 15px;
   background-color: #fff;
 }

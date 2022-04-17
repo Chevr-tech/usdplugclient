@@ -7,23 +7,23 @@ export const data = [
   {
     id: 1,
     title: "News room",
-    link: "/newsroom",
+    link: "#newsroom",
   },
   {
     id: 1,
     title: "Who we are",
-    link: "/whoweare",
+    link: "#whoweare",
   },
   {
     id: 1,
     title: "Service",
-    link: "/service",
+    link: "#service",
   },
 
   {
     id: 1,
     title: "Contact us",
-    link: "/contactus",
+    link: "#footer",
   },
 ];
 

@@ -13,6 +13,7 @@ export const Button = ({
   status,
   loaderColor,
   loaderSize,
+  textTransform,
 }) => {
   const override = css`
     display: block;
@@ -46,6 +47,7 @@ export const Button = ({
           style={{
             color: textColor || color.baseColor,
             fontSize: fontSize || "12px",
+            textTransform: textTransform || "none",
           }}
         >
           {text}

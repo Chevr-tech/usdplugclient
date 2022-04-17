@@ -1,36 +1,80 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Button } from "../../../components/Button";
+import { color } from "../../../constants/color";
 import "./style.css";
 
 const ForgotPassword = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   return (
-    <div className="cover">
-      <div className="form p-3">
-        <div className="auth-brand text-center"> Password Recovery</div>
+    <div className="auth-form__cover">
+      <div className="form-signup  pt-3 px-3 pb-3">
         <div className="auth-caption text-center">
+          Forgot password <span>🗝️</span>
+        </div>
+        <div className="form-we text-center mt-2">
           Please entrer the email address associated with your account.
         </div>
+        {error && (
+          <div
+            style={{
+              fontSize: "11px",
+              color: "tomato",
+            }}
+          >
+            {error}
+          </div>
+        )}
 
-        <div className="form-group">
-          <label for="email" class="form-label">
+        <div className="form-group mt-2">
+          <label
+            htmlFor="email"
+            class="form-label"
+            style={{
+              fontSize: "16px",
+            }}
+          >
             Email address
           </label>
           <input
             type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             class="form-input"
             placeholder="email address"
             id="email"
+            style={{
+              height: "45px",
+            }}
           />
         </div>
-
-        <div className="form-btn__cover">
-          <div>Continue</div>
+        <div className="form-btn mt-3">
+          <Button
+            text={"Continue"}
+            bg={color.baseColor}
+            height={"40px"}
+            textColor={color.white}
+            fontSize={"15px"}
+            loaderColor={color.white}
+            status={loading}
+          />
         </div>
-        <div className="form-hint">
+        <div className="form-hint text-center mt-1">
           Already have an account ?{" "}
-          <Link to="/" className="auth-link">
-            {" "}
+          <Link to="/signin" className="auth-link">
             Sign in
           </Link>
+        </div>
+        <div className="form-support text-center mt-2">
+          Having issues with your account contact us for help
+        </div>
+        <div className="form-mail text-center d-block">
+          <a href="mailto:chevrtech@gmail.com">chevrtech@gmail.com</a>
         </div>
       </div>
     </div>
@@ -38,44 +82,36 @@ const ForgotPassword = () => {
 };
 
 export default ForgotPassword;
+{
+  /* <div className="cover">
+<div className="form p-3">
+  <div className="auth-brand text-center"> Password Recovery</div>
+  <div className="auth-caption text-center">
+    
+  </div>
 
-// {
-/* <div className="auth-cover">
-<div className="row">
-  <div
-    className="col-sm-12 col-md-8 col-lg-6 col-lg-6 border border-primary"
-    style={{
-      height: "100vh",
-    }}
-  >
-    <div className="auth-form p-3">
-      <form action="" className="auth">
-        {Array.from(Array(4)).map((item, i) => (
-          <div className="form-group">
-            <label for="exampleInputT1" class="form-label">
-              First Name
-            </label>
-            <input
-              type="text"
-              class="form-control"
-              id="exampleInputText1"
-              aria-describedby="emailHelp"
-            />
-            {/* <div id="emailHelp" class="form-text">
-        We'll never share your email with anyone else.
-    //   </div> */
-// }
-//           </div>
-//         ))}
-//         <div className="auth-btn">Sign in</div>
-//       </form>
-//     </div>
-//   </div>
-//   <div
-//     className="col-sm-12 col-md-8 col-lg-6 col-lg-6 border border-primary"
-//     style={{
-//       height: "100vh",
-//     }}
-//   ></div>
-// </div>
-// </div> */}
+  <div className="form-group">
+    <label for="email" class="form-label">
+      Email address
+    </label>
+    <input
+      type="email"
+      class="form-input"
+      placeholder="email address"
+      id="email"
+    />
+  </div>
+
+  <div className="form-btn__cover">
+    <div>Continue</div>
+  </div>
+  <div className="form-hint">
+    Already have an account ?{" "}
+    <Link to="/" className="auth-link">
+      {" "}
+      Sign in
+    </Link>
+  </div>
+</div>
+</div> */
+}

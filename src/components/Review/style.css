@@ -70,12 +70,10 @@
   font-weight: 500;
   line-height: 23px;
   color: #676767;
-
 }
 
 @media (max-width: 550px) {
   .review-card {
-    /* width: 300px; */
-    width: 100%;
+    width: 300px;
   }
 }

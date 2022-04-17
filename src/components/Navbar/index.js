@@ -26,13 +26,13 @@ const Navbar = () => {
             <Link to="/" className="nav-item">
               Home
             </Link>
-            <Link to="/whoweare" className="nav-item">
+            <Link to="#whoweare" className="nav-item">
               Who we are
             </Link>
-            <Link to={"/newsroom"} className="nav-item">
+            <Link to={"#newsroom"} className="nav-item">
               News Room
             </Link>
-            <Link to={"/newsroom"} className="nav-item">
+            <Link to={"#footer"} className="nav-item">
               Contact Us
             </Link>
             <Link to={"/rate"} className="nav-item">
@@ -41,7 +41,7 @@ const Navbar = () => {
           </div>
           <div className="nav-left__cover">
             <div className="nav-auth__btn-cover">
-            <Link to="/signin" className="nav-auth__btn d-none">
+              <Link to="/signin" className="nav-auth__btn d-none">
                 Sign in
               </Link>
               <Link to="/signup" className="nav-auth__btn">
