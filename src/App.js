@@ -11,6 +11,7 @@ import SignIn from "./screens/AuthScreen/SignIn";
 import GuardedRoute from "./components/GuardedRoute";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Rate from "./screens/Rate";
 
 function App() {
   AOS.init();
@@ -24,6 +25,7 @@ function App() {
         <Route exact path="/newsroom/:id" component={NewsDetails} />
         <Route exact path="/signup" component={AuthScreen} />
         <Route exact path="/signin" component={SignIn} />
+        <Route exact path="/rate" component={Rate} />
         <Route exact path="/forgotpassword" component={ForgotPassword} />
         <GuardedRoute />
       </Switch>

@@ -21,42 +21,44 @@ const Trade = () => {
           marginBottom: "200px",
         }}
       >
-        <div className="tr-tab p-1 mt-3 d-flex align-items-center justify-content-between ">
-          <div
-            className={
-              tabIndex === "sell"
-                ? "tr-c p-2 rounded-1 active"
-                : "tr-c p-2 rounded-1"
-            }
-            onClick={() => setTabIndex((prev) => "sell")}
-          >
-            Sell
+        <div className="d-block trade-dsk__c ">
+          <div className="tr-tab p-1 mt-3 d-flex align-items-center justify-content-between ">
+            <div
+              className={
+                tabIndex === "sell"
+                  ? "tr-c p-2 rounded-1 active"
+                  : "tr-c p-2 rounded-1"
+              }
+              onClick={() => setTabIndex((prev) => "sell")}
+            >
+              Sell
+            </div>
+            <div
+              className={
+                tabIndex === "buy"
+                  ? "tr-c p-2 rounded-1 active"
+                  : "tr-c p-2 rounded-1"
+              }
+              onClick={() => setTabIndex((prev) => "buy")}
+            >
+              Buy
+            </div>
           </div>
-          <div
-            className={
-              tabIndex === "buy"
-                ? "tr-c p-2 rounded-1 active"
-                : "tr-c p-2 rounded-1"
-            }
-            onClick={() => setTabIndex((prev) => "buy")}
-          >
-            Buy
-          </div>
-        </div>
-        <div className="tab-content__cover">
-          <div
-            className={
-              tabIndex === "sell" ? "tab-content active" : "tab-content "
-            }
-          >
-            <SellTab />
-          </div>
-          <div
-            className={
-              tabIndex === "buy" ? "tab-content active" : "tab-content "
-            }
-          >
-            Tab Buy
+          <div className="tab-content__cover">
+            <div
+              className={
+                tabIndex === "sell" ? "tab-content active" : "tab-content "
+              }
+            >
+              <SellTab />
+            </div>
+            <div
+              className={
+                tabIndex === "buy" ? "tab-content active" : "tab-content "
+              }
+            >
+              Tab Buy
+            </div>
           </div>
         </div>
       </div>

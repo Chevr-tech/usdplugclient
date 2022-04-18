@@ -29,4 +29,10 @@ export const data = [
     page: "Support",
     icon: `<ion-icon name="cash"></ion-icon>`,
   },
+  {
+    id: 6,
+    link: "/trade",
+    page: "Trade",
+    icon: `<ion-icon name="cash"></ion-icon>`,
+  },
 ];

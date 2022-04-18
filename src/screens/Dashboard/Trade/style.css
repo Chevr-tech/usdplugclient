@@ -20,3 +20,10 @@
 .tab-content.active {
   display: block;
 }
+
+@media (min-width: 600px) {
+  .trade-dsk__c {
+    max-width: 450px;
+    margin: auto;
+  }
+}

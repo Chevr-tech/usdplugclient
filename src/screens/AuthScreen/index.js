@@ -98,7 +98,7 @@ const AuthScreen = () => {
             id="email"
           />
         </div>
-        <div className="form-btn mt-2">
+        <div className="form-btn mt-2" onClick={() => handleSignup()}>
           <Button
             text={"Sign Up"}
             bg={color.baseColor}

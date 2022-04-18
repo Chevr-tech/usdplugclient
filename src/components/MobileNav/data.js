@@ -5,25 +5,29 @@ export const data = [
     link: "/",
   },
   {
-    id: 1,
+    id: 2,
     title: "News room",
     link: "/newsroom",
   },
   {
-    id: 1,
+    id: 3,
     title: "Who we are",
     link: "#whoweare",
   },
   {
-    id: 1,
+    id: 4,
     title: "Service",
     link: "#service",
   },
-
   {
-    id: 1,
+    id: 5,
     title: "Contact us",
     link: "#footer",
+  },
+  {
+    id: 6,
+    title: "Rate",
+    link: "/rate",
   },
 ];
 

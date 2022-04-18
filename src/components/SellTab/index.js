@@ -6,6 +6,9 @@ import "antd/dist/antd.css";
 import { Select } from "antd";
 import { MdOutlineContentPaste } from "react-icons/md";
 import copy from "copy-to-clipboard";
+import TokenImg from "../../assets/svg/SVG/tokenimg.svg";
+import CreditImg from "../../assets/svg/SVG/creditimg.svg";
+import SendToken from "../../assets/svg/SVG/sendtoken.svg";
 
 const SellTab = () => {
   const [step, setStep] = useState(1);
@@ -49,15 +52,14 @@ const SellTab = () => {
             <div className="text-center step-header py-2 mt-4">
               Hey there ready to sell your assets ?
             </div>
-            <div className="d-flex align-items-center justify-content-center my-4">
+            <div className="d-flex align-items-center justify-content-center my-4  step-img__c">
               <img
-                src=""
+                src={TokenImg}
                 alt="sell image"
                 style={{
-                  width: "100px",
-                  height: "100px",
-                  borderRadius: "50%",
-                  background: "dodgerblue",
+                  width: "100%",
+                  height: "100%",
+                  margin: "",
                 }}
               />
             </div>
@@ -105,15 +107,13 @@ const SellTab = () => {
             <div className="text-center step-header py-2 mt-4">
               Enter the quantity of your selected token
             </div>
-            <div className="d-flex align-items-center justify-content-center my-4">
+            <div className="d-flex align-items-center justify-content-center my-4  step-img__c">
               <img
-                src=""
+                src={CreditImg}
                 alt="sell image"
                 style={{
-                  width: "100px",
-                  height: "100px",
-                  borderRadius: "50%",
-                  background: "dodgerblue",
+                  width: "100%",
+                  height: "100%",
                 }}
               />
             </div>
@@ -166,7 +166,7 @@ const SellTab = () => {
                 fontSize: "16px",
               }}
             >
-              More you trade the lesser the rate
+              The more you trade the lesser the rate
               <span
                 style={{
                   color: "gray",
@@ -184,15 +184,13 @@ const SellTab = () => {
             <div className="text-center step-header py-2 mt-4">
               Token transfer
             </div>
-            <div className="d-flex align-items-center justify-content-center my-4">
+            <div className="d-flex align-items-center justify-content-center my-4  step-img__c">
               <img
-                src=""
+                src={SendToken}
                 alt="sell image"
                 style={{
-                  width: "100px",
-                  height: "100px",
-                  borderRadius: "50%",
-                  background: "dodgerblue",
+                  width: "100%",
+                  height: "100%",
                 }}
               />
             </div>

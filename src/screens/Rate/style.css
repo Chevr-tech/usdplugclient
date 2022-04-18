@@ -1,0 +1,70 @@
+th {
+  text-align: center;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.table-cover {
+  border-radius: 10px;
+  width: 1200px;
+  margin: auto;
+  overflow: hidden;
+}
+
+.table-scroll {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  width: auto;
+  box-shadow: 0 2px 10px #eeeeeeec;
+}
+
+.table-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.table-scroll {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+thead {
+  background: #75b968;
+}
+
+tr {
+  border-bottom: 1px solid #eee;
+}
+tr:nth-child(even) {
+  background: #fafafa;
+}
+
+tr:last-child {
+  border-bottom: none;
+}
+
+th {
+  font-weight: 510;
+  color: #fff;
+}
+
+th,
+td {
+  padding: 10px;
+}
+
+.img-rate {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 0 10px #eeeeeede;
+}
+
+.rate-t {
+  font-size: 14px;
+}

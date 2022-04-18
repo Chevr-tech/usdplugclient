@@ -26,7 +26,7 @@
 }
 
 .nav-brand__img-cover {
-  width: 100px;
+  width: 130px;
   height: 40px;
   display: flex;
   align-items: center;
@@ -100,8 +100,8 @@
   background: #4da94d;
   /* background-image: linear-gradient(
     45deg, */
-    /* #2bffcf 0%, # 52%, */
-    /* #2bff88 100%
+  /* #2bffcf 0%, # 52%, */
+  /* #2bff88 100%
   ); */
 }
 
