@@ -31,24 +31,15 @@ const Home = () => {
       >
         <div className="container-fluid p-0 mt-3 ">
           <div className="row ">
-            <div className="col-sm-12 col-md-12 col-lg-6 col-xl-6 ">
-              <div className="container-fluid p-0">
-                <div className="row">
-                  <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6 ">
-                    <div className="dashboard-card bg-white">
-                      <img src={VolumeImg} className="dashboard-bg" alt="" />
-                      <div className="dashboard-card__image-cover">
-                        <img src={VolumeImg} className="dashboard-img" alt="" />
-                      </div>
-                      <div className="transaction-value"> ₦2, 249.00 </div>
-                      <div className="dashboard-card__title ">
-                        Total trading volume
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-sm-12 col-md-6 col-lg-6 col-xl-6 ">
-                    <div className="dashboard-card bg-white"></div>
-                  </div>
+            <div className="col-sm-12 col-md-6 col-lg-4 col-xl-4 ">
+              <div className="dashboard-card bg-white">
+                <img src={VolumeImg} className="dashboard-bg" alt="" />
+                <div className="dashboard-card__image-cover">
+                  <img src={VolumeImg} className="dashboard-img" alt="" />
+                </div>
+                <div className="transaction-value"> ₦2, 249.00 </div>
+                <div className="dashboard-card__title ">
+                  Total trading volume
                 </div>
               </div>
             </div>
@@ -59,12 +50,11 @@ const Home = () => {
                 </div>
                 <div className="info-container">
                   <div className="info-title text-center text-white">
-                    {" "}
                     Trade{" "}
                   </div>
                   <div className="info-cover">
                     <Link
-                      to="/order/?type=buy"
+                      to="/trade/?type=buy"
                       className="trade-btn__cover px-2"
                     >
                       <div className="trade-btn ">
@@ -73,7 +63,7 @@ const Home = () => {
                       <div className="trade-cta__btn mt-1"> Buy </div>
                     </Link>
                     <Link
-                      to="/order/?type=sell"
+                      to="/trade/?type=sell"
                       className="trade-btn__cover px-2"
                     >
                       <div className="trade-btn px-2 ">

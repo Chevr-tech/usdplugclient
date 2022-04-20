@@ -57,7 +57,7 @@ const DashboardSideNav = ({ closeBtn }) => {
               Orders
             </div>
           </Link>
-          {/* <Link
+          <Link
             to="/trade"
             className="mobile-links__item mt-3 d-flex align-items-center"
           >
@@ -70,7 +70,7 @@ const DashboardSideNav = ({ closeBtn }) => {
             >
               Trade
             </div>
-          </Link> */}
+          </Link>
           <Link
             to="/settings"
             className="mobile-links__item mt-3 d-flex align-items-center"

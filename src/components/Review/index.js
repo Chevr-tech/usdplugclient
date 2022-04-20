@@ -8,8 +8,7 @@ const Reviews = () => {
         Trust is a reputation we have built over time
       </div>
       <div className="reviews-caption text-center">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur,
-        impedit.
+        We pride ourselves in the good services we deliver.
       </div>
       <div className="review-content  mt-5">
         {data.map((item, _) => (

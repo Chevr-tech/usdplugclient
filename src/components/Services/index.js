@@ -4,19 +4,16 @@ import { data } from "./data";
 const Services = () => {
   return (
     <div className="services" id="whoweare">
-      <div className="services-title">
-        Lorem ipsum dolor sit amet consectetur.
-      </div>
+      <div className="services-title">What we offer.</div>
       <div className="services-caption text-center">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam iusto.
-        Lorem ipsum dolor sit.
+        We are one of the best OTC traders, giving the best rate there is.
       </div>
       <div className="container-fluid">
         <div className="services-content__cover">
           {data.map((item, i) => (
             <div
               className="services-card"
-              data-aos="fade-up-right"
+              data-aos="fade-up-right py-2"
               data-aos-duration="500"
               key={item.id}
             >

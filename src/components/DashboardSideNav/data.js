@@ -12,6 +12,12 @@ export const data = [
     icon: `<ion-icon name="card"></ion-icon>`,
   },
   {
+    id: 6,
+    link: "/trade",
+    page: "Trade",
+    icon: `<ion-icon name="cash"></ion-icon>`,
+  },
+  {
     id: 3,
     link: "/rate",
     page: "Rate",

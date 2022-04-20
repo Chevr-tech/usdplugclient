@@ -7,7 +7,8 @@ import { color } from "../../../constants/color";
 import { useState } from "react";
 import TokenDropdown from "../../../components/TokenDropdown";
 import SellTab from "../../../components/SellTab";
-
+import BuyTab from "../../../components/BuyTab";
+import { useSearchParams } from "react-router-dom";
 const Trade = () => {
   const { Option } = Select;
   const [tabIndex, setTabIndex] = useState("sell");
@@ -57,7 +58,7 @@ const Trade = () => {
                 tabIndex === "buy" ? "tab-content active" : "tab-content "
               }
             >
-              Tab Buy
+              <BuyTab />
             </div>
           </div>
         </div>

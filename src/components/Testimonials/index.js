@@ -10,20 +10,18 @@ const Testimonial = () => {
               <div className="testimonial-icon__image"></div>
               <div className="trade-volume">Trading volume</div>
               <div className="trade-volume__content">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis
-                quis placeat atque ullam tempora veritatis, perferendis
-                incidunt. Sed, impedit rerum. Lorem ipsum dolor sit amet
-                consectetur adipisicing elit. Doloribus quam vel modi
-                consectetur dolores veritatis cum beatae nobis id corporis?
+                Over the past fews year with we have an accumlated trading
+                volume of $68,320.50, completed 5393 transactions. We are
+                continously taking steps in making our number grows and at the
+                satisfying our cients (you). Thank you for always trusting us.
               </div>
-              <div className="rate-btn">View rate</div>
             </div>
             <div className="col-sm-12 col-md-10 mt-md-3 col-lg-8 col-xl-8  ">
               <div className="row d-flex align-items-center justify-content-evenly">
                 <div className="col-sm-12 col-md-5 col-lg-5.5 col-xl-5.5">
                   <div className="testimonial-card my-2">
                     <div className="testimonial-card__title">
-                      Completed 500+ orders.
+                      Completed 5393+ orders.
                     </div>
                     <div className="testimonial-desc">
                       Lorem ipsum, dolor sit amet consectetur adipisicing elit.
@@ -32,7 +30,7 @@ const Testimonial = () => {
                     </div>
                   </div>
                 </div>
-                <div className="col-sm-12 col-md-5 col-lg-5.5 col-xl-5.5">
+                <div className="col-sm-12 d-none col-md-5 col-lg-5.5 col-xl-5.5">
                   <div className="testimonial-card">
                     <div className="testimonial-card__title">
                       Completed 500+ orders

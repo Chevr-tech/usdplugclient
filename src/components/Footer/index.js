@@ -27,7 +27,8 @@ const Footer = () => {
             <div className="footer-item__cover ">
               <Link
                 to={{
-                  pathname: "https://www.facebook.com",
+                  pathname:
+                    "https://instagram.com/usdplug__?igshid=YmMyMTA2M2Y=",
                 }}
                 target={"_blank"}
                 className="footer-social__item"
@@ -36,22 +37,23 @@ const Footer = () => {
               </Link>
               <Link
                 to={{
-                  pathname: "https://www.facebook.com",
+                  pathname:
+                    "https://twitter.com/usdplug?s=11&t=BzuJsxDakueK4mAOaN42cw",
                 }}
                 target={"_blank"}
                 className="footer-social__item"
               >
                 <GrTwitter size={25} color={color.darkColor} />
               </Link>
-              <Link
+              {/* <Link
                 to={{
-                  pathname: "https://www.facebook.com",
+                  pathname: "https://www.f.com",
                 }}
                 target={"_blank"}
                 className="footer-social__item"
               >
                 <FaFacebook size={25} color={color.darkColor} />
-              </Link>
+              </Link> */}
             </div>
           </div>
           <div className="col-sm-12 col-md-4 col-lg-3 col-xl-3">
@@ -59,7 +61,7 @@ const Footer = () => {
             <div className="footer-address">
               Address: St. Anthony Lodge, Ifite-Awka, Awka, Anambra.
             </div>
-            <div className="footer-phone">0810281218</div>
+            <div className="footer-phone">+2347069667140</div>
           </div>
         </div>
       </div>

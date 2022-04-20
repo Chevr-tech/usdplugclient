@@ -16,7 +16,7 @@ const Rate = () => {
         <div className="table-scroll">
           <div class="table-cover">
             <table class="">
-              <thead>
+              <thead className="thead">
                 <tr>
                   <th scope="col"></th>
                   <th scope="col">0 - 500</th>

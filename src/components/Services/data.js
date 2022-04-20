@@ -6,22 +6,19 @@ export const data = [
   {
     id: 1,
     image: Work,
-    desc: `Lorem ipsum, dolor sit amet consectetur Lorem ipsum dolor sit
-    amet. Lorem ipsum dolor sit amet.`,
+    desc: `We are always online to process and aprroved with lightening speed..🌠`,
     title: "Processing orders",
   },
   {
     id: 2,
     image: Security,
-    desc: `Lorem ipsum, dolor sit amet consectetur Lorem ipsum dolor sit
-    amet. Lorem ipsum dolor sit amet.`,
+    desc: `Your funds, transaction and account are kept safe with us. We've deployed different protocols to hash sensitive details`,
     title: "Security",
   },
   {
     id: 3,
     image: Support,
-    desc: `Lorem ipsum, dolor sit amet consectetur Lorem ipsum dolor sit
-    amet. Lorem ipsum dolor sit amet.`,
+    desc: `Out support team are always online to attends to any issue you might be having. Feel to use any of support channels to get help`,
     title: "We are here",
   },
 ];

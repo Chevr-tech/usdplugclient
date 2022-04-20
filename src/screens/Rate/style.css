@@ -32,7 +32,7 @@ table {
   scrollbar-width: none; /* Firefox */
 }
 
-thead {
+.thead {
   background: #75b968;
 }
 
