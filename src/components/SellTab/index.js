@@ -80,6 +80,7 @@ const SellTab = () => {
                 <Option value={"btc"}>Bitcoin</Option>
                 <Option value={"eth"}>Ethereum</Option>
                 <Option value={"tron"}>Tron</Option>
+                <Option value={"usdt"}>Usdt</Option>
                 <Option value={"airtime"}>Airtime</Option>
               </Select>
             </div>
