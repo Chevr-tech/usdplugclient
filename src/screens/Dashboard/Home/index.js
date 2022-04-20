@@ -31,7 +31,7 @@ const Home = () => {
       >
         <div className="container-fluid p-0 mt-3 ">
           <div className="row ">
-            <div className="col-sm-12 col-md-6 col-lg-4 col-xl-4 ">
+            <div className="col-sm-12 col-md-6 col-lg-4 col-xl-4 mt-2 ">
               <div className="dashboard-card bg-white">
                 <img src={VolumeImg} className="dashboard-bg" alt="" />
                 <div className="dashboard-card__image-cover">
@@ -43,7 +43,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <div className="col-sm-12 col-md-12 col-lg-6 col-xl-6 ">
+            <div className="col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-2">
               <div className="info-admin">
                 <div className="money-img__cover">
                   <img src={MoneyImg} alt="" className="money-img" />
@@ -82,7 +82,7 @@ const Home = () => {
       {/* Orders */}
       <div className="container-fluid p-0 m-0 " style={{}}>
         <div className="trade-top bg-white py-2">
-          <div className="trade-content">
+          <div className="trade-content mt-2">
             <div className="trade-history py-1 pr-3"> Order History. </div>
           </div>
           <div className="right-btn__cover">

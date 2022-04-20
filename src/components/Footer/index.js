@@ -17,7 +17,7 @@ const Footer = () => {
               </div> */}
               <div className="footer-title">USDPLUG</div>
             </div>
-            <div className="footer-caption">
+            <div className="footer-caption d-none">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis,
               aliquid.
             </div>
