@@ -2,7 +2,7 @@ import "./style.css";
 
 const Testimonial = () => {
   return (
-    <div className="testimonials-cover container py-3 px-3 mt-5">
+    <div className="testimonials-cover container py-3 px-3 mt-5" id={"service"}>
       <div className="frosted ">
         <div className="frosted-content p-3">
           <div className="row align-items-center justify-content-center">
