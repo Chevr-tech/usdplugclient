@@ -31,8 +31,8 @@ const MobileNav = ({ closeBtn }) => {
           </div>
           <div className="mobile-links__cover">
             {data.map((item, _) => (
-              <Link
-                to={item.link}
+              <a
+                href={item.link}
                 className="mobile-link"
                 style={{
                   fontSize: "18px",
@@ -43,14 +43,14 @@ const MobileNav = ({ closeBtn }) => {
                 key={item.id}
               >
                 {item.title}
-              </Link>
+              </a>
             ))}
 
             {token
               ? authNav.map((item) => (
-                  <Link
-                    to={item.link}
-                    className="mobile-link"
+                  <a
+                    href={item.link}
+                    className="mobile-link d-block"
                     style={{
                       fontSize: "18px",
                       textDecoration: "none",
@@ -60,7 +60,7 @@ const MobileNav = ({ closeBtn }) => {
                     key={item.id}
                   >
                     {item.title}
-                  </Link>
+                  </a>
                 ))
               : null}
           </div>

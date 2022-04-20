@@ -12,17 +12,17 @@ export const data = [
   {
     id: 3,
     title: "Who we are",
-    link: "#whoweare",
+    link: "/#whoweare",
   },
   {
     id: 4,
     title: "Service",
-    link: "#service",
+    link: "/#service",
   },
   {
     id: 5,
     title: "Contact us",
-    link: "#footer",
+    link: "/#footer",
   },
   {
     id: 6,
