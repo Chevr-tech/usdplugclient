@@ -23,7 +23,7 @@ const Support = () => {
             </div>
             <ul className="d-none">
               <li>08102851218</li>
-              <li>support@gmail.com</li>
+              <li>support@usdplug.com</li>
             </ul>
           </div>
 

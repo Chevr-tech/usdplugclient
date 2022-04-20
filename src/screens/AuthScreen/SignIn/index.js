@@ -90,7 +90,7 @@ const SignIn = () => {
           Having issues with your account contact us for help
         </div>
         <div className="form-mail text-center d-block">
-          <a href="mailto:chevrtech@gmail.com">chevrtech@gmail.com</a>
+          <a href="mailto:support@usdplug.com">support@usdplug.com</a>
         </div>
       </div>
     </div>
