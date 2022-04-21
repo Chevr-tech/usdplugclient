@@ -12,7 +12,7 @@ export const data = [
   {
     id: 3,
     title: "Who we are",
-    link: "/#whoweare",
+    link: "/whoweare",
   },
   {
     id: 4,

@@ -20,7 +20,6 @@ const Layout = ({ children }) => {
           %20Which%20of%20the%20Services%20would%20you%20be%20needing.%20
           1.%20Buying%20or%20selling%20Bitcoin%20and%20USDT. %20      %20          %20      %20
           2.%20Consulting%20and%20Advisory%20services.%20      %20           %20      %20
-          3.%20Crypto%20Asset%20Management.%20      %20          %20
          `,
           }}
           target={"_blank"}

@@ -12,6 +12,7 @@ import GuardedRoute from "./components/GuardedRoute";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Rate from "./screens/Rate";
+import PrivacyPolicy from "./screens/PrivacyPolicy";
 
 function App() {
   AOS.init();
@@ -19,13 +20,14 @@ function App() {
     <>
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/about" component={About} />
+        <Route exact path="/whoweare" component={About} />
         <Route exact path="/newsroom" component={Newsroom} />
         <Route exact path="/newsroom" component={Newsroom} />
         <Route exact path="/newsroom/:id" component={NewsDetails} />
         <Route exact path="/signup" component={AuthScreen} />
         <Route exact path="/signin" component={SignIn} />
         <Route exact path="/rate" component={Rate} />
+        <Route exact path="/privacypolicy" component={PrivacyPolicy} />
         <Route exact path="/forgotpassword" component={ForgotPassword} />
         <GuardedRoute />
       </Switch>

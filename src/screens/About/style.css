@@ -1,0 +1,23 @@
+.about-caption {
+  color: #75b968;
+  font-weight: 510;
+  border-bottom: 1.5px solid #75b968;
+}
+
+.about-subtext {
+  color: #7b7b7b;
+}
+
+.about-title {
+  font-weight: 510;
+  color: #75b968;
+  font-size: 17px;
+}
+
+.about-content {
+  color: #7b7b7b;
+}
+
+.c-con {
+  box-shadow: 0 2px 10px #eeeeeede;
+}

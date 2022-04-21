@@ -23,7 +23,7 @@ const Navbar = () => {
             <Link to="/" className="nav-item">
               Home
             </Link>
-            <a href="/#whoweare" className="nav-item">
+            <a href="/whoweare" className="nav-item">
               Who we are
             </a>
             <Link to={"/newsroom"} className="nav-item">
