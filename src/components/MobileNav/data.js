@@ -29,6 +29,11 @@ export const data = [
     title: "Rate",
     link: "/rate",
   },
+  {
+    id: 6,
+    title: "Privacy Policy",
+    link: "/privacypolicy",
+  },
 ];
 
 export const authNav = [

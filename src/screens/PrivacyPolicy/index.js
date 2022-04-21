@@ -1,4 +1,5 @@
 import Layout from "../../components/Layout";
+import "./style.css";
 
 const PrivacyPolicy = () => {
   return (
@@ -6,10 +7,12 @@ const PrivacyPolicy = () => {
       <div
         className="container"
         style={{
-          margin: "70px 0 100px 0",
+          margin: "80px auto 100px auto",
         }}
       >
-        <div className="privacy-title">Privacy Policy</div>
+        <div className="privacy-title text-center my-1 py-2 abs">
+          Privacy Policy
+        </div>
         <div className="privacy-content">
           What information do we collect? We collect information from you when
           you register on our site, place an order, subscribe to our newsletter

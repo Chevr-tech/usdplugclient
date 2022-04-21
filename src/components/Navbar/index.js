@@ -35,6 +35,9 @@ const Navbar = () => {
             <Link to={"/rate"} className="nav-item">
               Rate
             </Link>
+            <Link to={"/privacypolicy"} className="nav-item">
+              Privacy policy
+            </Link>
           </div>
           <div className="nav-left__cover">
             <div className="nav-auth__btn-cover">
