@@ -22,7 +22,7 @@ const Hero = () => {
               </div>
             </div>
             <div className="hero-middle mt-2 text-center">
-              Buy, Sell and Exhange your crypto assets and Gift cards
+              Buy, Sell and Exhange your crypto assets and digital assets.
             </div>
             <div className="hero-caption mt-2 ">
               USDPlug is built with security and flexibility for customers to
