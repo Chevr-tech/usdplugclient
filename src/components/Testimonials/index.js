@@ -11,7 +11,7 @@ const Testimonial = () => {
               <div className="trade-volume">Trading volume</div>
               <div className="trade-volume__content">
                 Over the past fews year with we have an accumlated trading
-                volume of $68,320.50, completed 5393 transactions. We are
+                volume of $1,562,703.15, completed 5393 transactions. We are
                 continously taking steps in making our number grows and at the
                 satisfying our cients (you). Thank you for always trusting us.
               </div>
@@ -19,9 +19,9 @@ const Testimonial = () => {
             <div className="col-sm-12 col-md-10 mt-md-3 col-lg-8 col-xl-8  ">
               <div className="row d-flex align-items-center justify-content-evenly">
                 <div className="col-sm-12 col-md-5 col-lg-5.5 col-xl-5.5">
-                  <div className="testimonial-card my-2">
+                  <div className="testimonial-card d-none my-2">
                     <div className="testimonial-card__title">
-                      Completed 5393+ orders.
+                      Completed $1,562,703.15+ orders.
                     </div>
                     <div className="testimonial-desc">
                       Lorem ipsum, dolor sit amet consectetur adipisicing elit.

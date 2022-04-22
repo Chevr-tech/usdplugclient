@@ -14,7 +14,7 @@
 .review-card {
   width: 100%;
   /* width: 230px; */
-  height: 260px;
+  height: auto;
   position: relative;
   background: #fff;
   box-shadow: 0 2px 10px #d8d8d8de;
@@ -60,13 +60,13 @@
 }
 
 .review-name {
-  font-size: 18px;
+  font-size: 16px;
   color: #3f3f3f;
   font-weight: 600;
 }
 
 .review-desc {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 500;
   line-height: 23px;
   color: #676767;
