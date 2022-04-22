@@ -82,6 +82,7 @@ const SellTab = () => {
                 <Option value={"tron"}>Tron</Option>
                 <Option value={"usdt"}>Usdt</Option>
                 <Option value={"airtime"}>Airtime</Option>
+                <Option value={"perfectmoney"}>Perfect Money</Option>
               </Select>
             </div>
             <div
