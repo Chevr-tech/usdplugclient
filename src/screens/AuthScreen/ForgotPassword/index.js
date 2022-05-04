@@ -3,14 +3,24 @@ import { useState } from "react";
 import { Button } from "../../../components/Button";
 import { color } from "../../../constants/color";
 import "./style.css";
+import axios from "../../../utlis/axios";
 
 const ForgotPassword = () => {
-  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const handleFp = async () => {
+    try {
+      let res = await axios.post("/forgot-password", {
+        type: "phone",
+        account: phone,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <div className="auth-form__cover">
       <div className="form-signup  pt-3 px-3 pb-3">
@@ -18,7 +28,7 @@ const ForgotPassword = () => {
           Forgot password <span>🗝️</span>
         </div>
         <div className="form-we text-center mt-2">
-          Please entrer the email address associated with your account.
+          Please entrer the phone number associated with your account.
         </div>
         {error && (
           <div
@@ -33,8 +43,8 @@ const ForgotPassword = () => {
 
         <div className="form-group mt-2">
           <label
-            htmlFor="email"
-            class="form-label"
+            htmlFor="number"
+            className="form-label"
             style={{
               fontSize: "16px",
             }}
@@ -42,18 +52,18 @@ const ForgotPassword = () => {
             Email address
           </label>
           <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            class="form-input"
-            placeholder="email address"
+            type="number"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            className="form-input"
+            placeholder="phone number"
             id="email"
             style={{
               height: "45px",
             }}
           />
         </div>
-        <div className="form-btn mt-3">
+        <div className="form-btn mt-3" onClick={() => handleFp()}>
           <Button
             text={"Continue"}
             bg={color.baseColor}

@@ -13,24 +13,31 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Rate from "./screens/Rate";
 import PrivacyPolicy from "./screens/PrivacyPolicy";
+import { useEffect } from "react";
+import { setToken } from "./utlis/token";
+import { OrderProvider } from "./context/OrderContext";
+import EmailVerfication from "./screens/AuthScreen/EmailVerification";
 
 function App() {
   AOS.init();
+
   return (
     <>
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/whoweare" component={About} />
-        <Route exact path="/newsroom" component={Newsroom} />
-        <Route exact path="/newsroom" component={Newsroom} />
-        <Route exact path="/newsroom/:id" component={NewsDetails} />
-        <Route exact path="/signup" component={AuthScreen} />
-        <Route exact path="/signin" component={SignIn} />
-        <Route exact path="/rate" component={Rate} />
-        <Route exact path="/privacypolicy" component={PrivacyPolicy} />
-        <Route exact path="/forgotpassword" component={ForgotPassword} />
-        <GuardedRoute />
-      </Switch>
+      <OrderProvider>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/whoweare" component={About} />
+          <Route exact path="/newsroom" component={Newsroom} />
+          <Route exact path="/newsroom/:id" component={NewsDetails} />
+          <Route exact path="/signup" component={AuthScreen} />
+          <Route exact path="/signin" component={SignIn} />
+          <Route exact path="/rate" component={Rate} />
+          <Route exact path="/emailverification" component={EmailVerfication} />
+          <Route exact path="/privacypolicy" component={PrivacyPolicy} />
+          <Route exact path="/forgotpassword" component={ForgotPassword} />
+          <GuardedRoute />
+        </Switch>
+      </OrderProvider>
     </>
   );
 }

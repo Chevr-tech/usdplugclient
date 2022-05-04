@@ -5,6 +5,7 @@
   height: auto;
   border-radius: 5px;
   position: relative;
+  margin-top: 50px;
 }
 
 .cbd-image__cover {
@@ -26,7 +27,7 @@
 }
 
 .cbn {
-  width: 60%;
+  width: 100%;
   display: flex;
   margin: 3px 0;
   align-items: center;

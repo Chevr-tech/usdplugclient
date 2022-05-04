@@ -1,46 +1,46 @@
-.od-img__cover{
-    width: 35px;
-    height: 30px;
-    border-radius: 50%;
-    background: #ededed;
+.od-img__cover {
+  width: 35px;
+  height: 30px;
+  border-radius: 50%;
+  background: #ededed;
 }
 
-.od-card{
-    width: 100%;
-    height: auto;
-    color: #3f3f3f;
+.od-card {
+  width: 100%;
+  height: auto;
+  color: #3f3f3f;
 }
 
-.od-content{
-    width: 100%;
+.od-content {
+  width: 100%;
 }
 
-
-.od-type{
-    font-size: 15px;
-    font-weight: 510;
+.od-type {
+  font-size: 15px;
+  font-weight: 510;
 }
 
-.od-e__t{ 
-    color: #757575;
-    font-size: 11px;
+.od-e__t {
+  color: #757575;
+  font-size: 12px;
 }
 
-.od-amount{
-    font-weight: 510;
-    font-size: 12px;
+.od-amount {
+  font-weight: 510;
+  font-size: 12px;
 }
 
-.od-token{
-    font-weight: 500;
-    font-size: 12px;
+.od-token {
+  font-weight: 500;
+  font-size: 14px;
 }
 
-.od-date{
-    font-size: 13px;
-    color: #757575;
+.od-date {
+  font-size: 13px;
+  color: #757575;
 }
 
-.od-qty__value{
-    font-size: 13px;
+.od-qty__value {
+  font-size: 15px;
+  font-weight: 510;
 }

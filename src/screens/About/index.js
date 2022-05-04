@@ -1,4 +1,5 @@
 import Layout from "../../components/Layout";
+import { color } from "../../constants/color";
 import "./style.css";
 
 const About = () => {
@@ -16,7 +17,14 @@ const About = () => {
             margin: "auto",
           }}
         >
-          <div className="about-title p-1 text-center">Who we are</div>
+          <div
+            className="about-title p-1 text-center"
+            style={{
+              color: color.darkColor,
+            }}
+          >
+            Who we are
+          </div>
           <div className="">
             <div className="about-content text-center">
               USDplug is a total e-business solution provider that specializes
@@ -32,7 +40,14 @@ const About = () => {
 
         <div className="row d-flex align-items-start justify-content-center mt-4">
           <div className="col-sm-12 c-con m-2 rounded-2 col-md-5 col-lg-3 col-xl-3 p-2">
-            <div className="about-caption p-1">OUR MISSION</div>
+            <div
+              className="about-caption p-1"
+              style={{
+                color: color.darkColor,
+              }}
+            >
+              OUR MISSION
+            </div>
             <div className="about-subtext p-1">
               Our mission is to provide unbeatable, un-equalled and unique
               e-commerce Solutions. We do not even allow you to take any risks.
@@ -42,7 +57,15 @@ const About = () => {
           </div>
 
           <div className="col-sm-12 c-con m-2 rounded-2 col-md-5 col-lg-3 col-xl-3">
-            <div className="about-caption p-1"> Who are our customers?</div>
+            <div
+              className="about-caption p-1"
+              style={{
+                color: color.darkColor,
+              }}
+            >
+              {" "}
+              Who are our customers?
+            </div>
             <div className="about-subtext p-1">
               We provide services to large Online Forex Brokers, Internet
               Merchants, Exchangers, Crypto users, Consultancy Companies and
@@ -51,7 +74,14 @@ const About = () => {
             </div>
           </div>
           <div className="col-sm-12 c-con m-2 rounded-2 col-md-5 col-lg-4 col-xl-4">
-            <div className="about-caption p-1"> Why are we different? </div>
+            <div
+              className="about-caption p-1"
+              style={{
+                color: color.darkColor,
+              }}
+            >
+              Why are we different?{" "}
+            </div>
             <div className="about-subtext p-1">
               We are one of the largest e-currency exchangers providing services
               to large companies as well as to any client wishing to buy or sell
@@ -62,7 +92,14 @@ const About = () => {
             </div>
           </div>
           <div className="col-sm-12 c-con m-2 rounded-2 col-md-5 col-lg-3 col-xl-3">
-            <div className="about-caption p-1">Why choose us? </div>
+            <div
+              className="about-caption p-1"
+              style={{
+                color: color.darkColor,
+              }}
+            >
+              Why choose us?{" "}
+            </div>
             <div className="about-subtext p-1">
               USDplug is dedicated to becoming the industry leader in e-currency
               and crypto-currency exchange, payment solutions and related

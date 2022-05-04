@@ -3,11 +3,35 @@ import DashboardLayout from "../../../components/DashboardLayout";
 import OrderTable from "../../../components/Tables/OrderTable";
 import { color } from "../../../constants/color";
 import "./style.css";
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import { AiOutlineFieldTime } from "react-icons/ai";
+import { toast } from "react-toastify";
+import axios from "../../../utlis/axios";
 
 const Orders = () => {
   const [hide, setHide] = useState(false);
+  const [page, setPage] = useState(0);
+  const [type, setType] = useState("");
+  const [data, setData] = useState([]);
+  toast.configure();
+  useEffect(() => {
+    (async () => {
+      try {
+        let res = await axios("/order/user");
+        let num = 1;
+        setData((prev) =>
+          res.data.data.orders.map((item) => {
+            return {
+              num: num++,
+              ...item,
+            };
+          })
+        );
+      } catch (err) {
+        toast.error(err.response.data.message);
+      }
+    })();
+  }, []);
 
   return (
     <DashboardLayout>
@@ -56,7 +80,7 @@ const Orders = () => {
             display: hide ? "none" : "block",
           }}
         >
-          <OrderTable />
+          <OrderTable data={data} />
         </div>
       </div>
     </DashboardLayout>

@@ -8,10 +8,10 @@ const GuardedRoute = () => {
   useEffect(() => {
     (async () => {
       try {
-        let token = await getToken("usdp_password");
+        let token = await getToken("usdplug_token");
         console.log(token, "line 12");
         if (!token || token === null) {
-          window.location.pathname = "/signup";
+          window.location.pathname = "/signin";
           setLoading(false);
           return;
         }

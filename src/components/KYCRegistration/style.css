@@ -1,14 +1,16 @@
 .kycr {
-  width: 330px;
+  width: 500px;
+  max-width: 500px;
+  min-width: 330px;
   height: auto;
   border-radius: 4px;
   position: relative;
   padding: auto;
-  margin: 50px auto 0  auto;
+  margin: 50px auto 0 auto;
 }
 
 .kyc-title {
-  font-size: 16px;
+  font-size: 13px;
 }
 
 .kyc-input {
@@ -17,7 +19,7 @@
 .kyc-input__cover {
   border-radius: 3px;
   transition: outline 50ms ease;
-  height: 40px;
+  height: 35px;
   width: 100%;
   padding: 5px;
   display: flex;
@@ -29,7 +31,26 @@
   outline: 2px solid #3f3f3f3b;
 }
 
+.kyc-input__cover::placeholder {
+  color: #3f3f3f;
+  font-size: 13px;
+}
+
+.kyc-input__file {
+  width: 100%;
+}
+
 .kyc-group {
   width: 100%;
-  margin:10px 0;
+  margin: 10px 0;
+}
+
+.kyc-btn {
+  width: 130px;
+}
+
+@media (max-width: 550px) {
+  .kycr {
+    width: 330px;
+  }
 }

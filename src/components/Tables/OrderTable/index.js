@@ -11,7 +11,6 @@ import {
   Toolbar,
 } from "@syncfusion/ej2-react-grids";
 import * as React from "react";
-import { data } from "./data";
 import { BiRightArrowAlt } from "react-icons/bi";
 import { color } from "../../../constants/color";
 import { Link } from "react-router-dom";
@@ -20,24 +19,41 @@ import "./style.css";
 import { RiArrowUpDownLine, RiArrowUpLine } from "react-icons/ri";
 import { CgArrowDown } from "react-icons/cg";
 
-const OrderTable = ({}) => {
-  let num = 1;
-  const result = data.map((item) => {
-    return {
-      id: item.id,
-      type: item.type,
-      rate: item.rate,
-      num: num++,
-      status: item.status,
-      token: item.token,
-      quantity: item.quantity,
-    };
-  });
-
-  const details = () => {
+const OrderTable = ({ data }) => {
+  console.log(data, "");
+  // const ordernum = data.meta.orderNum
+  const sample = [
+    {
+      asset: "crypto",
+      date: "2022-05-01T22:06:34.421Z",
+      id: "626f046a9082fa9bc51043cb",
+      metadata: {
+        orderNum: "570526",
+        quantity: 0.04,
+      },
+      quickWallet: {
+        address: "0xscldlci3irui347e7fnwdnkcwui34",
+        id: "626c5d257604f326c7e41ca7",
+        network: "btc",
+      },
+      user: {
+        wallet: "0xscldlci3irui347e7fnwdnkcwui34",
+        id: "6266f6972e77bf3e885ffbc4",
+        bank: {
+          bank: "Access Bank",
+          bankCode: "044",
+          number: "0059381944",
+        },
+      },
+      status: "pending",
+      token: "BTC",
+      type: "sell",
+    },
+  ];
+  const details = (item) => {
     return (
       <div className="details-cover">
-        <Link to="/order/232fecd" className="details-link">
+        <Link to={`/order/${item?.id}`} className="details-link">
           <div className="details-text"> details</div>
           <BiRightArrowAlt size={14} color={"dodgerblue"} />
         </Link>
@@ -76,18 +92,10 @@ const OrderTable = ({}) => {
     );
   };
 
-  const id = (item) => {
-    return (
-      <div className="order-id text-center">
-        #{`${item.id.substring(0, 20)}...`}
-      </div>
-    );
-  };
-
   return (
     <div className="container-fluid p-0">
       <GridComponent
-        dataSource={result}
+        dataSource={data}
         allowPaging={true}
         pageSettings={{
           pageSize: 10,
@@ -103,12 +111,12 @@ const OrderTable = ({}) => {
             headerText="#"
           />
           <ColumnDirective
-            field="id"
+            field="orderNum"
             width="50"
             textAlign="Center"
-            headerText="ID"
+            headerText="Order Number"
             headerTextAlign="Center"
-            template={id}
+            // template={id}
           />
           <ColumnDirective
             field="type"
@@ -154,6 +162,18 @@ const OrderTable = ({}) => {
             format="C2"
             textAlign="Center"
             headerText="Quantity"
+            template={(item) => {
+              return (
+                <div
+                  style={{
+                    fontSize: "13px",
+                    color: color.darkColor,
+                  }}
+                >
+                  {item?.quantity}
+                </div>
+              );
+            }}
           />
           <ColumnDirective
             field="date"
@@ -169,7 +189,7 @@ const OrderTable = ({}) => {
                     fontSize: "13px",
                   }}
                 >
-                  {moment(item.date).format("LL")}
+                  {moment(item.date).format("LLL")}
                 </div>
               );
             }}

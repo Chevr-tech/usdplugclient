@@ -6,6 +6,8 @@ import { setToken } from "../../utlis/token";
 import { Redirect } from "react-router-dom";
 import { Button } from "../../components/Button";
 import { color } from "../../constants/color";
+import axios from "../../utlis/axios";
+import { toast } from "react-toastify";
 
 const AuthScreen = () => {
   const [name, setName] = useState("");
@@ -14,23 +16,43 @@ const AuthScreen = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-
+  toast.configure();
   const handleSignup = async () => {
     try {
       setLoading(true);
       if (!email || !password || !phone || !name) {
-        setError("All values are required.");
+        toast.warn("All values are required.");
         setLoading(false);
         return;
       }
-      await setToken("usdp_email", email);
-      await setToken("usdp_password", password);
-      setTimeout(() => {
-        setLoading(false);
-        window.location.pathname = "/dashboard";
-      }, 3000);
+      let res = await axios.post("/signup", {
+        name: name,
+        email: email,
+        phone: phone,
+        password: password,
+      });
+      if (res.status === 200) {
+        await setToken("usdplug_userId", res.data.data.userId);
+        await setToken("usdplug_email", email);
+        let code = await axios.get(
+          `/confirmation?userId=${res.data.data.userId}&type=${email}`
+        );
+
+        if (code.data.status === 200) {
+          setLoading((prev) => false);
+          toast.success(
+            `A verification code has been sent to your email address`,
+            {
+              toastId: "4727893feui",
+            }
+          );
+          window.location.pathname = "/emailverification";
+          return;
+        }
+      }
     } catch (err) {
-      console.log(err);
+      toast.error(err.message);
+      setLoading((prev) => false);
     }
   };
   return (
@@ -51,12 +73,12 @@ const AuthScreen = () => {
           </div>
         )}
         <div className="form-group mt-2">
-          <label className="form-label">Full name</label>
+          <label className="form-label">Name</label>
           <input
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            class="form-input"
+            className="form-input"
             placeholder="first name"
             id="text"
           />
@@ -67,33 +89,33 @@ const AuthScreen = () => {
             type="number"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
-            class="form-input"
+            className="form-input"
             placeholder="number"
             id="text"
           />
         </div>
         <div className="form-group mt-2">
-          <label htmlFor="email" class="form-label">
+          <label htmlFor="email" className="form-label">
             Email address
           </label>
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            class="form-input"
+            className="form-input"
             placeholder="email address"
             id="email"
           />
         </div>
         <div className="form-group mt-2">
-          <label htmlFor="password" class="form-label">
+          <label htmlFor="password" className="form-label">
             Password
           </label>
           <input
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            type="password"
-            class="form-input"
+            type="text"
+            className="form-input"
             placeholder="password"
             id="email"
           />

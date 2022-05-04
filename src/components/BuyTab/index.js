@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { color } from "../../constants/color";
 import { Button } from "../Button";
 import "./style.css";
@@ -9,11 +9,126 @@ import copy from "copy-to-clipboard";
 import TokenImg from "../../assets/svg/SVG/tokenimg.svg";
 import CreditImg from "../../assets/svg/SVG/creditimg.svg";
 import SendToken from "../../assets/svg/SVG/sendtoken.svg";
+import { toast } from "react-toastify";
+import axios from "../../utlis/axios";
+import marketUrl from "../../utlis/market";
 
 const BuyTab = () => {
   const [step, setStep] = useState(1);
-  const [token, setToken] = useState("");
+  const [tokenName, setTokenName] = useState("");
+  const [buyRate, setBuyRate] = useState([]);
+  const [receiveAddress, setReceiveAddress] = useState("");
+  const [tokenQty, setTokenQty] = useState(0);
+  const [tradeNetwork, setTradeNetwork] = useState("");
+  const [tradeRate, setTradeRate] = useState("");
+  const [nairaAmount, setNairaAmount] = useState(0);
+  const [tokenPrice, setTokenPrice] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const [assetList, setAssetList] = useState([]);
+  const [bnbPrice, setBnbPrice] = useState("");
+  const [ethPrice, setEthPrice] = useState("");
+  const [usdtPrice, setUsdtPrice] = useState("");
+  const [tronPrice, setTronPrice] = useState("");
+  const [bitcoinPrice, setBitcoin] = useState("");
+  const [assestType, setAssetType] = useState("");
+  const [bank, setBank] = useState({});
+  const [bankId, setBankId] = useState({});
+
+  const [tokenId, setTokenId] = useState(null);
   const { Option } = Select;
+  var getPrice;
+  const [refreshPrice, setRefresh] = useState(false);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        let res = await marketUrl.get(
+          "/v3/simple/price?ids=binancecoin,bitcoin,tether,ethereum,tron&vs_currencies=usd"
+        );
+        const { binancecoin, bitcoin, ethereum, tether, tron } = res.data;
+        setBnbPrice((prev) => binancecoin.usd);
+        setBitcoin((prev) => bitcoin.usd);
+        setEthPrice((prev) => ethereum.usd);
+        setUsdtPrice((prev) => tether.usd);
+        setTronPrice((prev) => tron.usd);
+      } catch (err) {
+        toast.error(err.response.data.message);
+      }
+    })();
+  }, []);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        let res = await axios.get("/account?status=active");
+        setBank((prev) => res.data.data[0]);
+        setBankId((prev) => res.data.data[0].id);
+      } catch (err) {
+        toast.error(err.response.data.message);
+      }
+    })();
+  }, []);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        let res = await axios.get("/wallet");
+        setAssetList((prev) =>
+          res.data.data.filter((item) => item.token === "usdt")
+        );
+      } catch (err) {
+        toast.error(err.response.data.message);
+      }
+    })();
+  }, []);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        let res = await axios.get("/site-data/price");
+        let test = 300;
+        const num = Object.entries(res.data.data.buy).map((item, i) => item[1]);
+        setBuyRate((prev) => num);
+      } catch (err) {
+        toast.error(err.response.data.message);
+      }
+    })();
+  }, []);
+
+  const handleTokenPrice = async (e) => {
+    if (e === "usdt") {
+      let name = assetList.find((item) => item.token === e);
+      console.log(name.network);
+      setTokenName((prev) => name.token.toUpperCase());
+      setReceiveAddress((prev) => name.address);
+      setTradeNetwork((prev) => name.network.toUpperCase());
+      setTokenPrice((prev) => usdtPrice);
+      setTokenId((prev) => name.id);
+      setAssetType((prev) => "crypto");
+      return;
+    }
+  };
+
+  const handleOrder = async () => {
+    try {
+      setLoading((prev) => true);
+      let res = await axios.post("/order/user/buy", {
+        quantity: tokenQty,
+        token: tokenName.toLowerCase(),
+        walletAddress: receiveAddress,
+        quickBank: bankId || "",
+        asset: assestType, // reminder to add when sending token
+      });
+      console.log(res.data);
+      toast.success("Order created successfully");
+      window.location.pathname = "orders";
+      setLoading((prev) => false);
+      return;
+    } catch (err) {
+      toast.error(err.response.data.message);
+      setLoading((prev) => false);
+    }
+  };
   return (
     <div className="container-fluid mt-1 ">
       <div className="stepper-icon__cover my-2 d-flex align-items-center justify-content-between bot">
@@ -64,9 +179,9 @@ const BuyTab = () => {
               />
             </div>
             <div className="text-center">
-              Start by selecting the token you want to buy
+              Start by selecting the token you want to sell
             </div>
-            <div className="step-option my-3">
+            <div className="step-option d-flex justify-content-center align-items-center my-3">
               <Select
                 placeholder={"Search for token"}
                 showSearch={true}
@@ -76,17 +191,22 @@ const BuyTab = () => {
                   height: "100%",
                   padding: "0",
                 }}
+                onChange={(e) => handleTokenPrice(e)}
               >
-                <Option value={"usdt"}>usdt</Option>
+                {assetList.map((item) => (
+                  <Option key={item.id} value={item.token}>
+                    {item.token.toUpperCase()}
+                  </Option>
+                ))}
               </Select>
             </div>
             <div
-              className="text-center d-none py-2"
+              className="text-center py-2"
               style={{
                 fontSize: "16px",
               }}
             >
-              .
+              You will be credited in Naira.
               <span
                 style={{
                   color: "gray",
@@ -102,7 +222,7 @@ const BuyTab = () => {
         <div className="step-content">
           <div className="step-body">
             <div className="text-center step-header py-2 mt-4">
-              Enter the quantity of the token you want to buy
+              Enter the quantity of your selected token
             </div>
             <div className="d-flex align-items-center justify-content-center my-4  step-img__c">
               <img
@@ -115,19 +235,85 @@ const BuyTab = () => {
               />
             </div>
             <div className="text-center">Token quantity</div>
-            <div className="step-option my-3 p-2">
+            <div className="step-option d-flex align-items-center my-3">
+              <div
+                className=" d-flex align-items-center justify-content-center"
+                style={{
+                  width: "220px",
+                  height: "100%",
+                  background: "#f5f5f5",
+                  boxShadow: "inset 0 2px 10px #eeeeeede",
+                }}
+              >
+                <div
+                  className="text-center"
+                  style={{
+                    fontSize: "14px",
+                  }}
+                >
+                  Enter quantity:
+                </div>
+              </div>
               <input
-                className=""
+                className="px-3"
                 style={{
                   width: "100%",
                   height: "100%",
                 }}
                 type={"number"}
+                onInput={(e) => {
+                  let result = e.target.value * tokenPrice;
+                  const test = buyRate.find(
+                    (x) => x.min <= result && x.max >= result
+                  );
+                  setTokenQty((prev) => e.target.value);
+                  setTradeRate((prev) => test.price);
+                  setNairaAmount((prev) => test.price * tokenQty * test.price);
+                }}
+                value={tokenQty}
+                onChange={(e) => setTokenQty(e.target.value)}
                 placeholder={"quantity of token"}
               />
             </div>
-            <div className="text-center step-helper">Buying rate</div>
-            <div className="step-rate">
+            <div className="step-option d-flex align-items-center my-3 ">
+              <div
+                className=" d-flex align-items-center justify-content-center"
+                style={{
+                  width: "220px",
+                  height: "100%",
+                  background: "#f5f5f5",
+                  boxShadow: "inset 0 2px 10px #eeeeeede",
+                }}
+              >
+                <div
+                  className="text-center"
+                  style={{
+                    // width: "220px",
+                    fontSize: "14px",
+                  }}
+                >
+                  Naira amount
+                </div>
+              </div>
+              <input
+                className="px-3"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                }}
+                disabled={true}
+                value={`₦${(tokenPrice * tradeRate * tokenQty).toLocaleString(
+                  "en-US",
+                  {
+                    currency: "USD",
+                  }
+                )}`}
+                type={"text"}
+                placeholder={"quantity of token"}
+              />
+            </div>
+            <div className="text-center step-helper d-none">Select Rate</div>
+            <div className="step-rate d-none">
               <div className="d-flex align-items-center justify-content-between">
                 <div>Range</div>
                 <div>Buying Rate</div>
@@ -163,7 +349,7 @@ const BuyTab = () => {
                 fontSize: "16px",
               }}
             >
-              The more you buy the lesser the rate
+              The more you trade the lesser the rate
               <span
                 style={{
                   color: "gray",
@@ -192,18 +378,19 @@ const BuyTab = () => {
               />
             </div>
             <div className="text-center">
-              Enter your token wallet address in the input below
+              Send the token the wallet address below
             </div>
-            <div className="step-option px-2 d-flex align-items-center justify-content-center my-3">
-              <input
-                className=""
-                style={{
-                  width: "100%",
-                  height: "100%",
-                }}
-                type={"number"}
-                placeholder={"quantity of token"}
-              />
+            <div
+              className="step-option d-flex align-items-center justify-content-center my-3"
+              onClick={() => {
+                toast.success("Address copied");
+                copy(receiveAddress);
+              }}
+            >
+              <div className="token-ad px-2">{receiveAddress}</div>
+              <div className="token-icon">
+                <MdOutlineContentPaste size={18} color={"grey"} />
+              </div>
             </div>
             <div
               className="text-center py-2"
@@ -211,7 +398,7 @@ const BuyTab = () => {
                 fontSize: "16px",
               }}
             >
-              Ensure the network is an ERC20 supported network
+              Ensure the network is an {tradeNetwork} supported network
               <span
                 style={{
                   color: "gray",
@@ -231,36 +418,47 @@ const BuyTab = () => {
             </div>
             <div className="ods rounded-1 p-2 my-3 d-flex align-items-center justify-content-between">
               <div className="ods-t">Token</div>
-              <div className="ods-v">Bitcoin</div>
+              <div className="ods-v">{tokenName}</div>
             </div>
             <div className="ods rounded-1 p-2 my-3 d-flex align-items-center justify-content-between">
               <div className="ods-t">Quantity</div>
-              <div className="ods-v">230</div>
+              <div className="ods-v">{tokenQty}</div>
             </div>
             <div className="ods rounded-1 p-2 my-3 d-flex align-items-center justify-content-between">
-              <div className="ods-t">Amount you will send</div>
-              <div className="ods-v">₦50,345.00</div>
-            </div>
-            <div className="ods rounded-1 p-2 my-3 d-flex align-items-center justify-content-between">
-              <div className="ods-t">Bank details</div>
-              <div className="ods-v text-end">
-                <div className="ods-acc text-end">Access bank</div>
-                <div className="ods-acc text-end">005893723</div>
-                <div className="ods-acc text-end">James Mark</div>
+              <div className="ods-t">Amount you will receive</div>
+              <div className="ods-v">
+                ₦
+                {(tokenPrice * tradeRate * tokenQty).toLocaleString("en-us", {
+                  currency: "USD",
+                })}
               </div>
             </div>
-
             <div className="ods rounded-1 p-2 my-3 d-flex align-items-center justify-content-between">
               <div className="ods-t">Trade Rate</div>
-              <div className="ods-v">₦540</div>
+              <div className="ods-v">₦{tradeRate}</div>
             </div>
             <div className="ods rounded-1 p-2 my-3 d-flex align-items-center justify-content-between">
               <div className="ods-t">Network</div>
-              <div className="ods-v">ERC20</div>
+              <div className="ods-v">{tradeNetwork}</div>
+            </div>
+            <div className="ods rounded-1 p-2 my-3 d-flex align-items-center justify-content-between">
+              <div className="ods-t">Bank</div>
+              <div className="ods-v">
+                <div>{bank.name}</div>
+                <div className="text-end">{bank.number}</div>
+                <div className="text-end">{bank.bank}</div>
+              </div>
             </div>
             <div className="ods rounded-1 p-2 my-3 d-flex align-items-center justify-content-between">
               <div className="ods-t">Receiving address</div>
-              <div className="ods-v">428wcn3...8947523923</div>
+              <div className="ods-v">
+                {receiveAddress.substring(0, 10) +
+                  "...." +
+                  receiveAddress.substring(
+                    tradeNetwork.length - 10,
+                    tradeNetwork.length
+                  )}
+              </div>
             </div>
           </div>
         </div>
@@ -297,13 +495,15 @@ const BuyTab = () => {
           />
         </div>
         {step === 4 && (
-          <div className={"step-btn active"}>
+          <div className={"step-btn active"} onClick={() => handleOrder()}>
             <Button
               text={"Completed"}
               bg={color.baseColor}
               textColor={color.white}
               fontSize={"15px"}
               height={"39px"}
+              loaderColor={color.white}
+              status={loading}
             />
           </div>
         )}
@@ -313,3 +513,12 @@ const BuyTab = () => {
 };
 
 export default BuyTab;
+
+{
+  /* <Option value={"btc"}>Bitcoin</Option>
+                <Option value={"eth"}>Ethereum</Option>
+                <Option value={"tron"}>Tron</Option>
+                <Option value={"usdt"}>Usdt</Option>
+                <Option value={"airtime"}>Airtime</Option>
+                <Option value={"perfectmoney"}>Perfect Money</Option> */
+}

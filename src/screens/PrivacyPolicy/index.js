@@ -1,4 +1,5 @@
 import Layout from "../../components/Layout";
+import { color } from "../../constants/color";
 import "./style.css";
 
 const PrivacyPolicy = () => {
@@ -10,7 +11,12 @@ const PrivacyPolicy = () => {
           margin: "80px auto 100px auto",
         }}
       >
-        <div className="privacy-title text-center my-1 py-2 abs">
+        <div
+          className="privacy-title text-center my-1 py-2 abs"
+          style={{
+            color: color.darkColor,
+          }}
+        >
           Privacy Policy
         </div>
         <div className="privacy-content">

@@ -7,8 +7,45 @@ import { BsTelephoneFill } from "react-icons/bs";
 import { IoHome } from "react-icons/io5";
 import { GiWorld } from "react-icons/gi";
 import { MdLocationSearching } from "react-icons/md";
+import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import axios from "../../../utlis/axios";
+import { getToken } from "../../../utlis/token";
 
 const Profile = () => {
+  const [loading, setLoading] = useState(true);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [accountDetails, setAccountDetails] = useState("");
+  // {
+  //   "data": {
+  //     "email": "samplet351@gmail.com",
+  //     "phone": "07038143702",
+  //     "userId": "6266f6972e77bf3e885ffbc4",
+  //     "shortId": "2cidJDHyrz",
+  //     "name": "Sample",
+  //     "accountDetails": {}
+  //   },
+  //   "status": 200,
+  //   "message": "Success"
+  // }
+  useEffect(() => {
+    (async () => {
+      try {
+        let userId = await getToken("usdplug_userId");
+        let res = await axios.get(`/profile?user=${userId}`);
+        console.log(res.data);
+        if (res.data.status === 200) {
+          setEmail((prev) => res.data.data.email);
+          setName((prev) => res.data.data.name);
+          setPhone((prev) => res.data.data.phone);
+        }
+      } catch (err) {
+        toast.error(err.message);
+      }
+    })();
+  }, []);
   return (
     <DashboardLayout>
       <div className="container-fluid bg-white pc py-3">
@@ -22,10 +59,12 @@ const Profile = () => {
               }}
             >
               <div className="p-icon d-flex align-items-center justify-content-center">
-                <div className="p-name">JZ</div>
+                <div className="p-name">
+                  {/* {name[0].toUpperCase() + name[1].toUpperCase()} */}
+                </div>
               </div>
               <div className="p-greetings">Hello !!! 👋</div>
-              <div className="p-fname">Zannu Julius</div>
+              <div className="p-fname">{name}</div>
             </div>
             {/* Full name */}
             <div className="p-cover  p-2 my-3">
@@ -34,7 +73,7 @@ const Profile = () => {
                 <div className="p-v__icon">
                   <ImUser size={18} color={color.darkColor} />
                 </div>
-                <div className="p-value">Zannu Julius</div>
+                <div className="p-value">{name}</div>
               </div>
             </div>
             {/* Email  */}
@@ -44,7 +83,7 @@ const Profile = () => {
                 <div className="p-v__icon">
                   <MdEmail size={18} color={color.darkColor} />
                 </div>
-                <div className="p-value">zannujulius14@gmail.com</div>
+                <div className="p-value">{email}</div>
               </div>
             </div>
             {/* Phone number  */}
@@ -54,22 +93,23 @@ const Profile = () => {
                 <div className="p-v__icon">
                   <BsTelephoneFill size={18} color={color.darkColor} />
                 </div>
-                <div className="p-value">0810281218</div>
+                <div className="p-value">{phone}</div>
               </div>
             </div>
-            <div className="p-cover  p-2 my-3">
+            <div className="p-cover  p-2 my-3 d-none">
               <div className="p-title">Address</div>
               <div className="p-value__c d-flex pt-2 align-items-center">
                 <div className="p-v__icon">
                   <IoHome size={18} color={color.darkColor} />
                 </div>
-                <textarea className="p-value address p-2">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Nesciunt, assumenda?
-                </textarea>
+                <textarea
+                  className="p-value address p-2"
+                  value={`Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Nesciunt, assumenda?`}
+                ></textarea>
               </div>
             </div>
-            <div className="container-fluid p-0 m-0">
+            <div className="container-fluid p-0 m-0 d-none">
               <div className="row">
                 <div className="col-sm-12 col-md-12 col-lg-5 col-xl-5">
                   <div className="p-cover p-2 my-3">

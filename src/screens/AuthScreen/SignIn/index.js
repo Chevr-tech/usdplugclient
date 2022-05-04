@@ -4,6 +4,9 @@ import Navbar from "../../../components/Navbar";
 import { color } from "../../../constants/color";
 import { useState } from "react";
 import { Button } from "../../../components/Button";
+import axios from "../../../utlis/axios";
+import { toast } from "react-toastify";
+import { setToken } from "../../../utlis/token";
 
 const SignIn = () => {
   const [name, setName] = useState("");
@@ -12,6 +15,43 @@ const SignIn = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const handleLogin = async () => {
+    try {
+      setLoading((prev) => true);
+      if (!email || !password) {
+        setError("Both values are required");
+        setLoading((prev) => false);
+        return;
+      }
+      let res = await axios.post("/login", {
+        login: email,
+        password: password,
+      });
+      toast.success("Logged successfully");
+      await setToken("usdplug_token", res.data.data.auth_token);
+      await setToken("usdplug_clientId", res.data.data.userId);
+      return (window.location.pathname = "/dashboard");
+    } catch (err) {
+      if (err.response.status === 300) {
+        toast.warn("You haven't verified your email address", {
+          toastId: "3847375",
+        });
+        await setToken("usdplug_token", err.response.data.data.auth_token);
+        window.location.pathname = "/dashboard";
+        setLoading((prev) => false);
+        return;
+      } else if (err.response.status === 401) {
+        toast.error("Invalid credentials. Please try again", {
+          toastId: "25234rfdc",
+        });
+        setLoading((prev) => false);
+        return;
+      }
+      toast.error(err.response.data.message);
+      return;
+    }
+  };
   return (
     <div className="auth-form__cover">
       <div className="form-signup  pt-3 px-3 pb-3">
@@ -31,14 +71,14 @@ const SignIn = () => {
         )}
 
         <div className="form-group mt-2">
-          <label htmlFor="email" class="form-label">
+          <label htmlFor="email" className="form-label">
             Email address
           </label>
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            class="form-input"
+            className="form-input"
             placeholder="email address"
             id="email"
           />
@@ -46,14 +86,14 @@ const SignIn = () => {
         <div className="form-group mt-2">
           <label
             htmlFor="password"
-            class="form-label d-flex align-items-center justify-content-between "
+            className="form-label d-flex align-items-center justify-content-between "
           >
             <div className="top-helper">Password</div>
             <Link
               to={"/forgotpassword"}
               className="top-helper"
               style={{
-                fontSize: "14px",
+                fontSize: "13px",
                 textTransform: "uppercase",
               }}
             >
@@ -64,12 +104,12 @@ const SignIn = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             type="password"
-            class="form-input"
+            className="form-input"
             placeholder="password"
             id="email"
           />
         </div>
-        <div className="form-btn mt-3">
+        <div className="form-btn mt-3" onClick={() => handleLogin()}>
           <Button
             text={"Sign in"}
             bg={color.baseColor}

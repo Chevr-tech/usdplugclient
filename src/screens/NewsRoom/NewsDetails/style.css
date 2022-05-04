@@ -51,7 +51,7 @@
   width: 100%;
   height: auto;
   display: flex;
-  align-items: center;
+  align-items: start;
 }
 
 .related-title {
@@ -59,7 +59,7 @@
 }
 
 .raleted-image__cover {
-  width: 180px;
+  width: 130px;
   height: 70px;
 }
 

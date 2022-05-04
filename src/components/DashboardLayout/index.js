@@ -8,7 +8,7 @@ const DashboardLayout = ({ children }) => {
       <SideNav />
       <div className="right-container container-fluid p-0">
         <TopNav />
-        <div className="container page-content">{children}</div>
+        <div className="container-fluid px-2 page-content">{children}</div>
       </div>
     </div>
   );
