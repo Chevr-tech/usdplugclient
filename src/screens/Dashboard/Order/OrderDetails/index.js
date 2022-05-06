@@ -11,17 +11,45 @@ import { useState, useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import copy from "copy-to-clipboard";
 import { bankInfo } from "../../Settings/data";
+import marketUrl from "../../../../utlis/market";
+
 const OrderDetails = () => {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(true);
-  const { id } = useParams();
+  const { id, token, type } = useParams();
   const [orderType, setOrderType] = useState(null);
   const [bank, setBank] = useState({});
   const [buyData, setBuyData] = useState({});
+  const [tokenPrice, setTokenPrice] = useState("");
+  const [tokenRate, setTokenRate] = useState("");
+  const [tokenRateRange, setTokenRateRange] = useState({});
+  const [receivingBank, setReceivingBank] = useState("");
+
+  const funcBankName = (code) => {
+    return bankInfo.find((item) => String(item.code) === String(code)).title;
+  };
+
   toast.configure();
   useEffect(() => {
     (async () => {
       try {
+      } catch (err) {
+        toast.error(err.message);
+        console.log(err);
+      }
+    })();
+  }, []);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        let resMarket = await marketUrl.get(
+          `/v3/simple/price?ids=${token}&vs_currencies=usd`
+        );
+        let resType = await axios.get("/site-data/price");
+        setTokenRateRange((prev) =>
+          Object.entries(resType.data.data[type]).map((item, i) => item[1])
+        );
         let res = await axios(`/order/user/${id}`);
         setData((prev) => res.data.data);
 
@@ -32,6 +60,17 @@ const OrderDetails = () => {
             ? res.data.data.quickBank
             : res.data.data.user.bank
         );
+        setReceivingBank(
+          (prev) =>
+            bankInfo.find(
+              (item) => item.code === res.data.data.user.bank.bankCode
+            ).title
+        );
+        let n = res.data.data.quantity * resMarket.data[token].usd;
+        let result = Object.entries(resType.data.data[type])
+          .map((item, i) => item[1])
+          .find((x) => x.min <= n && x.max >= n).price;
+        setTokenRate((prev) => result);
       } catch (err) {
         toast.error(err.response.data.message);
       }
@@ -78,7 +117,9 @@ const OrderDetails = () => {
                             ? "#acffac"
                             : data.status === "rejected"
                             ? "#ffb4a7"
-                            : null
+                            : data.status === "processing"
+                            ? "dodgerblue"
+                            : "black"
                         }
                       />
                       <div
@@ -90,6 +131,8 @@ const OrderDetails = () => {
                               ? "#acffac"
                               : data.status === "rejected"
                               ? "#ffb4a7"
+                              : data.status === "processing"
+                              ? "dodgerblue"
                               : null,
                         }}
                       >
@@ -97,27 +140,34 @@ const OrderDetails = () => {
                           data.status.substring(1)}
                       </div>
                     </div>
-
                     <div className="od-t date text-center py-2 my-2">
                       {moment(data.date).format("LLL")}
                     </div>
-
                     {/* Rate */}
                     <div className="od-en pt-2">
                       <div className="od-tt">Rate: </div>
-                      <div className="od-v pb-3">₦500</div>
+                      <div className="od-v pb-3">{tokenRate}</div>
                     </div>
                     {/* Quantity */}
                     <div className="od-en pt-2">
                       <div className="od-tt">Quantity: </div>
                       <div className="od-v pb-3">{data.quantity}</div>
+                    </div>{" "}
+                    {/* Quantity */}
+                    <div className="od-en pt-2">
+                      <div className="od-tt">Amoout received: </div>
+                      <div className="od-v pb-3">
+                        ₦
+                        {(data.quantity * tokenRate).toLocaleString("en-us", {
+                          currency: "USD",
+                        })}
+                      </div>
                     </div>
                     {/* token */}
                     <div className="od-en pt-2">
                       <div className="od-tt">Token: </div>
                       <div className="od-v pb-3">{data.token}</div>
                     </div>
-
                     <div className="od-t date text-center py-2 mt-3 text-center">
                       Receiving wallet address
                     </div>
@@ -139,7 +189,7 @@ const OrderDetails = () => {
                     </div>
                     <div className="od-en pt-2">
                       <div className="od-tt">Bank name: </div>
-                      <div className="od-v pb-3">{bank.bankCode}</div>
+                      <div className="od-v pb-3">{receivingBank}</div>
                     </div>
                   </div>
                   <div className="od-i mt-5">

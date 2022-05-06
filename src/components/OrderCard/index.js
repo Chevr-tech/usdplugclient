@@ -6,12 +6,31 @@ import moment from "moment";
 import { Button } from "../Button";
 
 const OrderCard = ({ data }) => {
+  const tokenName = (name) => {
+    switch (name) {
+      case "btc":
+        return "bitcoin";
+      case "bnb":
+        return "binancecoin";
+      case "eth":
+        return "ethereum";
+      case "usdt":
+        return "tether";
+      case "tron":
+        return "tron";
+      default:
+        break;
+    }
+  };
   return (
     <div className="container-fluid ">
       <div className="row">
         {data.map((item, i) => (
           <Link
-            to={`/order/${item.id}`}
+            // :id/:token/:type
+            to={`/orders/${item.id}/${tokenName(item?.token.toLowerCase())}/${
+              item.type
+            }`}
             className="col-12 bg-white my-1 py-3 px-2 "
             key={i}
           >

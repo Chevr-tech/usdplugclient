@@ -6,6 +6,7 @@ import "./style.css";
 import { toast } from "react-toastify";
 import axios from "../../../utlis/axios";
 import { getToken } from "../../../utlis/token";
+import { useEffect } from "react";
 
 const EmailVerfication = () => {
   const [num1, setNum1] = useState("");
@@ -19,6 +20,32 @@ const EmailVerfication = () => {
     resend: false,
     confirm: false,
   });
+
+  useEffect(() => {
+    (async () => {
+      try {
+        let userId = await getToken("usdplug_userId");
+        let res = await axios.get(`/confirmation?userId=${userId}&type=email`);
+        toast.success(res.data.message, {
+          toastId: "48982eficn",
+        });
+        // console.log(res.data);
+        // return (window.location.pathname = "/dashboard");
+      } catch (err) {
+        console.log(err.message);
+        if (err.response) {
+          toast.error(err.response.data.message);
+          return;
+        }
+        if (err.message.toLowerCase() === "network error") {
+          toast.error(err.message, {
+            toastId: "efwevidv898",
+          });
+          return;
+        }
+      }
+    })();
+  }, []);
   const handleFp = async () => {
     try {
     } catch (err) {
@@ -37,20 +64,14 @@ const EmailVerfication = () => {
         return;
       }
       let value = [num1, num2, num3, num4, num5, num6];
-      let otp = parseInt(value.join(""));
+      let otp = String(parseInt(value.join("")));
       let res = await axios.post("/confirmation", {
         type: "email",
         userId: userId,
         code: otp,
       });
-      if (res.data.status === 200) {
-        setLoading({ confirm: false });
-        toast.success(res.data.message);
-        window.location.pathname = "/dashboard";
-        return;
-      }
       setLoading({ confirm: false });
-      console.log(otp);
+      return (window.location.pathname = "/dashboard");
     } catch (err) {
       if (err.response.data.status === 400) {
         setLoading({ confirm: false });
@@ -58,7 +79,15 @@ const EmailVerfication = () => {
           toastId: "32899diwi",
         });
         return;
-      } else {
+      }
+      if (err.response.data.status === 300) {
+        setLoading({ confirm: false });
+        toast.error(err.response.data.message, {
+          toastId: "32899diwi",
+        });
+        return (window.location.pathname = "/emailverification");
+      }
+      if (err.message) {
         toast.error(err.message, {
           toastId: "32898efin",
         });
@@ -72,19 +101,16 @@ const EmailVerfication = () => {
       setLoading({ resend: true });
       let userId = await getToken("usdplug_userId");
       let email = await getToken("usdplug_email");
-      let res = await axios.get(`/confirmation?userId=${userId}&type=${email}`);
+      let res = await axios.get(`/confirmation?userId=${userId}&type="email"`);
 
-      if (res.data.status !== 200) {
-        toast.error("An error occured", {
-          toastId: "3293825",
-        });
-        setLoading({ resend: false });
-        return;
-      }
       toast.success("A new code has been sent to your email address.");
       setLoading({ resend: false });
     } catch (err) {
-      toast.error(err.message);
+      if (err.message === "Network Error") {
+        toast.error(err.message);
+        return;
+      }
+      toast.error(err.response.data.message);
       setLoading({ resend: false });
       return;
     }

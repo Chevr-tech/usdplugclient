@@ -28,7 +28,7 @@ export const routes = [
     exact: true,
   },
   {
-    path: "/order/:id",
+    path: "/orders/:id/:token/:type",
     component: OrderDetails,
     exact: true,
   },

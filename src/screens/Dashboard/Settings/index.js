@@ -35,7 +35,7 @@ const Settings = () => {
   });
   const [oldPassword, setOldPassword] = useState("");
   const [bankLoading, setBankLoading] = useState(false);
-  const [refresh, setrefresh] = useState({
+  const [refresh, setRefresh] = useState({
     status: false,
     bank: false,
   });
@@ -84,7 +84,6 @@ const Settings = () => {
   const handleBank = async () => {
     try {
       setLoading({ verifyBank: true });
-
       if (accountNumber.length < 10) {
         toast.warn("Your account number must be 10 digits");
         setLoading({ verifyBank: false });
@@ -97,6 +96,7 @@ const Settings = () => {
       setLoading({ verifyBank: false });
       setAccountName((prev) => res.data.data);
       setBankModal((prev) => true);
+      setRefresh((prev) => !prev);
     } catch (err) {
       toast.error(err.response.data.message);
       setLoading({ verifyBank: false });

@@ -18,18 +18,7 @@ const Profile = () => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [accountDetails, setAccountDetails] = useState("");
-  // {
-  //   "data": {
-  //     "email": "samplet351@gmail.com",
-  //     "phone": "07038143702",
-  //     "userId": "6266f6972e77bf3e885ffbc4",
-  //     "shortId": "2cidJDHyrz",
-  //     "name": "Sample",
-  //     "accountDetails": {}
-  //   },
-  //   "status": 200,
-  //   "message": "Success"
-  // }
+
   useEffect(() => {
     (async () => {
       try {

@@ -12,6 +12,7 @@ const Orders = () => {
   const [hide, setHide] = useState(false);
   const [page, setPage] = useState(0);
   const [type, setType] = useState("");
+  const [refresh, setRefresh] = useState(false);
   const [data, setData] = useState([]);
   toast.configure();
   useEffect(() => {
@@ -31,7 +32,7 @@ const Orders = () => {
         toast.error(err.response.data.message);
       }
     })();
-  }, []);
+  }, [refresh]);
 
   return (
     <DashboardLayout>
@@ -50,7 +51,10 @@ const Orders = () => {
             <div className="trade-history py-1 pr-3">Order History.</div>
           </div>
           <div className="right-btn__cover">
-            <div className="refresh-btn">
+            <div
+              className="refresh-btn"
+              onClick={() => setRefresh((prev) => !prev)}
+            >
               <Button
                 text={"Refresh"}
                 color={color.baseColor}

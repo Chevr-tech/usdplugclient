@@ -64,7 +64,7 @@ const SideNav = () => {
             <div className="sidenav-link__title">Order</div>
           </Link>{" "}
           {/* Trade */}
-          {/* <Link
+          <Link
             to={`/trade`}
             className={
               activeTab === 2
@@ -80,7 +80,7 @@ const SideNav = () => {
               />
             </div>
             <div className="sidenav-link__title">Trade</div>
-          </Link> */}
+          </Link>
           {/* Settings */}
           <Link
             to={`/settings`}

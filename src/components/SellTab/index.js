@@ -31,6 +31,7 @@ const SellTab = () => {
   const [tronPrice, setTronPrice] = useState("");
   const [bitcoinPrice, setBitcoin] = useState("");
   const [assestType, setAssetType] = useState("");
+  const [tradeType, setTradeType] = useState("");
 
   const [tokenId, setTokenId] = useState(null);
   const { Option } = Select;
@@ -51,7 +52,6 @@ const SellTab = () => {
         setTronPrice((prev) => tron.usd);
       } catch (err) {
         toast.error(err.message);
-        console.log(err);
       }
     })();
   }, []);
@@ -128,6 +128,14 @@ const SellTab = () => {
       setTokenPrice((prev) => tronPrice);
       setTokenId((prev) => name.id);
       setAssetType((prev) => "crypto");
+    } else if (e === "airtime") {
+      let name = assetList.find((item) => item.token === e);
+      setTokenName((prev) => name.token.toUpperCase());
+      setReceiveAddress((prev) => name.address);
+      setTradeNetwork((prev) => name.network.toUpperCase());
+      setTokenId((prev) => name.id);
+      setAssetType((prev) => "asset");
+      setTradeType((prev) => e);
     }
   };
 
@@ -141,7 +149,6 @@ const SellTab = () => {
         quickWallet: tokenId,
         asset: assestType, // reminder to add when sending token
       });
-      console.log(res.data);
       toast.success("Order created successfully");
       window.location.pathname = "orders";
       setLoading((prev) => false);
@@ -256,7 +263,9 @@ const SellTab = () => {
                 }}
               />
             </div>
-            <div className="text-center">Token quantity</div>
+            <div className="text-center">
+              {tradeType !== "airtime" ? "Token" : "Airtime"} quantity
+            </div>
             <div className="step-option d-flex align-items-center my-3">
               <div
                 className=" d-flex align-items-center justify-content-center"
@@ -297,43 +306,45 @@ const SellTab = () => {
                 placeholder={"quantity of token"}
               />
             </div>
-            <div className="step-option d-flex align-items-center my-3 ">
-              <div
-                className=" d-flex align-items-center justify-content-center"
-                style={{
-                  width: "220px",
-                  height: "100%",
-                  background: "#f5f5f5",
-                  boxShadow: "inset 0 2px 10px #eeeeeede",
-                }}
-              >
+            {tradeType !== "airtime" && (
+              <div className="step-option d-flex align-items-center my-3 ">
                 <div
-                  className="text-center"
+                  className=" d-flex align-items-center justify-content-center"
                   style={{
-                    // width: "220px",
-                    fontSize: "14px",
+                    width: "220px",
+                    height: "100%",
+                    background: "#f5f5f5",
+                    boxShadow: "inset 0 2px 10px #eeeeeede",
                   }}
                 >
-                  Naira amount
+                  <div
+                    className="text-center"
+                    style={{
+                      // width: "220px",
+                      fontSize: "14px",
+                    }}
+                  >
+                    Naira amount
+                  </div>
                 </div>
+                <input
+                  className="px-3"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                  }}
+                  disabled={true}
+                  value={`₦${(tokenPrice * tradeRate * tokenQty).toLocaleString(
+                    "en-US",
+                    {
+                      currency: "USD",
+                    }
+                  )}`}
+                  type={"text"}
+                  placeholder={"quantity of token"}
+                />
               </div>
-              <input
-                className="px-3"
-                style={{
-                  width: "100%",
-                  height: "100%",
-                }}
-                disabled={true}
-                value={`₦${(tokenPrice * tradeRate * tokenQty).toLocaleString(
-                  "en-US",
-                  {
-                    currency: "USD",
-                  }
-                )}`}
-                type={"text"}
-                placeholder={"quantity of token"}
-              />
-            </div>
+            )}
             <div className="text-center step-helper d-none">Select Rate</div>
             <div className="step-rate d-none">
               <div className="d-flex align-items-center justify-content-between">
@@ -466,12 +477,14 @@ const SellTab = () => {
             <div className="ods rounded-1 p-2 my-3 d-flex align-items-center justify-content-between">
               <div className="ods-t">Receiving address</div>
               <div className="ods-v">
-                {receiveAddress.substring(0, 10) +
-                  "...." +
-                  receiveAddress.substring(
-                    tradeNetwork.length - 10,
-                    tradeNetwork.length
-                  )}
+                {tradeType === "airtime"
+                  ? receiveAddress
+                  : receiveAddress.substring(0, 10) +
+                    "...." +
+                    receiveAddress.substring(
+                      tradeNetwork.length - 10,
+                      tradeNetwork.length
+                    )}
               </div>
             </div>
           </div>

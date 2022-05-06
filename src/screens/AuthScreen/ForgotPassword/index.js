@@ -4,6 +4,9 @@ import { Button } from "../../../components/Button";
 import { color } from "../../../constants/color";
 import "./style.css";
 import axios from "../../../utlis/axios";
+import { toast } from "react-toastify";
+import { getToken } from "../../../utlis/token";
+import { useEffect } from "react";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -11,14 +14,44 @@ const ForgotPassword = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    (async () => {
+      try {
+        let userEmail = await getToken("usdplug_email");
+        if (!userEmail) {
+          return setEmail((prev) => "");
+        }
+        setEmail((prev) => userEmail);
+        return;
+      } catch (err) {
+        console.log(err);
+      }
+    })();
+  }, []);
   const handleFp = async () => {
     try {
+      setLoading((prev) => true);
+      if (!email) {
+        toast.error("Please enter a value");
+        setLoading((prev) => false);
+        return;
+      }
       let res = await axios.post("/forgot-password", {
-        type: "phone",
-        account: phone,
+        type: "email",
+        account: email,
+      });
+      setLoading((prev) => false);
+      toast.success(res.data.message, {
+        toastId: "293492",
       });
     } catch (err) {
-      console.log(err);
+      if (err.response) {
+        toast.error(err.response.data.message);
+        setLoading((prev) => false);
+        return;
+      }
+      toast.error(err.message);
+      setLoading((prev) => false);
     }
   };
   return (
@@ -52,11 +85,11 @@ const ForgotPassword = () => {
             Email address
           </label>
           <input
-            type="number"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             className="form-input"
-            placeholder="phone number"
+            placeholder="enter email "
             id="email"
             style={{
               height: "45px",
@@ -92,36 +125,3 @@ const ForgotPassword = () => {
 };
 
 export default ForgotPassword;
-{
-  /* <div className="cover">
-<div className="form p-3">
-  <div className="auth-brand text-center"> Password Recovery</div>
-  <div className="auth-caption text-center">
-    
-  </div>
-
-  <div className="form-group">
-    <label for="email" class="form-label">
-      Email address
-    </label>
-    <input
-      type="email"
-      class="form-input"
-      placeholder="email address"
-      id="email"
-    />
-  </div>
-
-  <div className="form-btn__cover">
-    <div>Continue</div>
-  </div>
-  <div className="form-hint">
-    Already have an account ?{" "}
-    <Link to="/" className="auth-link">
-      {" "}
-      Sign in
-    </Link>
-  </div>
-</div>
-</div> */
-}

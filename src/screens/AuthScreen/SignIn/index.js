@@ -30,17 +30,18 @@ const SignIn = () => {
       });
       toast.success("Logged successfully");
       await setToken("usdplug_token", res.data.data.auth_token);
-      await setToken("usdplug_clientId", res.data.data.userId);
+      // console.log(res.data.data);
       return (window.location.pathname = "/dashboard");
     } catch (err) {
+      console.log(err.response.data.data);
       if (err.response.status === 300) {
         toast.warn("You haven't verified your email address", {
           toastId: "3847375",
         });
         await setToken("usdplug_token", err.response.data.data.auth_token);
-        window.location.pathname = "/dashboard";
+        await setToken("usdplug_userId", err.response.data.data.userId);
         setLoading((prev) => false);
-        return;
+        return (window.location.pathname = "/emailverification");
       } else if (err.response.status === 401) {
         toast.error("Invalid credentials. Please try again", {
           toastId: "25234rfdc",

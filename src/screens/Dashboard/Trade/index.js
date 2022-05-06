@@ -11,7 +11,18 @@ import BuyTab from "../../../components/BuyTab";
 import { useSearchParams } from "react-router-dom";
 const Trade = () => {
   const { Option } = Select;
-  const [tabIndex, setTabIndex] = useState("sell");
+  const urlParams = new URLSearchParams(window.location.search);
+  const myParam = urlParams.get("type");
+  const [tabIndex, setTabIndex] = useState(
+    myParam === "buy"
+      ? "buy"
+      : myParam === "sell"
+      ? "sell"
+      : myParam === ""
+      ? "sell"
+      : "sell"
+  );
+
   return (
     <DashboardLayout>
       <div

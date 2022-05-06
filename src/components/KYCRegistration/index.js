@@ -58,8 +58,14 @@ const KYCRegistration = ({ closeBtn }) => {
       closeBtn((pev) => false);
       return;
     } catch (err) {
+      if (err.reponse) {
+        toast.error(err.response.data.message);
+        setLoading((prev) => false);
+        return;
+      }
+      console.log(err.status);
       setLoading((prev) => false);
-      toast.error(err.response.data.message);
+      toast.error(err.message);
     }
   };
   return (

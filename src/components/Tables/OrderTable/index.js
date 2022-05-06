@@ -20,40 +20,34 @@ import { RiArrowUpDownLine, RiArrowUpLine } from "react-icons/ri";
 import { CgArrowDown } from "react-icons/cg";
 
 const OrderTable = ({ data }) => {
-  console.log(data, "");
   // const ordernum = data.meta.orderNum
-  const sample = [
-    {
-      asset: "crypto",
-      date: "2022-05-01T22:06:34.421Z",
-      id: "626f046a9082fa9bc51043cb",
-      metadata: {
-        orderNum: "570526",
-        quantity: 0.04,
-      },
-      quickWallet: {
-        address: "0xscldlci3irui347e7fnwdnkcwui34",
-        id: "626c5d257604f326c7e41ca7",
-        network: "btc",
-      },
-      user: {
-        wallet: "0xscldlci3irui347e7fnwdnkcwui34",
-        id: "6266f6972e77bf3e885ffbc4",
-        bank: {
-          bank: "Access Bank",
-          bankCode: "044",
-          number: "0059381944",
-        },
-      },
-      status: "pending",
-      token: "BTC",
-      type: "sell",
-    },
-  ];
+
+  const tokenName = (name) => {
+    switch (name) {
+      case "btc":
+        return "bitcoin";
+      case "bnb":
+        return "binancecoin";
+      case "eth":
+        return "ethereum";
+      case "usdt":
+        return "tether";
+      case "tron":
+        return "tron";
+      default:
+        break;
+    }
+  };
+
   const details = (item) => {
     return (
       <div className="details-cover">
-        <Link to={`/order/${item?.id}`} className="details-link">
+        <Link
+          to={`/orders/${item?.id}/${tokenName(item.token.toLowerCase())}/${
+            item.type
+          }`}
+          className="details-link"
+        >
           <div className="details-text"> details</div>
           <BiRightArrowAlt size={14} color={"dodgerblue"} />
         </Link>
@@ -74,7 +68,9 @@ const OrderTable = ({ data }) => {
                 ? "green"
                 : item.status === "rejected"
                 ? "tomato"
-                : null,
+                : item.status === "processing"
+                ? "dodgerblue"
+                : "black",
             fontSize: "12px",
             backgroundColor:
               item.status === "pending"
@@ -83,7 +79,9 @@ const OrderTable = ({ data }) => {
                 ? "#acffac"
                 : item.status === "rejected"
                 ? "#ffb4a7"
-                : null,
+                : item.status === "processing"
+                ? "#c1e0ff"
+                : "black",
           }}
         >
           {item.status[0].toUpperCase() + item.status.substring(1)}

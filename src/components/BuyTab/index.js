@@ -98,7 +98,6 @@ const BuyTab = () => {
   const handleTokenPrice = async (e) => {
     if (e === "usdt") {
       let name = assetList.find((item) => item.token === e);
-      console.log(name.network);
       setTokenName((prev) => name.token.toUpperCase());
       setReceiveAddress((prev) => name.address);
       setTradeNetwork((prev) => name.network.toUpperCase());
@@ -119,9 +118,8 @@ const BuyTab = () => {
         quickBank: bankId || "",
         asset: assestType, // reminder to add when sending token
       });
-      console.log(res.data);
       toast.success("Order created successfully");
-      window.location.pathname = "orders";
+      window.location.pathname = "/orders";
       setLoading((prev) => false);
       return;
     } catch (err) {

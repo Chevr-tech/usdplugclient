@@ -37,18 +37,6 @@ const AuthScreen = () => {
         let code = await axios.get(
           `/confirmation?userId=${res.data.data.userId}&type=${email}`
         );
-
-        if (code.data.status === 200) {
-          setLoading((prev) => false);
-          toast.success(
-            `A verification code has been sent to your email address`,
-            {
-              toastId: "4727893feui",
-            }
-          );
-          window.location.pathname = "/emailverification";
-          return;
-        }
       }
     } catch (err) {
       toast.error(err.message);
