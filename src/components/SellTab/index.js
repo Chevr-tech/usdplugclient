@@ -82,7 +82,6 @@ const SellTab = () => {
       }
     })();
   }, []);
-
   const handleTokenPrice = async (e) => {
     if (e === "bnb") {
       let name = assetList.find((item) => item.token === e);
