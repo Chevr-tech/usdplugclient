@@ -35,12 +35,14 @@ const OrderDetails = () => {
         let resMarket = await marketUrl.get(
           `/v3/simple/price?ids=${token}&vs_currencies=usd`
         );
+        setTokenPrice((prev) => resMarket.data[token].usd);
         let resType = await axios.get("/site-data/price");
         setTokenRateRange((prev) =>
           Object.entries(resType.data.data[type]).map((item, i) => item[1])
         );
         let res = await axios(`/order/user/${id}`);
         setData((prev) => res.data.data);
+        console.log(res.data);
 
         setLoading((prev) => false);
         setOrderType((prev) => (res.data.data.type === "buy" ? "buy" : "sell"));
@@ -144,10 +146,14 @@ const OrderDetails = () => {
                     </div>{" "}
                     {/* Quantity */}
                     <div className="od-en pt-2">
-                      <div className="od-tt">Amoout received: </div>
+                      <div className="od-tt">Expected amount: </div>
                       <div className="od-v pb-3">
                         ₦
-                        {(data.quantity * tokenRate).toLocaleString("en-us", {
+                        {(
+                          data.quantity *
+                          tokenRate *
+                          tokenPrice
+                        ).toLocaleString("en-us", {
                           currency: "USD",
                         })}
                       </div>
@@ -158,7 +164,8 @@ const OrderDetails = () => {
                       <div className="od-v pb-3">{data.token}</div>
                     </div>
                     <div className="od-t date text-center py-2 mt-3 text-center">
-                      Receiving wallet address
+                      {orderType === "sell" ? "Admin" : "Receiving"} wallet
+                      address
                     </div>
                     <div className="od-address">
                       <div className="od-ad-cover d-flex align-items-center py-2 px-2 my-3 justify-content-center">
@@ -166,7 +173,7 @@ const OrderDetails = () => {
                       </div>
                     </div>
                     <div className="od-t date text-center py-2 mt-1 text-center">
-                      Bank Details
+                      {orderType === "sell" ? "Your" : "Admin"} bank details
                     </div>
                     <div className="od-en pt-2 d-none">
                       <div className="od-tt">Account name: </div>
@@ -257,31 +264,35 @@ const OrderDetails = () => {
                           data.status.substring(1)}
                       </div>
                     </div>
-
                     <div className="od-t date text-center py-2 my-2">
                       {moment(data.date).format("LLL")}
                     </div>
-
                     {/* Rate */}
-                    <div className="od-en pt-2 d-none">
+                    <div className="od-en pt-2">
                       <div className="od-tt">Rate: </div>
-                      <div className="od-v pb-3">{}</div>
+                      <div className="od-v pb-3">{tokenRate}</div>
                     </div>
                     {/* Quantity */}
                     <div className="od-en pt-2">
                       <div className="od-tt">Quantity: </div>
                       <div className="od-v pb-3">{data.quantity}</div>
-                    </div>
-                    {/* token */}
+                    </div>{" "}
+                    {/* Quantity */}
                     <div className="od-en pt-2">
-                      <div className="od-tt">Token: </div>
+                      <div className="od-tt">Expected amount: </div>
                       <div className="od-v pb-3">
-                        {data.token.toUpperCase()}
+                        ₦
+                        {(
+                          data.quantity *
+                          tokenRate *
+                          tokenPrice
+                        ).toLocaleString("en-us", {
+                          currency: "USD",
+                        })}
                       </div>
                     </div>
-
                     <div className="od-t date text-center py-2 mt-3 text-center">
-                      Receiving wallet address
+                      Your wallet address
                     </div>
                     <div className="od-address">
                       <div className="od-ad-cover d-flex align-items-center py-2 px-2 my-3 justify-content-center">
@@ -289,7 +300,7 @@ const OrderDetails = () => {
                       </div>
                     </div>
                     <div className="od-t date text-center py-2 mt-1 text-center">
-                      Bank Details
+                      Admin bank details
                     </div>
                     <div className="od-en pt-2">
                       <div className="od-tt">Account name: </div>

@@ -24,7 +24,6 @@ const Profile = () => {
       try {
         let userId = await getToken("usdplug_userId");
         let res = await axios.get(`/profile?user=${userId}`);
-        console.log(res.data);
         if (res.data.status === 200) {
           setEmail((prev) => res.data.data.email);
           setName((prev) => res.data.data.name);
@@ -49,7 +48,7 @@ const Profile = () => {
             >
               <div className="p-icon d-flex align-items-center justify-content-center">
                 <div className="p-name">
-                  {/* {name[0].toUpperCase() + name[1].toUpperCase()} */}
+                  {!name.length ? " " : name[0].toUpperCase()}
                 </div>
               </div>
               <div className="p-greetings">Hello !!! 👋</div>

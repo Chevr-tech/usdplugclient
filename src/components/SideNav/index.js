@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { color } from "../../constants/color";
 import { data } from "./data";
 import "./style.css";
@@ -8,10 +8,12 @@ import { FaMoneyCheckAlt, FaUserShield } from "react-icons/fa";
 import { IoSettings } from "react-icons/io5";
 import { MdLogout } from "react-icons/md";
 import { RiHandCoinFill } from "react-icons/ri";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { deleteToken } from "../../utlis/token";
-const SideNav = () => {
+
+const SideNav = (props) => {
   const [activeTab, setActiveTab] = useState(0);
+  const [activeClass, setActiveClass] = useState("");
   const handleLogout = async () => {
     try {
       console.log("clicked");
@@ -22,6 +24,27 @@ const SideNav = () => {
       console.log(err);
     }
   };
+
+  const activeSwitch = (name) => {
+    switch (name) {
+      case "orders":
+        return "active";
+      case "dashboard":
+        return "active";
+      case "trade":
+        return "active";
+      case "settings":
+        return "active";
+      case "support":
+        return "active";
+      default:
+        return "";
+    }
+  };
+
+  useEffect(() => {
+    setActiveClass((prev) => window.location.pathname.replace("/", ""));
+  }, []);
   return (
     <div className="sidenav p-3">
       {/* <div className="sidenav-title">USD</div> */}
@@ -30,12 +53,9 @@ const SideNav = () => {
           {/* dashboard */}
           <Link
             to={`/dashboard`}
-            className={
-              activeTab === 0
-                ? "sidnav-link d-block active d-flex align-items-center py-2 px-1"
-                : "sidnav-link d-block d-flex align-items-center py-2 px-1"
-            }
-            onClick={() => setActiveTab(0)}
+            className={`sidnav-link d-block ${
+              window.location.pathname == "/dashboard" ? "active" : ""
+            }  d-flex align-items-center py-2 px-1`}
           >
             <div className={"sidenav-link__icon-cover"}>
               <BsFillGrid1X2Fill
@@ -48,12 +68,9 @@ const SideNav = () => {
           {/* Orders */}
           <Link
             to={`/orders`}
-            className={
-              activeTab === 1
-                ? "sidnav-link d-block active d-flex align-items-center py-2 px-1 "
-                : "sidnav-link d-block d-flex align-items-center py-2 px-1"
-            }
-            onClick={() => setActiveTab(1)}
+            className={`sidnav-link d-block ${
+              window.location.pathname == "/orders" ? "active" : ""
+            } d-flex align-items-center py-2 px-1 `}
           >
             <div className={"sidenav-link__icon-cover"}>
               <FaMoneyCheckAlt
@@ -68,7 +85,9 @@ const SideNav = () => {
             to={`/trade`}
             className={
               activeTab === 2
-                ? "sidnav-link d-block active d-flex align-items-center py-2 px-1 "
+                ? `sidnav-link d-block ${
+                    window.location.pathname == "/trade" ? "active" : ""
+                  } d-flex align-items-center py-2 px-1 `
                 : "sidnav-link d-block d-flex align-items-center py-2 px-1"
             }
             onClick={() => setActiveTab(2)}
@@ -86,7 +105,9 @@ const SideNav = () => {
             to={`/settings`}
             className={
               activeTab === 3
-                ? "sidnav-link d-block active d-flex align-items-center py-2 px-1 "
+                ? `sidnav-link d-block ${
+                    window.location.pathname == "/settings" ? "active" : ""
+                  } d-flex align-items-center py-2 px-1 `
                 : "sidnav-link d-block d-flex align-items-center py-2 px-1"
             }
             onClick={() => setActiveTab(3)}
@@ -104,7 +125,9 @@ const SideNav = () => {
             to={`/profile`}
             className={
               activeTab === 4
-                ? "sidnav-link d-block active d-flex align-items-center py-2 px-1 "
+                ? `sidnav-link d-block ${
+                    window.location.pathname == "/profile" ? "active" : ""
+                  } d-flex align-items-center py-2 px-1 `
                 : "sidnav-link d-block d-flex align-items-center py-2 px-1"
             }
             onClick={() => setActiveTab(4)}
@@ -122,7 +145,9 @@ const SideNav = () => {
             to={`/support`}
             className={
               activeTab === 5
-                ? "sidnav-link d-block active d-flex align-items-center py-2 px-1 "
+                ? `sidnav-link d-block ${
+                    window.location.pathname == "/support" ? "active" : ""
+                  } d-flex align-items-center py-2 px-1 `
                 : "sidnav-link d-block d-flex align-items-center py-2 px-1"
             }
             onClick={() => setActiveTab(5)}

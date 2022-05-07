@@ -9,7 +9,7 @@ const GuardedRoute = () => {
     (async () => {
       try {
         let token = await getToken("usdplug_token");
-        console.log(token, "line 12");
+        // console.log(token, "line 12");
         if (!token || token === null) {
           window.location.pathname = "/signin";
           setLoading(false);

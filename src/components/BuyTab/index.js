@@ -33,6 +33,7 @@ const BuyTab = () => {
   const [assestType, setAssetType] = useState("");
   const [bank, setBank] = useState({});
   const [bankId, setBankId] = useState({});
+  const [walletAddress, setWalletAddress] = useState("");
 
   const [tokenId, setTokenId] = useState(null);
   const { Option } = Select;
@@ -95,6 +96,8 @@ const BuyTab = () => {
     })();
   }, []);
 
+  useEffect(() => {}, []);
+
   const handleTokenPrice = async (e) => {
     if (e === "usdt") {
       let name = assetList.find((item) => item.token === e);
@@ -114,17 +117,22 @@ const BuyTab = () => {
       let res = await axios.post("/order/user/buy", {
         quantity: tokenQty,
         token: tokenName.toLowerCase(),
-        walletAddress: receiveAddress,
+        walletAddress: walletAddress,
         quickBank: bankId || "",
         asset: assestType, // reminder to add when sending token
       });
       toast.success("Order created successfully");
       window.location.pathname = "/orders";
       setLoading((prev) => false);
+      console.log(res.data);
       return;
     } catch (err) {
-      toast.error(err.response.data.message);
-      setLoading((prev) => false);
+      if (err.response) {
+        toast.error(err.response.data.message);
+        setLoading((prev) => false);
+        return;
+      }
+      toast.error(err.message);
     }
   };
   return (
@@ -193,7 +201,7 @@ const BuyTab = () => {
               >
                 {assetList.map((item) => (
                   <Option key={item.id} value={item.token}>
-                    {item.token.toUpperCase()}
+                    {`${item.token.toUpperCase()} (${item.network.toUpperCase()})`}
                   </Option>
                 ))}
               </Select>
@@ -376,22 +384,23 @@ const BuyTab = () => {
               />
             </div>
             <div className="text-center">
-              Send the token the wallet address below
+              Paste your wallet address in the field below.
             </div>
-            <div
-              className="step-option d-flex align-items-center justify-content-center my-3"
-              onClick={() => {
-                toast.success("Address copied");
-                copy(receiveAddress);
-              }}
-            >
-              <div className="token-ad px-2">{receiveAddress}</div>
-              <div className="token-icon">
-                <MdOutlineContentPaste size={18} color={"grey"} />
-              </div>
+            <div className="step-option p-1 d-flex align-items-center justify-content-center my-1">
+              <input
+                type={"text"}
+                className={"user-address"}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                }}
+                value={walletAddress}
+                onChange={(e) => setWalletAddress(e.target.value)}
+              />
             </div>
+
             <div
-              className="text-center py-2"
+              className="text-center py-2 mb-2"
               style={{
                 fontSize: "16px",
               }}
@@ -423,7 +432,7 @@ const BuyTab = () => {
               <div className="ods-v">{tokenQty}</div>
             </div>
             <div className="ods rounded-1 p-2 my-3 d-flex align-items-center justify-content-between">
-              <div className="ods-t">Amount you will receive</div>
+              <div className="ods-t">Expected amount you will receive</div>
               <div className="ods-v">
                 ₦
                 {(tokenPrice * tradeRate * tokenQty).toLocaleString("en-us", {
@@ -439,8 +448,22 @@ const BuyTab = () => {
               <div className="ods-t">Network</div>
               <div className="ods-v">{tradeNetwork}</div>
             </div>
-            <div className="ods rounded-1 p-2 my-3 d-flex align-items-center justify-content-between">
-              <div className="ods-t">Bank</div>
+            <div className="ods rounded-1 p-2 my-3 d-flex align-items-start justify-content-between">
+              <div className="ods-t">
+                <div>Bank details</div>
+                <div
+                  style={{
+                    width: "200px",
+                  }}
+                >
+                  Send ₦
+                  {(tokenPrice * tradeRate * tokenQty).toLocaleString("en-us", {
+                    currency: "USD",
+                  })}{" "}
+                  to the account number on the right
+                </div>
+              </div>
+
               <div className="ods-v">
                 <div>{bank.name}</div>
                 <div className="text-end">{bank.number}</div>
@@ -450,9 +473,9 @@ const BuyTab = () => {
             <div className="ods rounded-1 p-2 my-3 d-flex align-items-center justify-content-between">
               <div className="ods-t">Receiving address</div>
               <div className="ods-v">
-                {receiveAddress.substring(0, 10) +
+                {walletAddress.substring(0, 10) +
                   "...." +
-                  receiveAddress.substring(
+                  walletAddress.substring(
                     tradeNetwork.length - 10,
                     tradeNetwork.length
                   )}

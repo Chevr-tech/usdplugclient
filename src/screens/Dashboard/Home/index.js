@@ -25,6 +25,8 @@ const Home = () => {
   const [hide, setHide] = useState(false);
   const [orders, setOrders] = useState([]);
   const [refresh, setRefresh] = useState(false);
+  const [volume, setVolume] = useState(0);
+
   useEffect(() => {
     (async () => {
       try {
@@ -35,6 +37,35 @@ const Home = () => {
       }
     })();
   }, [refresh]);
+
+  useState(() => {
+    (async () => {
+      try {
+        let res = await axios.get("/order/user");
+        // buy
+        const buy = res.data.data.orders
+          .filter((item) => item.type === "buy")
+          .map((item) => {
+            return item.quantity * (item.rate || 0) * (item.quoteRate || 0);
+          })
+          .reduce((prev, cur) => prev + cur, 0);
+
+        const sell = res.data.data.orders
+          .filter((item) => item.type === "sell")
+          .map((item) => {
+            return item.quantity * (item.rate || 0) * (item.quoteRate || 0);
+          })
+          .reduce((prev, cur) => prev + cur, 0);
+        setVolume((prev) => parseInt(sell) + parseInt(buy));
+      } catch (err) {
+        if (err.response) {
+          toast.error(err.respons.data.message);
+          return;
+        }
+        toast.error(err.message);
+      }
+    })();
+  }, []);
   return (
     <DashboardLayout>
       <div
@@ -60,7 +91,10 @@ const Home = () => {
                   <div className="dashboard-card__image-cover">
                     <img src={VolumeImg} className="dashboard-img" alt="" />
                   </div>
-                  <div className="transaction-value"> ₦2, 249.00 </div>
+                  <div className="transaction-value">
+                    {" "}
+                    ₦ {volume.toLocaleString("en-us", { curency: "USD" })}
+                  </div>
                   <div className="dashboard-card__title ">
                     Total trading volume
                   </div>

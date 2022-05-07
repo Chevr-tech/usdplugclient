@@ -64,6 +64,7 @@ const Support = () => {
                   </div>
                 </div>
               </div>
+              {/* Two */}
               <div class="accordion-item">
                 <h2 class="accordion-header" id="headingTwo">
                   <button
@@ -96,57 +97,25 @@ const Support = () => {
                   </div>
                 </div>
               </div>
-              {Array.from(Array(5)).map((item, i) => (
-                <div class="accordion-item" key={i}>
-                  <h2 class="accordion-header" id="headingThree">
-                    <button
-                      class="accordion-button collapsed"
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#collapseThree"
-                      aria-expanded="false"
-                      aria-controls="collapseThree"
-                    >
-                      My KYC has not been approved
-                    </button>
-                  </h2>
-                  <div
-                    id="collapseThree"
-                    class="accordion-collapse collapse"
-                    aria-labelledby="headingThree"
-                    data-bs-parent="#accordionExample"
-                  >
-                    <div class="accordion-body">
-                      <strong>This is the third item's accordion body.</strong>{" "}
-                      It is hidden by default, until the collapse plugin adds
-                      the appropriate classes that we use to style each element.
-                      These classes control the overall appearance, as well as
-                      the showing and hiding via CSS transitions. You can modify
-                      any of this with custom CSS or overriding our default
-                      variables. It's also worth noting that just about any HTML
-                      can go within the <code>.accordion-body</code>, though the
-                      transition does limit overflow.
-                    </div>
-                  </div>
-                </div>
-              ))}
+
+              {/* Three */}
               <div class="accordion-item">
-                <h2 class="accordion-header" id="headingTwo">
+                <h2 class="accordion-header" id="headingThree">
                   <button
                     class="accordion-button collapsed"
                     type="button"
                     data-bs-toggle="collapse"
-                    data-bs-target="#collapseTwo"
+                    data-bs-target="#collapseThree"
                     aria-expanded="false"
-                    aria-controls="collapseTwo"
+                    aria-controls="collapseThree"
                   >
                     Other issues
                   </button>
                 </h2>
                 <div
-                  id="collapseTwo"
+                  id="collapseThree"
                   class="accordion-collapse collapse"
-                  aria-labelledby="headingTwo"
+                  aria-labelledby="headingThree"
                   data-bs-parent="#accordionExample"
                 >
                   <div class="accordion-body">
@@ -155,6 +124,38 @@ const Support = () => {
                       chat bottom side of the page to chat with a support
                       assistant
                     </strong>
+                    within the <code>.accordion-body</code>, though the
+                    transition does limit overflow.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFour">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseFour"
+                    aria-expanded="false"
+                    aria-controls="collapseFour"
+                  >
+                    My KYC has been approved
+                  </button>
+                </h2>
+                <div
+                  id="collapseFour"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="headingFour"
+                  data-bs-parent="#accordionExample"
+                >
+                  <div class="accordion-body">
+                    <strong>This is the second item's accordion body.</strong>{" "}
+                    It is hidden by default, until the collapse plugin adds the
+                    appropriate classes that we use to style each element. These
+                    classes control the overall appearance, as well as the
+                    showing and hiding via CSS transitions. You can modify any
+                    of this with custom CSS or overriding our default variables.
+                    It's also worth noting that just about any HTML can go
                     within the <code>.accordion-body</code>, though the
                     transition does limit overflow.
                   </div>
