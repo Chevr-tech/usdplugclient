@@ -1,8 +1,20 @@
 import Layout from "../../components/Layout";
 import { color } from "../../constants/color";
 import "./style.css";
+import axios from "../../utlis/axios";
+import { useEffect } from "react";
 
 const Rate = () => {
+  useEffect(() => {
+    (async () => {
+      try {
+        let res = await axios.get("/site-data/price");
+        console.log(res);
+      } catch (err) {
+        console.log(err);
+      }
+    })();
+  }, []);
   return (
     <Layout>
       <div
@@ -509,7 +521,7 @@ const Rate = () => {
             >
               Whatsapp
             </span>{" "}
-            button at the bottom right for help on that
+            button at the bottom left for help on that
           </div>
         </div>
       </div>

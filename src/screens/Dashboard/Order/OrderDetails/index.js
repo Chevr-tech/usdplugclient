@@ -29,17 +29,6 @@ const OrderDetails = () => {
     return bankInfo.find((item) => String(item.code) === String(code)).title;
   };
 
-  toast.configure();
-  useEffect(() => {
-    (async () => {
-      try {
-      } catch (err) {
-        toast.error(err.message);
-        console.log(err);
-      }
-    })();
-  }, []);
-
   useEffect(() => {
     (async () => {
       try {
