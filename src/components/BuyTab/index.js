@@ -34,6 +34,9 @@ const BuyTab = () => {
   const [bank, setBank] = useState({});
   const [bankId, setBankId] = useState({});
   const [walletAddress, setWalletAddress] = useState("");
+  const [adminBank, setAdminBank] = useState([]);
+  const [volume, setVolume] = useState(0);
+  const [selectedBank, setSelectedBank] = useState(null);
 
   const [tokenId, setTokenId] = useState(null);
   const { Option } = Select;
@@ -96,7 +99,24 @@ const BuyTab = () => {
     })();
   }, []);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    (async () => {
+      try {
+        let res = await axios.get("/account?status=active");
+        // console.log(res.data);
+        setAdminBank((prev) => res.data.data);
+        let siteData = await axios.get("/site-data/quantity");
+        setVolume((prev) => siteData.data.data.fiat);
+      } catch (err) {
+        if (err.response) {
+          toast.error(err.response.data.message);
+          return;
+        }
+        toast.error(err.message);
+        return;
+      }
+    })();
+  }, []);
 
   const handleTokenPrice = async (e) => {
     if (e === "usdt") {
@@ -114,16 +134,31 @@ const BuyTab = () => {
   const handleOrder = async () => {
     try {
       setLoading((prev) => true);
+      if (!receiveAddress) {
+        toast.warn("Please enter a wallet address");
+        setLoading((prev) => false);
+        return;
+      }
+      if (!selectedBank) {
+        toast.warn("Please select a bank account");
+        setLoading((prev) => false);
+        return;
+      }
+      if (tokenQty == 0) {
+        toast.warn("Please enter quantity higher than 0");
+        setLoading((prev) => false);
+        return;
+      }
       let res = await axios.post("/order/user/buy", {
         quantity: tokenQty,
         token: tokenName.toLowerCase(),
         walletAddress: walletAddress,
-        quickBank: bankId || "",
+        quickBank: selectedBank.id || "",
         asset: assestType, // reminder to add when sending token
       });
       toast.success("Order created successfully");
-      window.location.pathname = "/orders";
       setLoading((prev) => false);
+      window.location.pathname = "/orders";
       console.log(res.data);
       return;
     } catch (err) {
@@ -281,7 +316,7 @@ const BuyTab = () => {
                 placeholder={"quantity of token"}
               />
             </div>
-            <div className="step-option d-flex align-items-center my-3 ">
+            <div className="step-option d-flex align-items-center my-1">
               <div
                 className=" d-flex align-items-center justify-content-center"
                 style={{
@@ -317,6 +352,23 @@ const BuyTab = () => {
                 type={"text"}
                 placeholder={"quantity of token"}
               />
+            </div>
+            <div
+              style={{
+                fontStyle: "italic",
+                fontSize: "12px",
+                color: color.darkColor,
+              }}
+            >
+              maximum trading volume{" "}
+              <span
+                style={{
+                  fontSize: "13px",
+                  fontStyle: "normal",
+                }}
+              >
+                ₦{parseInt(volume).toLocaleString("en-us", { currency: "USD" })}
+              </span>
             </div>
             <div className="text-center step-helper d-none">Select Rate</div>
             <div className="step-rate d-none">
@@ -386,7 +438,7 @@ const BuyTab = () => {
             <div className="text-center">
               Paste your wallet address in the field below.
             </div>
-            <div className="step-option p-1 d-flex align-items-center justify-content-center my-1">
+            <div className="step-option px-2 py-1 d-flex align-items-center justify-content-center my-1">
               <input
                 type={"text"}
                 className={"user-address"}
@@ -394,15 +446,41 @@ const BuyTab = () => {
                   width: "100%",
                   height: "100%",
                 }}
+                placeholder={"Enter your wallet address "}
                 value={walletAddress}
                 onChange={(e) => setWalletAddress(e.target.value)}
               />
             </div>
 
+            <div className="text-start mt-1">
+              Select a bank you will like to transfer to
+            </div>
+            <div className="step-option p-1 d-flex align-items-center justify-content-center my-1">
+              <Select
+                bordered={false}
+                style={{
+                  width: "100%",
+                }}
+                onChange={(e) => {
+                  setSelectedBank((prev) =>
+                    adminBank.find((item) => item.id === e)
+                  );
+                }}
+              >
+                {adminBank.map((item) => (
+                  <Option key={item.id}>
+                    {item.name}-{item.number}-{item.bank}
+                  </Option>
+                ))}
+              </Select>
+            </div>
+
             <div
-              className="text-center py-2 mb-2"
+              className="text-start pt-1 mb-2"
               style={{
-                fontSize: "16px",
+                color: "dodgerblue",
+                fontStyle: "italic",
+                fontSize: "13px",
               }}
             >
               Ensure the network is an {tradeNetwork} supported network
@@ -465,9 +543,13 @@ const BuyTab = () => {
               </div>
 
               <div className="ods-v">
-                <div>{bank.name}</div>
-                <div className="text-end">{bank.number}</div>
-                <div className="text-end">{bank.bank}</div>
+                <div>{selectedBank ? selectedBank.name : ""} </div>
+                <div className="text-end">
+                  {selectedBank ? selectedBank.number : ""}
+                </div>
+                <div className="text-end">
+                  {selectedBank ? selectedBank.bank : ""}
+                </div>
               </div>
             </div>
             <div className="ods rounded-1 p-2 my-3 d-flex align-items-center justify-content-between">

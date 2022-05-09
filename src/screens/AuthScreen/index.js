@@ -31,14 +31,33 @@ const AuthScreen = () => {
         phone: phone,
         password: password,
       });
-      if (res.status === 200) {
-        await setToken("usdplug_userId", res.data.data.userId);
-        await setToken("usdplug_email", email);
-        let code = await axios.get(
-          `/confirmation?userId=${res.data.data.userId}&type=${email}`
-        );
-      }
+      await setToken("usdplug_userId", res.data.data.userId);
+      await setToken("usdplug_token", res.data.data.auth_token);
+      await setToken("usdplug_email", email);
+      let code = await axios.get(
+        `/confirmation?userId=${res.data.data.userId}&type=${email}`
+      );
+      return (window.location.pathname = "/emailverification");
     } catch (err) {
+      if (err.response) {
+        if (err.response.data.status === 300) {
+          toast.warn(err.response.data.message, {
+            toastId: "3847375",
+          });
+          await setToken("usdplug_token", err.response.data.data.auth_token);
+          await setToken("usdplug_userId", err.response.data.data.userId);
+          await setToken("usdplug_email", email);
+          setLoading((prev) => false);
+          return (window.location.pathname = "/emailverification");
+        }
+        if (err.response.data.status === 400) {
+          toast.warn(err.response.data.message, {
+            toastId: "3847375",
+          });
+          setLoading((prev) => false);
+          return;
+        }
+      }
       toast.error(err.message);
       setLoading((prev) => false);
     }
@@ -102,7 +121,7 @@ const AuthScreen = () => {
           <input
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            type="text"
+            type="password"
             className="form-input"
             placeholder="password"
             id="email"

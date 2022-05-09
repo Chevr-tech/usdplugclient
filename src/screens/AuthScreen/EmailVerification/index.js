@@ -32,7 +32,6 @@ const EmailVerfication = () => {
         // console.log(res.data);
         // return (window.location.pathname = "/dashboard");
       } catch (err) {
-        console.log(err.message);
         if (err.response) {
           toast.error(err.response.data.message);
           return;
@@ -64,7 +63,7 @@ const EmailVerfication = () => {
         return;
       }
       let value = [num1, num2, num3, num4, num5, num6];
-      let otp = String(parseInt(value.join("")));
+      let otp = value.join("").toString();
       let res = await axios.post("/confirmation", {
         type: "email",
         userId: userId,

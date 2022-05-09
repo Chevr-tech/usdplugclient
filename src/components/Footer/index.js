@@ -59,9 +59,10 @@ const Footer = () => {
           <div className="col-sm-12 col-md-4 col-lg-3 col-xl-3">
             <div className="footer-item__title">Reach Us</div>
             <div className="footer-address">
-              Address: St. Anthony Lodge, Ifite-Awka, Awka, Anambra.
+              ADEM COMPLEX, Block H, Shop 1, S. T. I. Market,(Odun-Ade
+              Bus-Stop.) Badagry Expressway. Coker, Orile. Lagos
             </div>
-            <div className="footer-phone">+2347069667140</div>
+            <div className="footer-phone">+2347018708634</div>
           </div>
         </div>
       </div>
