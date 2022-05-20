@@ -13,11 +13,11 @@ const Navbar = () => {
       {closeMenu && <MobileNav closeBtn={setCloseMenu} />}
       <div className="container-fluid nav-container">
         <div className=" nav-item_cover ">
-          <a to="/" className="nav-brand__cover ">
+          <Link to="/" className="nav-brand__cover  ">
             <div className="nav-brand__img-cover">
               <img src={Logo} alt="" className="nav-brand__image" />
             </div>
-          </a>
+          </Link>
           {/* Nav items */}
           <div className="nav-items_Links">
             <Link to="/" className="nav-item">

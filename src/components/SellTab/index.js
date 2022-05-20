@@ -44,6 +44,7 @@ const SellTab = () => {
         let res = await marketUrl.get(
           "/v3/simple/price?ids=binancecoin,bitcoin,tether,ethereum,tron&vs_currencies=usd"
         );
+        console.log(res.data);
         const { binancecoin, bitcoin, ethereum, tether, tron } = res.data;
         setBnbPrice((prev) => binancecoin.usd);
         setBitcoin((prev) => bitcoin.usd);
@@ -83,7 +84,7 @@ const SellTab = () => {
     })();
   }, []);
   const handleTokenPrice = async (e) => {
-    if (e === "bnb") {
+    if (e.toLowerCase() === "bnb") {
       let name = assetList.find((item) => item.token === e);
       setTokenName((prev) => name.token.toUpperCase());
       setReceiveAddress((prev) => name.address);
@@ -92,7 +93,7 @@ const SellTab = () => {
       setTokenId((prev) => name.id);
       setAssetType((prev) => "crypto");
       return;
-    } else if (e === "btc") {
+    } else if (e.toLowerCase() === "btc") {
       let name = assetList.find((item) => item.token === e);
       setTokenName((prev) => name.token.toUpperCase());
       setReceiveAddress((prev) => name.address);
@@ -101,7 +102,7 @@ const SellTab = () => {
       setTokenId((prev) => name.id);
       setAssetType((prev) => "crypto");
       return;
-    } else if (e === "eth") {
+    } else if (e.toLowerCase() === "eth") {
       let name = assetList.find((item) => item.token === e);
       setTokenName((prev) => name.token.toUpperCase());
       setReceiveAddress((prev) => name.address);
@@ -110,7 +111,7 @@ const SellTab = () => {
       setTokenId((prev) => name.id);
       setAssetType((prev) => "crypto");
       return;
-    } else if (e === "usdt") {
+    } else if (e.toLowerCase() === "usdt") {
       let name = assetList.find((item) => item.token === e);
       setTokenName((prev) => name.token.toUpperCase());
       setReceiveAddress((prev) => name.address);
@@ -119,7 +120,7 @@ const SellTab = () => {
       setTokenId((prev) => name.id);
       setAssetType((prev) => "crypto");
       return;
-    } else if (e === "tron") {
+    } else if (e.toLowerCase() === "trx") {
       let name = assetList.find((item) => item.token === e);
       setTokenName((prev) => name.token.toUpperCase());
       setReceiveAddress((prev) => name.address);
@@ -223,7 +224,7 @@ const SellTab = () => {
               >
                 {assetList.map((item) => (
                   <Option key={item.id} value={item.token}>
-                    {item.token.toUpperCase()}
+                    {`${item.token.toUpperCase()}-(${item.network.toUpperCase()})`}
                   </Option>
                 ))}
               </Select>

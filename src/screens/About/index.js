@@ -18,9 +18,9 @@ const About = () => {
           }}
         >
           <div
-            className="about-title p-1 text-center"
+            className="about-title p-2 text-center"
             style={{
-              color: color.darkColor,
+              color: color.baseColor,
             }}
           >
             Who we are
@@ -41,14 +41,14 @@ const About = () => {
         <div className="row d-flex align-items-start justify-content-center mt-4">
           <div className="col-sm-12 c-con m-2 rounded-2 col-md-5 col-lg-3 col-xl-3 p-2">
             <div
-              className="about-caption p-1"
+              className="about-caption px-2 pt-3"
               style={{
-                color: color.darkColor,
+                color: color.baseColor,
               }}
             >
               OUR MISSION
             </div>
-            <div className="about-subtext p-1">
+            <div className="about-subtext p">
               Our mission is to provide unbeatable, un-equalled and unique
               e-commerce Solutions. We do not even allow you to take any risks.
               We bear all the risk and deliver our services to your doorsteps
@@ -58,15 +58,15 @@ const About = () => {
 
           <div className="col-sm-12 c-con m-2 rounded-2 col-md-5 col-lg-3 col-xl-3">
             <div
-              className="about-caption p-1"
+              className="about-caption px-2 pt-3"
               style={{
-                color: color.darkColor,
+                color: color.baseColor,
               }}
             >
               {" "}
               Who are our customers?
             </div>
-            <div className="about-subtext p-1">
+            <div className="about-subtext p-2">
               We provide services to large Online Forex Brokers, Internet
               Merchants, Exchangers, Crypto users, Consultancy Companies and
               Individuals, who prefer safe e-currency exchange, cash to
@@ -75,14 +75,14 @@ const About = () => {
           </div>
           <div className="col-sm-12 c-con m-2 rounded-2 col-md-5 col-lg-4 col-xl-4">
             <div
-              className="about-caption p-1"
+              className="about-caption px-2 pt-3"
               style={{
-                color: color.darkColor,
+                color: color.baseColor,
               }}
             >
               Why are we different?{" "}
             </div>
-            <div className="about-subtext p-1">
+            <div className="about-subtext p-2">
               We are one of the largest e-currency exchangers providing services
               to large companies as well as to any client wishing to buy or sell
               small amount. Our customers have always up-to-date information
@@ -93,14 +93,14 @@ const About = () => {
           </div>
           <div className="col-sm-12 c-con m-2 rounded-2 col-md-5 col-lg-3 col-xl-3">
             <div
-              className="about-caption p-1"
+              className="about-caption px-2 pt-3"
               style={{
-                color: color.darkColor,
+                color: color.baseColor,
               }}
             >
               Why choose us?{" "}
             </div>
-            <div className="about-subtext p-1">
+            <div className="about-subtext p-2">
               USDplug is dedicated to becoming the industry leader in e-currency
               and crypto-currency exchange, payment solutions and related
               services for companies and individuals worldwide. USDplug was

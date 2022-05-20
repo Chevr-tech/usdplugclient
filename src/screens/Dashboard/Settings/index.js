@@ -154,7 +154,9 @@ const Settings = () => {
           bankName={bankName}
         />
       )}
-      {kYCR && <KYCRegistration closeBtn={setKYCR} />}
+      {kYCR && (
+        <KYCRegistration closeBtn={setKYCR} setRefresh={setBankRefresh} />
+      )}
       {updatedModal && (
         <UpdateBank closeBtn={setUpdatedModal} setRefresh={setBankRefresh} />
       )}
@@ -236,7 +238,7 @@ const Settings = () => {
                             <div
                               className="settings-input p-1 my-2 d-flex align-items-center"
                               style={{
-                                border: "1px solid rgb(117, 185, 104)",
+                                border: `1px solid ${color.baseColor}`,
                               }}
                             >
                               <Select

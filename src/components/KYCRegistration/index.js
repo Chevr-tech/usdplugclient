@@ -14,7 +14,7 @@ import axios from "../../utlis/axios";
 import moment from "moment";
 import { DatePicker, message, Select } from "antd";
 
-const KYCRegistration = ({ closeBtn }) => {
+const KYCRegistration = ({ closeBtn, setRefresh }) => {
   toast.configure();
   const [gender, setGender] = useState();
   const [selectedState, setSelectedStated] = useState();
@@ -56,6 +56,7 @@ const KYCRegistration = ({ closeBtn }) => {
       toast.success("KYC uploaded successfully", { toastId: "4275235" });
       setLoading((prev) => false);
       closeBtn((pev) => false);
+      setRefresh((prev) => false);
       return;
     } catch (err) {
       if (err.reponse) {

@@ -23,8 +23,8 @@
 }
 
 .nav-brand__img-cover {
-  width: 150px;
-  height: 70px;
+  width: 160px;
+  height: 45px;
   display: flex;
   align-items: center;
   justify-content: start;
@@ -36,7 +36,7 @@
 .nav-brand__image {
   width: 100%;
   height: 100%;
-  transform: scale(1.8);
+  transform: scale(0.9);
 }
 
 .nav-brand__title {
@@ -67,7 +67,7 @@
 
 .nav-item:hover {
   text-decoration: underline !important;
-  color: #54ac42;
+  color: #2d47f8;
 }
 
 .nav-auth__btn-cover {
@@ -77,25 +77,25 @@
 }
 
 .nav-auth__btn {
-  border: 1px solid #2bff88;
+  border: 1px solid #2d47f8;
   padding: 8px 19px;
-  color: #75b968;
+  color: #fff;
   margin: 0 10px;
   font-size: 16px;
   border-radius: 5px;
-  background: #fff;
+  background: #2d47f8;
   box-shadow: 0 2px 5px #ebebeb9c;
   cursor: pointer;
   transition: outline 50ms ease;
 }
 .nav-auth__btn:hover {
-  color: #75b968 !important;
+  color: #fff !important;
 }
 
 .nav-auth__btn:nth-child(2) {
   color: #fff;
   border: none !important;
-  background: #4da94d;
+  background: #2d47f8;
   /* background-image: linear-gradient(
     45deg, */
   /* #2bffcf 0%, # 52%, */

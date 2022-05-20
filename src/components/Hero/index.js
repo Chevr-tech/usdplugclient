@@ -5,10 +5,15 @@ import PhoneBg from "../../assets/images/phonebg.png";
 
 const Hero = () => {
   return (
-    <div className="container-fluid mt-5" style={{}}>
+    <div
+      className="container-fluid"
+      style={{
+        padding: "10px 0 0 0",
+      }}
+    >
       <div className="row mt-5 justify-content-around">
         <div className="col-sm-12 col-md-6 col-lg-5 col-xl-5">
-          <div className="hero-left_cover mt-2">
+          <div className="hero-left_cover">
             <div className="hero-top">
               <div className="hero-text ">
                 Hello there !!!.{" "}
@@ -39,7 +44,7 @@ const Hero = () => {
                   });
                 }}
               >
-                <div>Explore</div>
+                Explore
               </div>
             </div>
           </div>

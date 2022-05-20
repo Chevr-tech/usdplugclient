@@ -37,6 +37,7 @@ const BuyTab = () => {
   const [adminBank, setAdminBank] = useState([]);
   const [volume, setVolume] = useState(0);
   const [selectedBank, setSelectedBank] = useState(null);
+  const [tokenObj, setTokenObj] = useState(null);
 
   const [tokenId, setTokenId] = useState(null);
   const { Option } = Select;
@@ -65,8 +66,8 @@ const BuyTab = () => {
     (async () => {
       try {
         let res = await axios.get("/account?status=active");
-        setBank((prev) => res.data.data[0]);
-        setBankId((prev) => res.data.data[0].id);
+        setAdminBank((prev) => res.data.data);
+        console.log(res.data.data);
       } catch (err) {
         toast.error(err.response.data.message);
       }
@@ -78,7 +79,10 @@ const BuyTab = () => {
       try {
         let res = await axios.get("/wallet");
         setAssetList((prev) =>
-          res.data.data.filter((item) => item.token === "usdt")
+          res.data.data.filter((item) => item.token.toLowerCase() === "usdt")
+        );
+        console.log(
+          res.data.data.filter((item) => item.token.toLowerCase() === "usdt")
         );
       } catch (err) {
         toast.error(err.response.data.message);
@@ -102,9 +106,10 @@ const BuyTab = () => {
   useEffect(() => {
     (async () => {
       try {
-        let res = await axios.get("/account?status=active");
+        // let res = await axios.get("/account?status=active");
         // console.log(res.data);
-        setAdminBank((prev) => res.data.data);
+        // setAdminBank((prev) => res.data.data[0]);
+        // console.log(res.data.data);
         let siteData = await axios.get("/site-data/quantity");
         setVolume((prev) => siteData.data.data.fiat);
       } catch (err) {
@@ -152,14 +157,15 @@ const BuyTab = () => {
       let res = await axios.post("/order/user/buy", {
         quantity: tokenQty,
         token: tokenName.toLowerCase(),
+        quickWallet: "",
         walletAddress: walletAddress,
         quickBank: selectedBank.id || "",
         asset: assestType, // reminder to add when sending token
       });
       toast.success("Order created successfully");
       setLoading((prev) => false);
-      window.location.pathname = "/orders";
-      console.log(res.data);
+      return (window.location.pathname = "/orders");
+      // console.log(res.data);
       return;
     } catch (err) {
       if (err.response) {
@@ -232,7 +238,9 @@ const BuyTab = () => {
                   height: "100%",
                   padding: "0",
                 }}
-                onChange={(e) => handleTokenPrice(e)}
+                onChange={(e) => {
+                  handleTokenPrice(e);
+                }}
               >
                 {assetList.map((item) => (
                   <Option key={item.id} value={item.token}>

@@ -24,12 +24,12 @@
   transition: 50ms ease;
   font-size: 13px;
   border-radius: 3px;
-  color: #75b968;
+  color: #2d47f8;
 }
 .card-more__btn:hover {
-  color: #75b968;
+  color: #2d47f8;
 }
 
 .card-more__btn:hover {
-  outline: 2px solid #75b96888;
+  outline: 2px solid #2d47f888;
 }

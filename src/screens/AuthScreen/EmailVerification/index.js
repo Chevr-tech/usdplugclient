@@ -70,7 +70,7 @@ const EmailVerfication = () => {
         code: otp,
       });
       setLoading({ confirm: false });
-      return (window.location.pathname = "/dashboard");
+      return (window.location.pathname = "/login");
     } catch (err) {
       if (err.response.data.status === 400) {
         setLoading({ confirm: false });

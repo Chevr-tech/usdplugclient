@@ -3,13 +3,30 @@ import { color } from "../../constants/color";
 import "./style.css";
 import axios from "../../utlis/axios";
 import { useEffect } from "react";
+import { useState } from "react";
 
 const Rate = () => {
+  const [buy, setBuy] = useState({
+    a: "",
+    b: "",
+    c: "",
+    d: "",
+    e: "",
+  });
+  const [sell, setSell] = useState(null);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     (async () => {
       try {
         let res = await axios.get("/site-data/price");
-        console.log(res);
+        setBuy({
+          a: res.data.data.buy.a.price,
+          b: res.data.data.buy.b.price,
+          c: res.data.data.buy.c.price,
+          d: res.data.data.buy.d.price,
+          e: res.data.data.buy.e.price,
+        });
+        console.log(res.data.data.buy.a.price);
       } catch (err) {
         console.log(err);
       }
@@ -27,7 +44,7 @@ const Rate = () => {
       >
         <div className="table-scroll">
           <div class="table-cover">
-            <table class="">
+            <table className="">
               <thead className="thead">
                 <tr>
                   <th scope="col"></th>
@@ -68,7 +85,9 @@ const Rate = () => {
                     <div className="d-flex align-items-center justify-content-between">
                       <div className="p-2">
                         <div className="rate-t">Buying price</div>
-                        <div className="text-center">₦ 450</div>
+                        <div className="text-center">
+                          ₦ {buy.a.toLocaleString("en-us", { currency: "USD" })}
+                        </div>
                       </div>
                       <div className="p-2">
                         <div className="rate-t">Selling price</div>
@@ -81,7 +100,9 @@ const Rate = () => {
                     <div className="d-flex align-items-center justify-content-between">
                       <div className="p-2">
                         <div className="rate-t">Buying price</div>
-                        <div className="text-center">₦ 450</div>
+                        <div className="text-center">
+                          ₦ {buy.b.toLocaleString("en-us", { currency: "USD" })}
+                        </div>
                       </div>
                       <div className="p-2">
                         <div className="rate-t">Selling price</div>
@@ -94,7 +115,9 @@ const Rate = () => {
                     <div className="d-flex align-items-center justify-content-between">
                       <div className="p-2">
                         <div className="rate-t">Buying price</div>
-                        <div className="text-center">₦ 450</div>
+                        <div className="text-center">
+                          ₦ {buy.c.toLocaleString("en-us", { currency: "USD" })}
+                        </div>
                       </div>
                       <div className="p-2">
                         <div className="rate-t">Selling price</div>
@@ -107,7 +130,9 @@ const Rate = () => {
                     <div className="d-flex align-items-center justify-content-between">
                       <div className="p-2">
                         <div className="rate-t">Buying price</div>
-                        <div className="text-center">₦ 450</div>
+                        <div className="text-center">
+                          ₦ {buy.d.toLocaleString("en-us", { currency: "USD" })}
+                        </div>
                       </div>
                       <div className="p-2">
                         <div className="rate-t">Selling price</div>
@@ -120,7 +145,9 @@ const Rate = () => {
                     <div className="d-flex align-items-center justify-content-between">
                       <div className="p-2">
                         <div className="rate-t">Buying price</div>
-                        <div className="text-center">₦ 450</div>
+                        <div className="text-center">
+                          ₦ {buy.e.toLocaleString("en-us", { currency: "USD" })}
+                        </div>
                       </div>
                       <div className="p-2">
                         <div className="rate-t">Selling price</div>

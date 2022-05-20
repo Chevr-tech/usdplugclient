@@ -254,9 +254,9 @@ const OrderDetails = () => {
                             data.status === "pending"
                               ? "orange"
                               : data.status === "approved"
-                              ? "#acffac"
+                              ? color.baseColor
                               : data.status === "rejected"
-                              ? "#ffb4a7"
+                              ? color.redColor
                               : null,
                         }}
                       >
