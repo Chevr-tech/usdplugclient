@@ -32,6 +32,9 @@ const SellTab = () => {
   const [bitcoinPrice, setBitcoin] = useState("");
   const [assestType, setAssetType] = useState("");
   const [tradeType, setTradeType] = useState("");
+  const [error, setError] = useState("");
+  const [assetRate, setAssetRate] = useState([]);
+  const [tradeCat, setTradeCat] = useState(null);
 
   const [tokenId, setTokenId] = useState(null);
   const { Option } = Select;
@@ -44,7 +47,7 @@ const SellTab = () => {
         let res = await marketUrl.get(
           "/v3/simple/price?ids=binancecoin,bitcoin,tether,ethereum,tron&vs_currencies=usd"
         );
-        console.log(res.data, "line 47");
+
         const { binancecoin, bitcoin, ethereum, tether, tron } = res.data;
         setBnbPrice((prev) => binancecoin.usd);
         setBitcoin((prev) => bitcoin.usd);
@@ -64,7 +67,6 @@ const SellTab = () => {
         setAssetList((prev) => res.data.data);
       } catch (err) {
         toast.error(err.message);
-        console.log(err);
       }
     })();
   }, []);
@@ -78,19 +80,19 @@ const SellTab = () => {
           (item, i) => item[1]
         );
         let arr = [
-          res.data.data.buy.a,
-          res.data.data.buy.b,
-          res.data.data.buy.c,
+          res.data.data.sell.a,
+          res.data.data.sell.b,
+          res.data.data.sell.c,
         ];
-        console.log(arr);
+        setAssetRate((prev) => [res.data.data.sell.d]);
+
         setSellRate((prev) => arr);
       } catch (err) {
-        toast.error(err.response.data.message);
+        toast.error(err.message);
       }
     })();
   }, []);
   const handleTokenPrice = async (e) => {
-    console.log(e);
     if (e.toLowerCase() === "bnb") {
       let name = assetList.find((item) => item.token === e);
       setTokenName((prev) => name.token.toUpperCase());
@@ -136,12 +138,22 @@ const SellTab = () => {
       setTokenPrice((prev) => tronPrice);
       setTokenId((prev) => name.id);
       setAssetType((prev) => "crypto");
-    } else if (e === "airtime") {
+    } else if (e.includes("AIRUSD")) {
       let name = assetList.find((item) => item.token === e);
       setTokenName((prev) => name.token.toUpperCase());
       setReceiveAddress((prev) => name.address);
       setTradeNetwork((prev) => name.network.toUpperCase());
       setTokenId((prev) => name.id);
+      setTokenPrice((prev) => 1);
+      setAssetType((prev) => "asset");
+      setTradeType((prev) => e);
+    } else if (e.includes("PERFECT MONEY")) {
+      let name = assetList.find((item) => item.token === e);
+      setTokenName((prev) => name.token.toUpperCase());
+      setReceiveAddress((prev) => name.address);
+      setTradeNetwork((prev) => name.network.toUpperCase());
+      setTokenId((prev) => name.id);
+      setTokenPrice((prev) => 1);
       setAssetType((prev) => "asset");
       setTradeType((prev) => e);
     }
@@ -149,6 +161,13 @@ const SellTab = () => {
 
   const handleOrder = async () => {
     try {
+      if (tokenPrice * tokenQty * tradeRate <= 0) {
+        toast.warn("You cant create an order with ₦0(naira)", {
+          toastId: "e9sdicj",
+        });
+        return;
+      }
+
       setLoading((prev) => true);
       let res = await axios.post("/order/user/sell", {
         quantity: tokenQty,
@@ -274,7 +293,12 @@ const SellTab = () => {
             <div className="text-center">
               {tradeType !== "airtime" ? "Token" : "Airtime"} quantity
             </div>
-            <div className="step-option d-flex align-items-center my-3">
+            <div
+              className="step-option d-flex align-items-center mt-3"
+              style={{
+                border: error ? `1px solid tomato` : null,
+              }}
+            >
               <div
                 className=" d-flex align-items-center justify-content-center"
                 style={{
@@ -301,33 +325,40 @@ const SellTab = () => {
                 }}
                 type={"number"}
                 onInput={(e) => {
-                  console.log(
-                    tokenName,
-                    receiveAddress,
-                    tradeNetwork,
-                    tokenId,
-                    assestType,
-                    tradeType,
-                    sellRate,
-                    e.target.value,
-                    tokenPrice
-                  );
-
                   let result = e.target.value * tokenPrice;
-                  const test = sellRate.find(
-                    (x) => x.min <= result && x.max >= result
-                  ).price;
-                  // console.log(test, price);
-                  // setTokenQty((prev) => e.target.value);
-                  // setTradeRate((prev) => test);
-                  // (usd) => 23 * usdPrice * test;
-                  // setNairaAmount((prev) => us * tokenQty * test);
+
+                  if (result < 50) {
+                    setError((prev) => "Minimum trading volume is $50");
+                    return;
+                  } else {
+                    setError((prev) => "");
+                    if (assestType !== "crypto") {
+                      setTradeRate((prev) => assetRate[0].price);
+                      setTokenQty((prev) => e.target.value);
+                      return;
+                    }
+                    const test = sellRate.find(
+                      (x) => x.min <= result && x.max >= result
+                    );
+                    setTokenQty((prev) => e.target.value);
+                    setTradeRate((prev) => test.price);
+                  }
                 }}
                 value={tokenQty}
                 onChange={(e) => setTokenQty(e.target.value)}
                 placeholder={"quantity of token"}
               />
             </div>
+            {error && (
+              <span
+                style={{
+                  fontSize: "12px",
+                  color: "tomato",
+                }}
+              >
+                {error}
+              </span>
+            )}
             {tradeType !== "airtime" && (
               <div className="step-option d-flex align-items-center my-3 ">
                 <div

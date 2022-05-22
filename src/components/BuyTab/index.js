@@ -38,6 +38,7 @@ const BuyTab = () => {
   const [volume, setVolume] = useState(0);
   const [selectedBank, setSelectedBank] = useState(null);
   const [tokenObj, setTokenObj] = useState(null);
+  const [error, setError] = useState("");
 
   const [tokenId, setTokenId] = useState(null);
   const { Option } = Select;
@@ -81,9 +82,6 @@ const BuyTab = () => {
         setAssetList((prev) =>
           res.data.data.filter((item) => item.token.toLowerCase() === "usdt")
         );
-        console.log(
-          res.data.data.filter((item) => item.token.toLowerCase() === "usdt")
-        );
       } catch (err) {
         toast.error(err.response.data.message);
       }
@@ -95,10 +93,21 @@ const BuyTab = () => {
       try {
         let res = await axios.get("/site-data/price");
         let test = 300;
-        const num = Object.entries(res.data.data.buy).map((item, i) => item[1]);
-        setBuyRate((prev) => num);
+        // const num = Object.entries(res.data.data.buy).map((item, i) => item[1]);
+        let arr = [
+          res.data.data.buy.a,
+          res.data.data.buy.b,
+          res.data.data.buy.c,
+        ];
+        setBuyRate((prev) => arr);
       } catch (err) {
-        toast.error(err.response.data.message);
+        if (err.response) {
+          toast.error(err.response.data.message);
+          setLoading((prev) => false);
+          return;
+        }
+        toast.success(err.message);
+        setLoading((prev) => false);
       }
     })();
   }, []);
@@ -124,7 +133,7 @@ const BuyTab = () => {
   }, []);
 
   const handleTokenPrice = async (e) => {
-    if (e === "usdt") {
+    if (e.toLowerCase() === "usdt") {
       let name = assetList.find((item) => item.token === e);
       setTokenName((prev) => name.token.toUpperCase());
       setReceiveAddress((prev) => name.address);
@@ -284,7 +293,12 @@ const BuyTab = () => {
               />
             </div>
             <div className="text-center">Token quantity</div>
-            <div className="step-option d-flex align-items-center my-3">
+            <div
+              className="step-option d-flex align-items-center mt-3"
+              style={{
+                border: error ? `1px solid tomato` : null,
+              }}
+            >
               <div
                 className=" d-flex align-items-center justify-content-center"
                 style={{
@@ -312,18 +326,38 @@ const BuyTab = () => {
                 type={"number"}
                 onInput={(e) => {
                   let result = e.target.value * tokenPrice;
-                  const test = buyRate.find(
-                    (x) => x.min <= result && x.max >= result
-                  );
-                  setTokenQty((prev) => e.target.value);
-                  setTradeRate((prev) => test.price);
-                  setNairaAmount((prev) => test.price * tokenQty * test.price);
+
+                  if (result < 50) {
+                    setError((prev) => "Minimum trading volume is $50");
+                    return;
+                  } else {
+                    setError((prev) => "");
+                    const test = buyRate.find(
+                      (x) => x.min <= result && x.max >= result
+                    );
+
+                    setTokenQty((prev) => e.target.value);
+                    setTradeRate((prev) => test.price);
+                    setNairaAmount(
+                      (prev) => test.price * tokenQty * test.price
+                    );
+                  }
                 }}
                 value={tokenQty}
                 onChange={(e) => setTokenQty(e.target.value)}
                 placeholder={"quantity of token"}
               />
             </div>
+            {error && (
+              <span
+                style={{
+                  fontSize: "12px",
+                  color: "tomato",
+                }}
+              >
+                {error}
+              </span>
+            )}
             <div className="step-option d-flex align-items-center my-1">
               <div
                 className=" d-flex align-items-center justify-content-center"
@@ -366,6 +400,7 @@ const BuyTab = () => {
                 fontStyle: "italic",
                 fontSize: "12px",
                 color: color.darkColor,
+                display: "none",
               }}
             >
               maximum trading volume{" "}

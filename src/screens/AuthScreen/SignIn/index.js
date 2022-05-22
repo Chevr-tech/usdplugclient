@@ -49,7 +49,7 @@ const SignIn = () => {
         setLoading((prev) => false);
         return;
       }
-      toast.error(err.response.data.message);
+      toast.error(err.message);
       return;
     }
   };
