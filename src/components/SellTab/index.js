@@ -44,7 +44,7 @@ const SellTab = () => {
         let res = await marketUrl.get(
           "/v3/simple/price?ids=binancecoin,bitcoin,tether,ethereum,tron&vs_currencies=usd"
         );
-        console.log(res.data);
+        console.log(res.data, "line 47");
         const { binancecoin, bitcoin, ethereum, tether, tron } = res.data;
         setBnbPrice((prev) => binancecoin.usd);
         setBitcoin((prev) => bitcoin.usd);
@@ -77,13 +77,20 @@ const SellTab = () => {
         const num = Object.entries(res.data.data.sell).map(
           (item, i) => item[1]
         );
-        setSellRate((prev) => num);
+        let arr = [
+          res.data.data.buy.a,
+          res.data.data.buy.b,
+          res.data.data.buy.c,
+        ];
+        console.log(arr);
+        setSellRate((prev) => arr);
       } catch (err) {
         toast.error(err.response.data.message);
       }
     })();
   }, []);
   const handleTokenPrice = async (e) => {
+    console.log(e);
     if (e.toLowerCase() === "bnb") {
       let name = assetList.find((item) => item.token === e);
       setTokenName((prev) => name.token.toUpperCase());
@@ -113,6 +120,7 @@ const SellTab = () => {
       return;
     } else if (e.toLowerCase() === "usdt") {
       let name = assetList.find((item) => item.token === e);
+      console.log(name);
       setTokenName((prev) => name.token.toUpperCase());
       setReceiveAddress((prev) => name.address);
       setTradeNetwork((prev) => name.network.toUpperCase());
@@ -293,13 +301,27 @@ const SellTab = () => {
                 }}
                 type={"number"}
                 onInput={(e) => {
+                  console.log(
+                    tokenName,
+                    receiveAddress,
+                    tradeNetwork,
+                    tokenId,
+                    assestType,
+                    tradeType,
+                    sellRate,
+                    e.target.value,
+                    tokenPrice
+                  );
+
                   let result = e.target.value * tokenPrice;
                   const test = sellRate.find(
                     (x) => x.min <= result && x.max >= result
-                  );
-                  setTokenQty((prev) => e.target.value);
-                  setTradeRate((prev) => test.price);
-                  setNairaAmount((prev) => test.price * tokenQty * test.price);
+                  ).price;
+                  // console.log(test, price);
+                  // setTokenQty((prev) => e.target.value);
+                  // setTradeRate((prev) => test);
+                  // (usd) => 23 * usdPrice * test;
+                  // setNairaAmount((prev) => us * tokenQty * test);
                 }}
                 value={tokenQty}
                 onChange={(e) => setTokenQty(e.target.value)}
