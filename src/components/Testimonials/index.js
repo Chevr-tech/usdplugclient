@@ -10,9 +10,9 @@ const Testimonial = () => {
               <div className="testimonial-icon__image"></div>
               <div className="trade-volume">Trading volume</div>
               <div className="trade-volume__content">
-                Over the past fews year with we have an accumlated trading
-                volume of $1,562,703.15, completed 5393 transactions. We are
-                continously taking steps in making our number grows and at the
+                Over the past few years with we have accumlated a trading volume
+                of over $1,562,703.15, completed 5393 transactions. We are
+                continously taking steps in making our number grow and also
                 satisfying our cients (you). Thank you for always trusting us.
               </div>
             </div>

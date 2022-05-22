@@ -161,8 +161,8 @@ const SellTab = () => {
 
   const handleOrder = async () => {
     try {
-      if (tokenPrice * tokenQty * tradeRate <= 0) {
-        toast.warn("You cant create an order with ₦0(naira)", {
+      if (tokenPrice * tokenQty <= 50) {
+        toast.warn("You cant create an order below $50", {
           toastId: "e9sdicj",
         });
         return;

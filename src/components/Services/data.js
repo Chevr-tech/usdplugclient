@@ -6,13 +6,13 @@ export const data = [
   {
     id: 1,
     image: Work,
-    desc: `We are always online to process and aprroved with lightening speed..🌠`,
+    desc: `We are always online to process and aprroved orders with lightening speed..🌠`,
     title: "Processing orders",
   },
   {
     id: 2,
     image: Security,
-    desc: `Your funds, transaction and account are kept safe with us. We've deployed different protocols to hash sensitive details`,
+    desc: `Your funds, transactions and accounts are kept safe with us. We've deployed different protocols to hash sensitive details`,
     title: "Security",
   },
   {

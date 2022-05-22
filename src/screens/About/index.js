@@ -26,7 +26,12 @@ const About = () => {
             Who we are
           </div>
           <div className="">
-            <div className="about-content text-center">
+            <div
+              className="about-content text-center"
+              style={{
+                color: color.darkColor,
+              }}
+            >
               USDplug is a total e-business solution provider that specializes
               in the provision of fast, reliable and efficient e-currency
               exchange service to the clients who desire to buy and sell online

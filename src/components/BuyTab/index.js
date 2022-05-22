@@ -163,6 +163,14 @@ const BuyTab = () => {
         setLoading((prev) => false);
         return;
       }
+
+      if (tokenPrice * tokenQty <= 50) {
+        toast.warn("You cant create an order below $50", {
+          toastId: "e9sdicj",
+        });
+        setLoading((prev) => false);
+        return;
+      }
       let res = await axios.post("/order/user/buy", {
         quantity: tokenQty,
         token: tokenName.toLowerCase(),
