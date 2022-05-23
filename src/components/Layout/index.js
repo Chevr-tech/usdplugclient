@@ -17,7 +17,7 @@ const Layout = ({ children }) => {
       >
         <Link
           to={{
-            pathname: `https://wa.me/+2347018708634?text=Hello%20I%20want%20to%20trade!`,
+            pathname: `https://wa.me/+2347018708634?text=Hello%20I%20want%20to%20transact!`,
           }}
           target={"_blank"}
           className="whatsimg d-flex align-items-center justify-content-center "
