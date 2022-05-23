@@ -17,12 +17,7 @@ const Layout = ({ children }) => {
       >
         <Link
           to={{
-            pathname: `https://wa.me/+2347018708634?text=Thank%20you%20for%20contacting%Usdplug%20
-          %20Which%20of%20the%20Services%20would%20you%20be%20needing.%20
-          1.%20Buying%20or%20selling%20Bitcoin%20and%20USDT. %20      %20          %20      %20
-          2.%20Consulting%20and%20Advisory%20services.%20      %20           %20      %20
-
-          https://wa.me/+2347018708634?text=Hello%20I%20want%20to%20transact!`,
+            pathname: `https://wa.me/+2347018708634?text=Hello%20I%20want%20to%20trade!`,
           }}
           target={"_blank"}
           className="whatsimg d-flex align-items-center justify-content-center "
@@ -52,7 +47,7 @@ const Layout = ({ children }) => {
               }}
               className="p-1 rounded shadow animate__animated animate__shakeX"
             >
-              Hello, I want to trade.
+              Quick Trade.
             </div>
             <div
               className=""

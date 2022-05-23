@@ -45,6 +45,7 @@ const BuyTab = () => {
   const { Option } = Select;
   var getPrice;
   const [refreshPrice, setRefresh] = useState(false);
+  // const [quickWalletId, setquickWalletId] = useState()
 
   useEffect(() => {
     (async () => {
@@ -133,16 +134,13 @@ const BuyTab = () => {
   }, []);
 
   const handleTokenPrice = async (e) => {
-    if (e.toLowerCase() === "usdt") {
-      let name = assetList.find((item) => item.token === e);
-      setTokenName((prev) => name.token.toUpperCase());
-      setReceiveAddress((prev) => name.address);
-      setTradeNetwork((prev) => name.network.toUpperCase());
-      setTokenPrice((prev) => usdtPrice);
-      setTokenId((prev) => name.id);
-      setAssetType((prev) => "crypto");
-      return;
-    }
+    let name = assetList.find((item) => item.address === e);
+    setTokenName((prev) => name.token.toUpperCase());
+    setReceiveAddress((prev) => name.address);
+    setTradeNetwork((prev) => name.network.toUpperCase());
+    setTokenPrice((prev) => usdtPrice);
+    setTokenId((prev) => name.id);
+    setAssetType((prev) => "crypto");
   };
 
   const handleOrder = async () => {
@@ -174,7 +172,7 @@ const BuyTab = () => {
       let res = await axios.post("/order/user/buy", {
         quantity: tokenQty,
         token: tokenName.toLowerCase(),
-        quickWallet: "",
+        quickWallet: tokenId,
         walletAddress: walletAddress,
         quickBank: selectedBank.id || "",
         asset: assestType, // reminder to add when sending token
@@ -260,7 +258,7 @@ const BuyTab = () => {
                 }}
               >
                 {assetList.map((item) => (
-                  <Option key={item.id} value={item.token}>
+                  <Option key={item.id} value={item.address}>
                     {`${item.token.toUpperCase()} (${item.network.toUpperCase()})`}
                   </Option>
                 ))}

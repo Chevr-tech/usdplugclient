@@ -37,7 +37,7 @@ const SellTab = () => {
   const [tradeCat, setTradeCat] = useState(null);
   const [inputType, setInputType] = useState("qty");
   const [inputRes, setInputRes] = useState("");
-
+  const [dollarQty, setDollarQty] = useState("");
   const [tokenId, setTokenId] = useState(null);
   const { Option } = Select;
   var getPrice;
@@ -139,7 +139,7 @@ const SellTab = () => {
       setTokenPrice((prev) => tronPrice);
       setTokenId((prev) => name.id);
       setAssetType((prev) => "crypto");
-    } else if (e.includes("AIRUSD")) {
+    } else if (e.toLowerCase() == "airusd") {
       let name = assetList.find((item) => item.token === e);
       setTokenName((prev) => name.token.toUpperCase());
       setReceiveAddress((prev) => name.address);
@@ -148,7 +148,7 @@ const SellTab = () => {
       setTokenPrice((prev) => 1);
       setAssetType((prev) => "asset");
       setTradeType((prev) => e);
-    } else if (e.includes("PERFECT MONEY")) {
+    } else if (e.toLowerCase() == "perfect money") {
       let name = assetList.find((item) => item.token === e);
       setTokenName((prev) => name.token.toUpperCase());
       setReceiveAddress((prev) => name.address);
@@ -161,6 +161,7 @@ const SellTab = () => {
   };
 
   const handleOrder = async () => {
+    // console.log(tokenQty, dollarQty);
     try {
       if (tokenPrice * tokenQty <= 50) {
         toast.warn("You cant create an order below $50", {
@@ -168,10 +169,14 @@ const SellTab = () => {
         });
         return;
       }
-
       setLoading((prev) => true);
       let res = await axios.post("/order/user/sell", {
-        quantity: tokenQty,
+        quantity:
+          assestType !== "crypto"
+            ? tokenQty
+            : inputType == "qty"
+            ? tokenQty
+            : dollarQty,
         token: tokenName,
         walletAddress: receiveAddress,
         quickWallet: tokenId,
@@ -355,20 +360,21 @@ const SellTab = () => {
                       setTradeRate((prev) => test.price);
                       return;
                     } else {
-                      // get the qty entered
-                      let qtyToken = tokenPrice / e.target.value;
+                      // get the dollar amount
+                      let qtyToken = e.target.value / tokenPrice;
                       setInputRes((prev) => `~ ${qtyToken} ${tokenName}`);
                       const test = sellRate.find(
                         (x) => x.min <= result && x.max >= result
                       );
-                      setTokenQty((prev) => e.target.value);
+
+                      setDollarQty((prev) => qtyToken);
                       setTradeRate((prev) => test.price);
                       return;
                     }
                   }
                 }}
                 value={tokenQty}
-                onChange={(e) => setTokenQty(e.target.value)}
+                onChange={(e) => setTokenQty((prev) => e.target.value)}
                 placeholder={"quantity of token"}
               />
               <div
@@ -449,13 +455,30 @@ const SellTab = () => {
                     width: "100%",
                     height: "100%",
                   }}
+                  onChange={(e) => setNairaAmount((prev) => e.target.value)}
                   disabled={true}
-                  value={`₦${(tokenPrice * tradeRate * tokenQty).toLocaleString(
-                    "en-US",
-                    {
-                      currency: "USD",
-                    }
-                  )}`}
+                  value={
+                    assestType !== "crypto"
+                      ? `₦${(tokenPrice * tradeRate * tokenQty).toLocaleString(
+                          "en-US",
+                          {
+                            currency: "USD",
+                          }
+                        )}`
+                      : inputType == "qty"
+                      ? `₦${(tokenPrice * tradeRate * tokenQty).toLocaleString(
+                          "en-US",
+                          {
+                            currency: "USD",
+                          }
+                        )}`
+                      : `₦${(tokenPrice * tradeRate * dollarQty).toLocaleString(
+                          "en-US",
+                          {
+                            currency: "USD",
+                          }
+                        )}`
+                  }
                   type={"text"}
                   placeholder={"quantity of token"}
                 />
@@ -571,15 +594,38 @@ const SellTab = () => {
             </div>
             <div className="ods rounded-1 p-2 my-3 d-flex align-items-center justify-content-between">
               <div className="ods-t">Quantity</div>
-              <div className="ods-v">{tokenQty}</div>
+              <div className="ods-v">
+                {inputType == "qty" ? tokenQty : dollarQty}
+              </div>
             </div>
             <div className="ods rounded-1 p-2 my-3 d-flex align-items-center justify-content-between">
               <div className="ods-t">Amount you will receive</div>
               <div className="ods-v">
-                ₦
-                {(tokenPrice * tradeRate * tokenQty).toLocaleString("en-us", {
+                {assestType !== "crypto"
+                  ? `₦${(tokenPrice * tradeRate * tokenQty).toLocaleString(
+                      "en-US",
+                      {
+                        currency: "USD",
+                      }
+                    )}`
+                  : inputType == "qty"
+                  ? `₦${(tokenPrice * tradeRate * tokenQty).toLocaleString(
+                      "en-US",
+                      {
+                        currency: "USD",
+                      }
+                    )}`
+                  : `₦${(tokenPrice * tradeRate * dollarQty).toLocaleString(
+                      "en-US",
+                      {
+                        currency: "USD",
+                      }
+                    )}`}
+
+                {/* ₦
+                {nairaAmount.toLocaleString("en-us", {
                   currency: "USD",
-                })}
+                })} */}
               </div>
             </div>
             <div className="ods rounded-1 p-2 my-3 d-flex align-items-center justify-content-between">

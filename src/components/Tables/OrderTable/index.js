@@ -34,6 +34,10 @@ const OrderTable = ({ data }) => {
         return "tether";
       case "tron":
         return "tron";
+      case "airusd":
+        return "tether"; //PERFECT MONEY
+      case "perfect money":
+        return "tether";
       default:
         break;
     }

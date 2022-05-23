@@ -104,8 +104,8 @@ const OrderDetails = () => {
                         color={
                           data.status === "pending"
                             ? "orange"
-                            : data.status === "approved"
-                            ? "#acffac"
+                            : data.status == "approved"
+                            ? "green"
                             : data.status === "rejected"
                             ? "#ffb4a7"
                             : data.status === "processing"
@@ -119,7 +119,7 @@ const OrderDetails = () => {
                             data.status === "pending"
                               ? "orange"
                               : data.status === "approved"
-                              ? "#acffac"
+                              ? "green"
                               : data.status === "rejected"
                               ? "#ffb4a7"
                               : data.status === "processing"
@@ -240,12 +240,14 @@ const OrderDetails = () => {
                         size={16}
                         color={
                           data.status === "pending"
-                            ? "#ffe5b4"
-                            : data.status === "approved"
-                            ? "#acffac"
+                            ? "orange"
+                            : data.status == "approved"
+                            ? "green"
                             : data.status === "rejected"
                             ? "#ffb4a7"
-                            : null
+                            : data.status === "processing"
+                            ? "dodgerblue"
+                            : "black"
                         }
                       />
                       <div
@@ -254,9 +256,11 @@ const OrderDetails = () => {
                             data.status === "pending"
                               ? "orange"
                               : data.status === "approved"
-                              ? color.baseColor
+                              ? "green"
                               : data.status === "rejected"
-                              ? color.redColor
+                              ? "#ffb4a7"
+                              : data.status === "processing"
+                              ? "dodgerblue"
                               : null,
                         }}
                       >
