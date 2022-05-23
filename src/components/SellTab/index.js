@@ -35,6 +35,8 @@ const SellTab = () => {
   const [error, setError] = useState("");
   const [assetRate, setAssetRate] = useState([]);
   const [tradeCat, setTradeCat] = useState(null);
+  const [inputType, setInputType] = useState("qty");
+  const [inputRes, setInputRes] = useState("");
 
   const [tokenId, setTokenId] = useState(null);
   const { Option } = Select;
@@ -122,7 +124,6 @@ const SellTab = () => {
       return;
     } else if (e.toLowerCase() === "usdt") {
       let name = assetList.find((item) => item.token === e);
-      console.log(name);
       setTokenName((prev) => name.token.toUpperCase());
       setReceiveAddress((prev) => name.address);
       setTradeNetwork((prev) => name.network.toUpperCase());
@@ -302,8 +303,9 @@ const SellTab = () => {
               <div
                 className=" d-flex align-items-center justify-content-center"
                 style={{
-                  width: "220px",
+                  width: "340px",
                   height: "100%",
+                  fontSize: "14px",
                   background: "#f5f5f5",
                   boxShadow: "inset 0 2px 10px #eeeeeede",
                 }}
@@ -314,7 +316,7 @@ const SellTab = () => {
                     fontSize: "14px",
                   }}
                 >
-                  Enter quantity:
+                  Enter {inputType == "qty" ? "Quantity" : "USD amount"}:
                 </div>
               </div>
               <input
@@ -326,9 +328,9 @@ const SellTab = () => {
                 type={"number"}
                 onInput={(e) => {
                   let result = e.target.value * tokenPrice;
-
                   if (result < 50) {
                     setError((prev) => "Minimum trading volume is $50");
+                    setInputRes((prev) => "");
                     return;
                   } else {
                     setError((prev) => "");
@@ -337,28 +339,89 @@ const SellTab = () => {
                       setTokenQty((prev) => e.target.value);
                       return;
                     }
-                    const test = sellRate.find(
-                      (x) => x.min <= result && x.max >= result
-                    );
-                    setTokenQty((prev) => e.target.value);
-                    setTradeRate((prev) => test.price);
+                    // if the input type is qty or dollar
+                    if (inputType == "qty") {
+                      // get the dollar amount
+                      setInputRes(
+                        (prev) =>
+                          `~$${result.toLocaleString("en-us", {
+                            currency: "USD",
+                          })}`
+                      );
+                      const test = sellRate.find(
+                        (x) => x.min <= result && x.max >= result
+                      );
+                      setTokenQty((prev) => e.target.value);
+                      setTradeRate((prev) => test.price);
+                      return;
+                    } else {
+                      // get the qty entered
+                      let qtyToken = tokenPrice / e.target.value;
+                      setInputRes((prev) => `~ ${qtyToken} ${tokenName}`);
+                      const test = sellRate.find(
+                        (x) => x.min <= result && x.max >= result
+                      );
+                      setTokenQty((prev) => e.target.value);
+                      setTradeRate((prev) => test.price);
+                      return;
+                    }
                   }
                 }}
                 value={tokenQty}
                 onChange={(e) => setTokenQty(e.target.value)}
                 placeholder={"quantity of token"}
               />
-            </div>
-            {error && (
-              <span
+              <div
+                className=" d-flex align-items-center justify-content-center"
                 style={{
-                  fontSize: "12px",
-                  color: "tomato",
+                  width: "220px",
+                  height: "100%",
+                  background: "#f5f5f5",
+                  cursor: "pointer",
+                  boxShadow: "inset 0 2px 10px #eeeeeede",
+                }}
+                onClick={() => {
+                  if (inputType == "qty") {
+                    return setInputType((prev) => "dollar");
+                  } else if (inputType == "dollar") {
+                    return setInputType((prev) => "qty");
+                  }
                 }}
               >
-                {error}
-              </span>
-            )}
+                <div
+                  className="text-center"
+                  style={{
+                    fontSize: "14px",
+                  }}
+                >
+                  {inputType == "qty" ? "use $" : "use qty"}
+                </div>
+              </div>
+            </div>
+            <div className="d-flex align-items-center justify-content-between">
+              {error && (
+                <div
+                  style={{
+                    fontSize: "12px",
+                    color: "tomato",
+                  }}
+                >
+                  {error}
+                </div>
+              )}
+
+              {inputRes && (
+                <div
+                  style={{
+                    fontSize: "12px",
+                    color: color.baseColor,
+                  }}
+                >
+                  {inputRes}
+                </div>
+              )}
+            </div>
+
             {tradeType !== "airtime" && (
               <div className="step-option d-flex align-items-center my-3 ">
                 <div
@@ -543,7 +606,6 @@ const SellTab = () => {
           </div>
         </div>
       )}
-
       <div className="step-btn__cover d-flex align-items-center justify-content-between">
         <div
           className={step !== 1 ? "step-btn active" : "step-btn"}

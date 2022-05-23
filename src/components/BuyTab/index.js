@@ -39,7 +39,8 @@ const BuyTab = () => {
   const [selectedBank, setSelectedBank] = useState(null);
   const [tokenObj, setTokenObj] = useState(null);
   const [error, setError] = useState("");
-
+  const [inputType, setInputType] = useState("qty");
+  const [inputRes, setInputRes] = useState("");
   const [tokenId, setTokenId] = useState(null);
   const { Option } = Select;
   var getPrice;
@@ -68,7 +69,6 @@ const BuyTab = () => {
       try {
         let res = await axios.get("/account?status=active");
         setAdminBank((prev) => res.data.data);
-        console.log(res.data.data);
       } catch (err) {
         toast.error(err.response.data.message);
       }
@@ -310,7 +310,7 @@ const BuyTab = () => {
               <div
                 className=" d-flex align-items-center justify-content-center"
                 style={{
-                  width: "220px",
+                  width: "340px",
                   height: "100%",
                   background: "#f5f5f5",
                   boxShadow: "inset 0 2px 10px #eeeeeede",
@@ -322,7 +322,7 @@ const BuyTab = () => {
                     fontSize: "14px",
                   }}
                 >
-                  Enter quantity:
+                  Enter {inputType == "qty" ? "Quantity" : "USD amount"}:
                 </div>
               </div>
               <input
@@ -337,13 +337,15 @@ const BuyTab = () => {
 
                   if (result < 50) {
                     setError((prev) => "Minimum trading volume is $50");
+                    setInputRes((prev) => "");
+
                     return;
                   } else {
                     setError((prev) => "");
+
                     const test = buyRate.find(
                       (x) => x.min <= result && x.max >= result
                     );
-
                     setTokenQty((prev) => e.target.value);
                     setTradeRate((prev) => test.price);
                     setNairaAmount(
@@ -355,6 +357,32 @@ const BuyTab = () => {
                 onChange={(e) => setTokenQty(e.target.value)}
                 placeholder={"quantity of token"}
               />
+              <div
+                className="d-flex align-items-center justify-content-center d-none"
+                style={{
+                  width: "220px",
+                  height: "100%",
+                  background: "#f5f5f5",
+                  cursor: "pointer",
+                  boxShadow: "inset 0 2px 10px #eeeeeede",
+                }}
+                onClick={() => {
+                  if (inputType == "qty") {
+                    return setInputType((prev) => "dollar");
+                  } else if (inputType == "dollar") {
+                    return setInputType((prev) => "qty");
+                  }
+                }}
+              >
+                <div
+                  className="text-center"
+                  style={{
+                    fontSize: "14px",
+                  }}
+                >
+                  {inputType == "qty" ? "use $" : "use qty"}
+                </div>
+              </div>
             </div>
             {error && (
               <span

@@ -21,7 +21,8 @@ const Layout = ({ children }) => {
           %20Which%20of%20the%20Services%20would%20you%20be%20needing.%20
           1.%20Buying%20or%20selling%20Bitcoin%20and%20USDT. %20      %20          %20      %20
           2.%20Consulting%20and%20Advisory%20services.%20      %20           %20      %20
-         `,
+
+          https://wa.me/+2347018708634?text=Hello%20I%20want%20to%20transact!`,
           }}
           target={"_blank"}
           className="whatsimg d-flex align-items-center justify-content-center "
@@ -47,9 +48,11 @@ const Layout = ({ children }) => {
               style={{
                 fontSize: "13px",
                 color: color.darkColor,
+                background: color.white,
               }}
+              className="p-1 rounded shadow animate__animated animate__shakeX"
             >
-              Quick trade
+              Hello, I want to trade.
             </div>
             <div
               className=""
